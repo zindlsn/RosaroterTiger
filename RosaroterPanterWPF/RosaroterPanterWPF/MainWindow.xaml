@@ -12,6 +12,6 @@
     </Window.DataContext>
     <Grid>
         <Label Content="Hello World!" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" HorizontalContentAlignment="Center"/>
-
+        
     </Grid>
 </Window>

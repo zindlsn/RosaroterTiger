@@ -46,7 +46,7 @@ namespace RosaroterPanterWPF
             private set
             {
                 _completed = value;
-                OnPropertyChanged("Completed");
+                OnPropertyChanged(nameof(Complete));
             }
         }
         public string Name { get; set; }
@@ -128,8 +128,5 @@ namespace RosaroterPanterWPF
         }
     }
 
-    public class DataService
-    {
 
-    }
 }
