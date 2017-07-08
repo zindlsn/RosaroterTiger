@@ -1,7 +1,7 @@
-﻿<Application x:Class="RosaroterPanterWPF.App"
+﻿<Application x:Class="RosaroterTigerWPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:RosaroterPanterWPF"
+             xmlns:local="clr-namespace:RosaroterTigerWPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          
