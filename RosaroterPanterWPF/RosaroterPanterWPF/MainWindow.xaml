@@ -22,16 +22,16 @@
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 		<Button Content="Button " Grid.Column="1" Grid.Row="3" IsEnabled="True" Command="{Binding StartTimerCommand}" />
-		<Grid x:Name="ContentGrid" Grid.Column="1" Grid.Row="1">
-			<Grid.RowDefinitions>
-				<RowDefinition Height="*" />
-				<RowDefinition Height="12*" />
-			</Grid.RowDefinitions>
-		</Grid>
+		<Grid x:Name="ContentGrid" Grid.Column="1" Grid.Row="1" />
 		<Label Grid.Row="0" Grid.Column="2" />
 		<Label x:Name="HomeButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" RenderTransformOrigin="-0.082,0.52" Height="40" BorderBrush="{x:Null}" MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave" Opacity="0.5">
 			<Label.Background>
 				<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/home.png"/>
+			</Label.Background>
+		</Label>
+		<Label x:Name="ReviewButton" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2" Margin="270,10,0,0" Width="40" Height="40" Opacity="0.5" BorderBrush="{x:Null}" MouseEnter="ReviewButton_MouseEnter" MouseLeave="ReviewButton_MouseLeave">
+			<Label.Background>
+				<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/review.png"/>
 			</Label.Background>
 		</Label>
 

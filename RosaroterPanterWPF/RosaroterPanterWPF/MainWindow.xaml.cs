@@ -35,6 +35,16 @@ namespace RosaroterTigerWPF
         {
             HomeButton.Opacity = .5;
         }
+
+        private void ReviewButton_MouseEnter(object sender, EventArgs e)
+        {
+            ReviewButton.Opacity = 1;
+        }
+
+        private void ReviewButton_MouseLeave(object sender, EventArgs e)
+        {
+            ReviewButton.Opacity = .5;
+        }
     }
 
 }
