@@ -17,11 +17,13 @@ namespace RosaroterTigerWPF
     {
         private Timer _Timer = new Timer();
         private string _Title;
+        private static int _PomodoroTime = 25 * 60;
 
         public MainViewModel()
         {
             _Timer.Elapsed += Timer_Elapsed;
-            this._TimerSeconds = 100;
+            this._CurrentSeconds = _PomodoroTime;
+            this.Seconds = _PomodoroTime;
         }
 
         private Task _CurrentTask;
@@ -58,11 +60,11 @@ namespace RosaroterTigerWPF
             }
         }
 
-        private int _TimerSeconds;
+        private string _TimerSeconds;
         /// <summary>
         /// [TODO: CodeDoc]
         /// </summary>
-        public int TimerSeconds
+        public string TimerSeconds
         {
             get
             {
@@ -78,12 +80,11 @@ namespace RosaroterTigerWPF
             }
         }
 
-
-        private int _TimerMinutes;
+        private string _TimerMinutes;
         /// <summary>
         /// [TODO: CodeDoc]
         /// </summary>
-        public int TimerMinutes
+        public string TimerMinutes
         {
             get
             {
@@ -179,16 +180,19 @@ namespace RosaroterTigerWPF
             if (this._CurrentSeconds > 0)
             {
                 this._CurrentSeconds--;
-                this.TimerSeconds--;
-                if(this._CurrentSeconds % 60 == 0)
-                {
-                    this.TimerMinutes--;
-                }
+                this.UpdateTimerView(_CurrentSeconds);
             }
             else
             {
                 this.ResetTimer();
             }
+        }
+
+        public void UpdateTimerView(int seconds)
+        {
+            System.TimeSpan t = System.TimeSpan.FromSeconds(seconds);
+            _TimerMinutes = t.Minutes.ToString();
+            _TimerSeconds = t.Seconds.ToString();
         }
 
         private ICommand _StartTimerCommand;
