@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RosaroterPanterWPF"
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:RosaroterPanterWPF"
-        Title="Project" Height="720" Width="1280">
+        Title="{Binding Title}" Height="720" Width="1280">
 	<Window.DataContext>
 		<vm:MainViewModel x:Name="model" />
 	</Window.DataContext>
