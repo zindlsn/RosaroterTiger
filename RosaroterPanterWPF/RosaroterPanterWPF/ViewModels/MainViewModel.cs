@@ -179,7 +179,7 @@ namespace RosaroterTigerWPF
             if (this._CurrentSeconds > 0)
             {
                 this._CurrentSeconds--;
-                this._TimerSeconds--;
+                this.TimerSeconds--;
                 if(this._CurrentSeconds % 60 == 0)
                 {
                     this.TimerMinutes--;
@@ -213,6 +213,9 @@ namespace RosaroterTigerWPF
             this._Timer.Start();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void StartTimer()
         {
             StartRound();
