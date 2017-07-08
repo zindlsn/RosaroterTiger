@@ -22,7 +22,6 @@ namespace RosaroterTigerWPF
     {
         public MainWindow()
         {
-            
             InitializeComponent();
             
         }
