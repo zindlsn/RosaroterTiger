@@ -26,5 +26,10 @@ namespace RosaroterTiger
         {
             this.InitializeComponent();
         }
+
+        private void TextBox_TextChanged(System.Object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
