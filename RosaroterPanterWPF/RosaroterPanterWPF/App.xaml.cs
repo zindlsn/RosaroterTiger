@@ -13,6 +13,5 @@ namespace RosaroterPanterWPF
     /// </summary>
     public partial class App : Application
     {
-        public static DataService DataService = new DataService();
     }
 }

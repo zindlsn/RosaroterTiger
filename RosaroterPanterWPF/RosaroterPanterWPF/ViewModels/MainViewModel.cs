@@ -132,7 +132,7 @@ namespace RosaroterPanterWPF
         /// </summary>
         public void RefreshMilestones()
         {
-            Milestones = App.DataService.DeserializeMilestones();
+            Milestones = DataService.DeserializeMilestones();
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace RosaroterPanterWPF
             if (this._CurrentSeconds > 0)
             {
                 this._CurrentSeconds--;
-                this._TimerSeconds--;
+                this.TimerSeconds--;
                 if(this._CurrentSeconds % 60 == 0)
                 {
                     this.TimerMinutes--;
@@ -213,6 +213,9 @@ namespace RosaroterPanterWPF
             this._Timer.Start();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void StartTimer()
         {
             StartRound();
