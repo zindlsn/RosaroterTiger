@@ -44,7 +44,7 @@ namespace RosaroterTigerWPF
 #endif
         }
 
-#if DEBUG && TESTDATA
+#if DEBUG
         public static ObservableCollection<Milestone> TestData()
         {
             var testData = new ObservableCollection<Milestone>();
