@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RosaroterPanterWPF
 {
-    class NotifyPropertyChanged : INotifyPropertyChanged
+    public class NotifyPropertyChanged : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

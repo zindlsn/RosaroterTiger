@@ -30,7 +30,7 @@ namespace RosaroterPanterWPF
         public static readonly Color White = new Color(255, 255, 255);
     }
 
-    public class Task : 
+    public class Task : NotifyPropertyChanged
     {
         public Color Color { get; set; }
         public string Description { get; set; }
