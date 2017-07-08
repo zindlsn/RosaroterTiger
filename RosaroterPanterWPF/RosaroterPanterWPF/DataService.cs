@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace RosaroterPanterWPF
         public static readonly Color White = new Color(255, 255, 255);
     }
 
-    public class Task
+    public class Task : 
     {
         public Color Color { get; set; }
         public string Description { get; set; }
@@ -62,7 +63,18 @@ namespace RosaroterPanterWPF
 
     public class Milestone
     {
-        public List<Task> Tasks { get; set; }
+        List<Task> _tasks;
+        public List<Task> Tasks {
+            get
+            {
+                return _tasks;
+            }
+            set
+            {
+                _tasks = value;
+                Completed = CheckForCompletion();
+            }
+        }
         public bool Completed { get; private set; }
 
         public Milestone(int number_of_tasks)
@@ -78,6 +90,15 @@ namespace RosaroterPanterWPF
         {
             Tasks.Add(task);
 
+        }
+
+        private bool CheckForCompletion()
+        {
+            foreach(Task t in _tasks)
+            {
+                if (!t.Completed) return false;
+            }
+            return true;
         }
     }
 
