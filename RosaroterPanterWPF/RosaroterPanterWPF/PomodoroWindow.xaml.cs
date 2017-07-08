@@ -22,7 +22,7 @@ namespace RosaroterTigerWPF
 		public PomodoroWindow()
 		{
 			InitializeComponent();
-			PomodoroViewModel pomodoroViewModel = new PomodoroViewModel();
+			//PomodoroViewModel pomodoroViewModel = new PomodoroViewModel();
 		}
 
 
