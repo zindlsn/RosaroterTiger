@@ -14,6 +14,10 @@ namespace RosaroterPanterWPF
     {
         public static readonly string filename = "milestones.sav";
 
+        /// <summary>
+        /// Serialize the collection of milestones
+        /// </summary>
+        /// <param name="milestones">The milestones to serialize.</param>
         public void SerializeMilestones(ObservableCollection<Milestone> milestones)
         {
             IFormatter formatter = new BinaryFormatter();
@@ -24,6 +28,10 @@ namespace RosaroterPanterWPF
             }
         }
 
+        /// <summary>
+        /// Deserialize the collection of milestones
+        /// </summary>
+        /// <returns>Desierialized milestons.</returns>
         public ObservableCollection<Milestone> DeserializeMilestones()
         {
             IFormatter formatter = new BinaryFormatter();
