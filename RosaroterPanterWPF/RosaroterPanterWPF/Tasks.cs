@@ -8,12 +8,18 @@ using System.Threading.Tasks;
 
 namespace RosaroterPanterWPF
 {
+    /// <summary>
+    /// Color class
+    /// </summary>
     public class Color
     {
         public byte R { get; set; }
         public byte G { get; set; }
         public byte B { get; set; }
 
+        /// <summary>
+        /// Default-Constructor
+        /// </summary>
         public Color()
         {
             R = 0;
@@ -21,6 +27,12 @@ namespace RosaroterPanterWPF
             B = 0;
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="r">The red value of the color from 0-255.</param>
+        /// <param name="g">The green value of the color from 0-255.</param>
+        /// <param name="b">The blue value of the color from 0-255.</param>
         public Color(byte r, byte g, byte b)
         {
             R = r;
@@ -28,14 +40,27 @@ namespace RosaroterPanterWPF
             B = b;
         }
 
+        /// <summary>
+        /// The color white.
+        /// </summary>
         public static readonly Color White = new Color(255, 255, 255);
     }
 
+    /// <summary>
+    /// Class for representing a task.
+    /// </summary>
     public class Task : NotifyPropertyChanged
     {
         private bool _completed;
 
+        /// <summary>
+        /// A color value of the task
+        /// </summary>
         public Color Color { get; set; }
+
+        /// <summary>
+        /// The description of the task.
+        /// </summary>
         public string Description { get; set; }
         public bool Completed
         {
@@ -49,6 +74,10 @@ namespace RosaroterPanterWPF
                 OnPropertyChanged(nameof(Complete));
             }
         }
+
+        /// <summary>
+        /// The name of the task.
+        /// </summary>
         public string Name { get; set; }
         public double TotalTime { get; private set; }
 
@@ -74,7 +103,7 @@ namespace RosaroterPanterWPF
             TotalTime = time;
         }
     }
-
+    
     public class Milestone
     {
         private delegate void TaskCompletionChanged(object sender, PropertyChangedEventArgs e);

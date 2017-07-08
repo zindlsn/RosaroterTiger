@@ -35,7 +35,7 @@ namespace RosaroterPanterWPF
 
         public void TaskStartedClick(object sender, EventArgs args)
         {
-
+           // this.CurrentTask = 
         }
 
         public string Title
@@ -71,7 +71,9 @@ namespace RosaroterPanterWPF
                 }
             }
         }
-
+        /// <summary>
+        /// Loads 
+        /// </summary>
         public void FillMilstones()
         {
             Milestones = App.DataService.LoadMilestones();
