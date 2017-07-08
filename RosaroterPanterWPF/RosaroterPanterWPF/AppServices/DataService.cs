@@ -16,7 +16,7 @@ namespace RosaroterTigerWPF
         /// Serialize the collection of milestones
         /// </summary>
         /// <param name="milestones">The milestones to serialize.</param>
-        public static void SerializeMilestones(ObservableCollection<Milestone> milestones)
+        public static void SerializeMilestones(ObservableCollection<Goal> milestones)
         {
             IFormatter formatter = new BinaryFormatter();
 
@@ -30,7 +30,7 @@ namespace RosaroterTigerWPF
         /// Deserialize the collection of milestones
         /// </summary>
         /// <returns>Desierialized milestons.</returns>
-        public static ObservableCollection<Milestone> DeserializeMilestones()
+        public static ObservableCollection<Goal> DeserializeMilestones()
         {
 #if DEBUG && TESTDATA
             return TestData();
@@ -39,17 +39,17 @@ namespace RosaroterTigerWPF
 
             using (FileStream s = new FileStream(filename, FileMode.Open))
             {
-                return (ObservableCollection<Milestone>)formatter.Deserialize(s);
+                return (ObservableCollection<Goal>)formatter.Deserialize(s);
             }
 #endif
         }
 
 #if DEBUG
-        public static ObservableCollection<Milestone> TestData()
+        public static ObservableCollection<Goal> TestData()
         {
-            var testData = new ObservableCollection<Milestone>();
+            var testData = new ObservableCollection<Goal>();
 
-            var milestone1 = new Milestone();
+            var milestone1 = new Goal();
 
             milestone1.AddTask(new Task("Name 1", "Beschreibung 1"));
             milestone1.AddTask(new Task("Name 2", "Beschreibung 2"));
@@ -63,7 +63,7 @@ namespace RosaroterTigerWPF
 
             testData.Add(milestone1);
 
-            var milestone2 = new Milestone();
+            var milestone2 = new Goal();
 
             milestone2.AddTask(new Task("Name Gelb", "Beschreibung Gelb", Color.Yellow));
             milestone2.AddTask(new Task("Name Grün", "Beschreibung Grün", Color.Green));

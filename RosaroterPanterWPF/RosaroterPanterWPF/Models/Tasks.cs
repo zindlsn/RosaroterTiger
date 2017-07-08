@@ -218,6 +218,8 @@ namespace RosaroterTigerWPF
         /// </summary>
         public double TotalTime { get; private set; }
 
+        public double 
+
 
         /// <summary>
         /// Method for serialization
@@ -256,7 +258,7 @@ namespace RosaroterTigerWPF
     /// Class representing a milestone. A milestone is series of tasks.
     /// </summary>
     [Serializable]
-    public class Milestone : ISerializable
+    public class Goal : ISerializable
     {
         private ObservableCollection<Task> _tasks;
         private PropertyChangedEventHandler _completedChanged;
@@ -267,7 +269,7 @@ namespace RosaroterTigerWPF
         /// <summary>
         /// Default-Constructor
         /// </summary>
-        public Milestone()
+        public Goal()
         {
             Completed = false;
             _tasks = new ObservableCollection<Task>();
@@ -283,7 +285,7 @@ namespace RosaroterTigerWPF
         /// </summary>
         /// <param name="info">The serialization information.</param>
         /// <param name="context">The streaming context.</param>
-        public Milestone(SerializationInfo info, StreamingContext context)
+        public Goal(SerializationInfo info, StreamingContext context)
         {
             _tasks = (ObservableCollection<Task>)info.GetValue("Ms_Tasks", typeof(ObservableCollection<Task>));
 

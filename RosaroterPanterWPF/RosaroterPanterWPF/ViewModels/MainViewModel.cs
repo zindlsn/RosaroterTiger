@@ -117,11 +117,11 @@ namespace RosaroterTigerWPF
             this._Timer.Stop();
         }
 
-        private ObservableCollection<Milestone> _Milestones;
+        private ObservableCollection<Goal> _Milestones;
         /// <summary>
         /// [TODO: CodeDoc]
         /// </summary>
-        public ObservableCollection<Milestone> Milestones
+        public ObservableCollection<Goal> Milestones
         {
             get
             {
