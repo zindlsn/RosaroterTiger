@@ -26,6 +26,7 @@ namespace RosaroterTigerWPF.Models
         /// </summary>
         public double TimeSpentWorking { get; set; }
 
+
         /// <summary>
         /// Default Constuctor
         /// </summary>
@@ -76,7 +77,9 @@ namespace RosaroterTigerWPF.Models
 
         public string Comments { get; set; }
 
-        public Day(DateTime dateTime, ResultOfTheDay results, string comments)
+        public Color Color { get; set; }
+
+        public Day(DateTime dateTime, ResultOfTheDay results, string comments, Color color)
         {
             DateTime = dateTime;
             Results = results;
@@ -90,6 +93,7 @@ namespace RosaroterTigerWPF.Models
             DateTime = info.GetDateTime("Day_DateTimeCompleted");
             Results = (ResultOfTheDay) info.GetValue("Day_Results", typeof(ResultOfTheDay));
             Comments = info.GetString("Day_Comments");
+            Color = (Color) info.GetValue("Day_Color", typeof(Color));
 
             SetWeekdayString();
         }
@@ -99,6 +103,7 @@ namespace RosaroterTigerWPF.Models
             info.AddValue("Day_DateTime", DateTime);
             info.AddValue("Day_Results", Results, typeof(ResultOfTheDay));
             info.AddValue("Day_Comments", Comments);
+            info.AddValue("Day_Color", Color, typeof(Color));
         }
 
         private void SetWeekdayString()
