@@ -17,13 +17,44 @@ namespace RosaroterTigerWPF
         /// </summary>
         public static readonly Color White = new Color(255, 255, 255);
 
+        /// <summary>
+        /// The color yellow.
+        /// </summary>
         public static readonly Color Yellow = new Color(0xFF, 0xFF, 0x00); 
+
+        /// <summary>
+        /// The color green.
+        /// </summary>
         public static readonly Color Green = new Color(0xFF, 0xFF, 0x00); 
+
+        /// <summary>
+        /// The color red.
+        /// </summary>
         public static readonly Color Red = new Color(0xFF, 0x00, 0x00); 
+
+        /// <summary>
+        /// The color blue.
+        /// </summary>
         public static readonly Color Blue = new Color(0x00, 0x00, 0xFF); 
+
+        /// <summary>
+        /// The color purple.
+        /// </summary>
         public static readonly Color Purple = new Color(0x6A, 0x5A, 0xCD); 
+
+        /// <summary>
+        /// The 'color' black.
+        /// </summary>
         public static readonly Color Black = new Color(0x00, 0x00, 0x00); 
+
+        /// <summary>
+        /// The color orange.
+        /// </summary>
         public static readonly Color Orange = new Color(0xFF, 0x8C, 0x00); 
+
+        /// <summary>
+        /// The color pink red.
+        /// </summary>
         public static readonly Color PinkRed = new Color(0xFF, 0x00, 0xFF); 
 
         /// <summary>
