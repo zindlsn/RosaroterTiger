@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:RosaroterPanterWPF"
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:RosaroterPanterWPF"
-        Title="MainWindow" Height="350" Width="525">
-    <Window.DataContext>
-        <vm:MainViewModel x:Name="model" />
-    </Window.DataContext>
-    <Grid>
-        <Label Content="Hello World!" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" HorizontalContentAlignment="Center"/>
-        
-    </Grid>
+        Title="{Binding Title}" Height="720" Width="1280">
+	<Window.DataContext>
+		<vm:MainViewModel x:Name="model" />
+	</Window.DataContext>
+	<Grid>
+		<Label Content="Test text" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Center" Width="497" HorizontalContentAlignment="Center"/>
+		<Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Margin="10,10,0,0" RenderTransformOrigin="-0.082,0.52" Height="30" Background="#FF7C98F9" BorderBrush="White"/>
+
+	</Grid>
 </Window>
