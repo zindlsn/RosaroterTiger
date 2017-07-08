@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,18 +12,34 @@ namespace RosaroterPanterWPF
 {
     public class DataService
     {
-        ObservableCollection<Milestone> Milestones { get; set; }
+        public static readonly string filename = "milestones.sav";
 
-        public void SaveMilestones(ObservableCollection<Milestone> milestones)
+        /// <summary>
+        /// Serialize the collection of milestones
+        /// </summary>
+        /// <param name="milestones">The milestones to serialize.</param>
+        public void SerializeMilestones(ObservableCollection<Milestone> milestones)
         {
-            this.Milestones = milestones;
+            IFormatter formatter = new BinaryFormatter();
+
+            using (FileStream s = new FileStream(filename, FileMode.Create))
+            {
+                formatter.Serialize(s, milestones);
+            }
         }
 
-        public ObservableCollection<Milestone> LoadMilestones()
+        /// <summary>
+        /// Deserialize the collection of milestones
+        /// </summary>
+        /// <returns>Desierialized milestons.</returns>
+        public ObservableCollection<Milestone> DeserializeMilestones()
         {
-            return Milestones;
+            IFormatter formatter = new BinaryFormatter();
+
+            using (FileStream s = new FileStream(filename, FileMode.Open))
+            {
+                return (ObservableCollection<Milestone>)formatter.Deserialize(s);
+            }
         }
-
-
     }
 }
