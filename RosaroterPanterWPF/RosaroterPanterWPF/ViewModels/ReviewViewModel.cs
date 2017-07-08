@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace RosaroterTigerWPF.ViewModels
 {
-    class ReviewViewModel : BaseViewModel
+    public class ReviewViewModel : BaseViewModel
     {
+
+
+
     }
 }
