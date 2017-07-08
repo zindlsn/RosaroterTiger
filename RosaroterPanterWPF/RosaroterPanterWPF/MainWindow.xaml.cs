@@ -24,5 +24,17 @@ namespace RosaroterPanterWPF
         {
             InitializeComponent();
         }
+
+        private void HomeButton_MouseEnter(object sender, EventArgs e)
+        {
+            HomeButton.Opacity = 100;
+            HomeButton.Background = new ImageBrush();
+        }
+
+        private void HomeButton_MouseLeave(object sender, EventArgs e)
+        {
+            HomeButton.Opacity = 50;
+        }
     }
+
 }
