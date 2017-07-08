@@ -17,13 +17,35 @@ namespace RosaroterTigerWPF
     {
         private Timer _Timer = new Timer();
         private string _Title;
+        private static int _PomodoroTime = 25 * 60;
 
         public MainViewModel()
         {
             _Timer.Elapsed += Timer_Elapsed;
-            this._TimerSeconds = 100;
+            this._CurrentSeconds = _PomodoroTime;
+            this.Seconds = _PomodoroTime;
+        }
+        /// <summary>
+        /// Title of the Window.
+        /// </summary>
+        public string Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                if (_Title != value)
+                {
+                    _Title = value;
+                }
+            }
         }
 
+        /// <summary>
+        /// Started Task
+        /// </summary>
         private Task _CurrentTask;
         /// <summary>
         /// [TODO: CodeDoc]
@@ -44,25 +66,13 @@ namespace RosaroterTigerWPF
             }
         }
 
-        public string Title
-        {
-            get {
-                return _Title;
-            }
-            set
-            {
-                if(_Title != value)
-                {
-                    _Title = value;
-                }
-            }
-        }
 
-        private int _TimerSeconds;
+
+        private string _TimerSeconds;
         /// <summary>
         /// [TODO: CodeDoc]
         /// </summary>
-        public int TimerSeconds
+        public string TimerSeconds
         {
             get
             {
@@ -78,12 +88,11 @@ namespace RosaroterTigerWPF
             }
         }
 
-
-        private int _TimerMinutes;
+        private string _TimerMinutes;
         /// <summary>
         /// [TODO: CodeDoc]
         /// </summary>
-        public int TimerMinutes
+        public string TimerMinutes
         {
             get
             {
@@ -127,13 +136,7 @@ namespace RosaroterTigerWPF
                 }
             }
         }
-        /// <summary>
-        /// Refreshes the Milestonelist
-        /// </summary>
-        public void RefreshMilestones()
-        {
-            Milestones = DataService.DeserializeMilestones();
-        }
+
 
         /// <summary>
         /// Sets the Pomodoro Round time
@@ -169,27 +172,6 @@ namespace RosaroterTigerWPF
             this._CurrentSeconds = seconds;
         }
 
-        /// <summary>
-        /// Calls when a second of the timer is elapsed.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            if (this._CurrentSeconds > 0)
-            {
-                this._CurrentSeconds--;
-                this.TimerSeconds--;
-                if(this._CurrentSeconds % 60 == 0)
-                {
-                    this.TimerMinutes--;
-                }
-            }
-            else
-            {
-                this.ResetTimer();
-            }
-        }
 
         private ICommand _StartTimerCommand;
         public ICommand StartTimerCommand
@@ -206,7 +188,12 @@ namespace RosaroterTigerWPF
             }
         }
 
-        public void StartRound()
+        public bool CanStartTimerCommand = true;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void StartTimer()
         {
             this.InitTimer(1000);
             this._Timer.Interval = 1000;
@@ -214,13 +201,37 @@ namespace RosaroterTigerWPF
         }
 
         /// <summary>
-        /// 
+        /// Calls when a second of the timer is elapsed.
         /// </summary>
-        private void StartTimer()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            StartRound();
+            if (this._CurrentSeconds > 0)
+            {
+                this._CurrentSeconds--;
+                this.UpdateTimerView(_CurrentSeconds);
+            }
+            else
+            {
+                this.ResetTimer();
+            }
         }
 
-        public bool CanStartTimerCommand = true;
+        public void UpdateTimerView(int seconds)
+        {
+            System.TimeSpan t = System.TimeSpan.FromSeconds(seconds);
+            _TimerMinutes = t.Minutes.ToString();
+            _TimerSeconds = t.Seconds.ToString();
+        }
+
+
+        /// <summary>
+        /// Refreshes the Milestonelist
+        /// </summary>
+        public void RefreshMilestones()
+        {
+            Milestones = DataService.DeserializeMilestones();
+        }
     }
 }
