@@ -21,7 +21,6 @@
 			<ColumnDefinition Width="2*" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
-		<Button Content="Button " Grid.Column="1" Grid.Row="3" IsEnabled="True" Command="{Binding StartTimerCommand}" />
 		<Grid x:Name="ContentGrid" Grid.Column="1" Grid.Row="1">
 			<Grid.RowDefinitions>
 				<RowDefinition Height="2*" />
@@ -38,7 +37,39 @@
 					<ColumnDefinition Width="14*" />
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
-				<Label Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0">
+				<ListView x:Name="OrderStatusList" 
+                  HorizontalAlignment="Stretch"
+                  SelectionMode="Single"
+                  ItemsSource="{Binding Milestones}"
+                  Margin="0,0,0,0"
+                  Grid.Column="0"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  >
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<Grid Margin="0,4,0,4">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="Auto" />
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
+								<Image
+                            Source="{}"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.RowSpan="3"
+                            VerticalAlignment="Stretch" Height="48"
+                            Stretch="Uniform"
+                            Margin="0,0,4,0" />
+							</Grid>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+				<Label Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" MouseUp="">
 					<Label.Background>
 						<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Drawing.png"/>
 					</Label.Background>
