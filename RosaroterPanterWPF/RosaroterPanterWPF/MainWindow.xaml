@@ -14,5 +14,9 @@
 		<Label Content="Test text" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Center" Width="497" HorizontalContentAlignment="Center"/>
 		<Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Margin="10,10,0,0" RenderTransformOrigin="-0.082,0.52" Height="30" Background="#FF7C98F9" BorderBrush="White"/>
 
-	</Grid>
+
+        <Button Content="StartTimer" Command="{Binding StartTimerCommand}" IsEnabled="True" />
+        <Label Content="{Binding TimerSeconds}" />
+
+    </Grid>
 </Window>

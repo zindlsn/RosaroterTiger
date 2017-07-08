@@ -1,15 +1,17 @@
-﻿using System;
+﻿using RosaroterPanterWPF.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Windows.Input;
 
 namespace RosaroterPanterWPF
 {
     /// <summary>
-    /// Start Viewmodel
+    /// Start Viewmodel 
     /// </summary>
     public class MainViewModel : BaseViewModel
     {
@@ -60,7 +62,7 @@ namespace RosaroterPanterWPF
             }
         }
 
-        private int _TimerSeconds;
+        private int _TimerSeconds = 100;
         /// <summary>
         /// [TODO: CodeDoc]
         /// </summary>
@@ -85,7 +87,7 @@ namespace RosaroterPanterWPF
         /// <summary>
         /// [TODO: CodeDoc]
         /// </summary>
-        public int TimerHour
+        public int TimerMinutes
         {
             get
             {
@@ -96,7 +98,7 @@ namespace RosaroterPanterWPF
                 if (_TimerMinutes != value)
                 {
                     _TimerMinutes = value;
-                    this.OnPropertyChanged(nameof(TimerHour));
+                    this.OnPropertyChanged(nameof(TimerMinutes));
                 }
             }
         }
@@ -106,7 +108,8 @@ namespace RosaroterPanterWPF
         /// </summary>
         public void ResetTimer()
         {
-
+            this._CurrentSeconds = this.Seconds;
+            this._Timer.Stop();
         }
 
         private ObservableCollection<Milestone> _Milestones;
@@ -170,7 +173,6 @@ namespace RosaroterPanterWPF
             this._CurrentSeconds = seconds;
         }
 
-
         /// <summary>
         /// Calls when a second of the timer is elapsed.
         /// </summary>
@@ -181,14 +183,44 @@ namespace RosaroterPanterWPF
             if (this._CurrentSeconds > 0)
             {
                 this._CurrentSeconds--;
+                if(this._CurrentSeconds % 60 == 0)
+                {
+                    this.TimerMinutes--;
+                }
             }
             else
             {
-                this._CurrentSeconds = this.Seconds;
-                this._Timer.Stop();
+                this.ResetTimer();
             }
         }
 
+        private ICommand _StartTimerCommand;
+        public ICommand StartTimerCommand
+        {
+            get
+            {
+                if (_StartTimerCommand == null)
+                {
+                    _StartTimerCommand = new RelayCommand(
+                        p => true,
+                        p => this.StartTimer());
+                }
+                return _StartTimerCommand;
+            }
+        }
 
+        public void StartRound()
+        {
+            this.InitTimer(1000);
+            this._Timer.Interval = 1000;
+            this._Timer.Start();
+        }
+
+        private void StartTimer()
+        {
+            StartRound();
+        }
+
+        public bool CanStartTimerCommand = true;
     }
 }
