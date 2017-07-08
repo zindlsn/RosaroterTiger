@@ -30,7 +30,7 @@ namespace RosaroterTigerWPF
             InitializeComponent();
             HomePage = new HomePage();
             ReviewPage = new ReviewPage();
-            PomodoroPage = new HomePage();
+            PomodoroPage = new PomodoroPage();
             MainFrame.NavigationService.Navigate(new HomePage());
 
         }
@@ -53,7 +53,7 @@ namespace RosaroterTigerWPF
 
         private void LoadPomodoroPage(object sender, EventArgs e)
         {
-            MainFrame.NavigationService.Navigate(HomePage);
+            MainFrame.NavigationService.Navigate(PomodoroPage);
             PomodoroButton.Visibility = Visibility.Hidden;
             ReviewButton.Visibility = Visibility.Visible;
             HomeButton.Visibility = Visibility.Visible;

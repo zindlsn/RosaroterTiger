@@ -287,7 +287,9 @@ namespace RosaroterTigerWPF.ViewModels
         public void PauseTimer()
         {
             this._Timer.Stop();
+            ChangeStartButtonText();
         }
+
         /// <summary>
         /// Closes the work day:
         /// </summary>
@@ -333,6 +335,9 @@ namespace RosaroterTigerWPF.ViewModels
             }
         }
 
+        /// <summary>
+        /// Change the startButtonText
+        /// </summary>
         public void ChangeStartButtonText()
         {
             if (!_IsIdle)
