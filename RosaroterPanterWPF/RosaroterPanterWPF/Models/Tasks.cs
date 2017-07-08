@@ -179,6 +179,7 @@ namespace RosaroterTigerWPF
             Description = info.GetString("Task_Description");
             Name = info.GetString("Task_Name");
             TotalTime = info.GetDouble("Task_TotalTime");
+            CompletionDate = (DateTime?)info.GetValue("Task_CompletionDate", typeof(DateTime?));
         }
 
 
@@ -236,6 +237,7 @@ namespace RosaroterTigerWPF
             info.AddValue("Task_Description", Description, typeof(string));
             info.AddValue("Task_Name", Name, typeof(string));
             info.AddValue("Task_TotalTime", TotalTime, typeof(double));
+            info.AddValue("Task_CompletionDate", TotalTime, typeof(DateTime?));
         }
 
         /// <summary>
