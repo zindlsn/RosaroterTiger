@@ -23,13 +23,9 @@ namespace RosaroterTigerWPF
         /// </summary>
         public static ObservableCollection<Goal> Goals
         {
-            set
-            {
-                _goals = value;
-            }
             get
             {
-                if(_goals == null)
+                if (_goals == null)
                 {
                     // evtl. fixme if DeserializeGoals does not handle a errored file.
                     _goals = DeserializeGoals();
@@ -39,6 +35,10 @@ namespace RosaroterTigerWPF
                 if (_goals == null) _goals = new ObservableCollection<Goal>();
 
                 return _goals;
+            }
+            set
+            {
+                _goals = value;
             }
         }
 
