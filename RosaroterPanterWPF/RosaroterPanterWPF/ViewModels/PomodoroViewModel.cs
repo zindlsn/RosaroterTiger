@@ -239,7 +239,7 @@ namespace RosaroterTigerWPF
         /// </summary>
         public void RefreshMilestones()
         {
-            Milestones = DataService.DeserializeMilestones();
+            Milestones = DataService.DeserializeGoals();
         }
 
         private static NavigationService navigator;

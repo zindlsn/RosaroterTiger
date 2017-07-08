@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace RosaroterTigerWPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for HomePage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class HomePage : Page
     {
-        public MainWindow()
+        public HomePage()
         {
-            
             InitializeComponent();
-            
         }
 
         private void HomeButton_MouseEnter(object sender, EventArgs e)
@@ -46,7 +44,5 @@ namespace RosaroterTigerWPF
         {
             ReviewButton.Opacity = .5;
         }
-
     }
-
 }
