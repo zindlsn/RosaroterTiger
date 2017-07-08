@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,11 +31,24 @@ namespace RosaroterPanterWPF
         public static readonly Color White = new Color(255, 255, 255);
     }
 
-    public class Task
+    public class Task : NotifyPropertyChanged
     {
+        private bool _completed;
+
         public Color Color { get; set; }
         public string Description { get; set; }
-        public bool Finished { get; private set; }
+        public bool Completed
+        {
+            get
+            {
+                return _completed;
+            }
+            private set
+            {
+                _completed = value;
+                OnPropertyChanged(nameof(Complete));
+            }
+        }
         public string Name { get; set; }
         public double TotalTime { get; private set; }
 
@@ -53,10 +68,75 @@ namespace RosaroterPanterWPF
         public Task() : this(string.Empty, string.Empty, Color.White)
         { }
 
-        void Completed(double time)
+        void Complete(double time)
         {
-            Finished = true;
+            Completed = true;
             TotalTime = time;
         }
     }
+
+    public class Milestone
+    {
+        private delegate void TaskCompletionChanged(object sender, PropertyChangedEventArgs e);
+
+        private PropertyChangedEventHandler _completedChanged;
+
+        private ObservableCollection<Task> _tasks;
+        public Task[] Tasks
+        {
+            get
+            {
+                return _tasks.ToArray();
+            }
+        }
+        public bool Completed { get; private set; }
+
+        public Milestone()
+        {
+            Completed = false;
+            _tasks = new ObservableCollection<Task>();
+            _completedChanged =  (object sender, PropertyChangedEventArgs e) =>
+            {
+                if (e.PropertyName.Equals("Completed"))
+                    Completed = CheckForCompletion();
+            };
+        }
+
+        public void AddTask(Task task)
+        {
+            _tasks.Add(task);
+            task.PropertyChanged += _completedChanged;
+        }
+
+        public int CountOfTasks()
+        {
+            return _tasks.Count;
+        }
+
+        public bool RemoveTaskAt(int index)
+        {
+            if (_tasks.Count > index)
+            {
+                _tasks.ElementAt(index).PropertyChanged -= (object sender, PropertyChangedEventArgs e) =>
+                {
+                    if (e.PropertyName.Equals("Completed"))
+                        Completed = CheckForCompletion();
+                };
+                _tasks.RemoveAt(index);
+                return true;
+            }
+            return false;
+        }
+
+        private bool CheckForCompletion()
+        {
+            foreach (Task t in _tasks)
+            {
+                if (!t.Completed) return false;
+            }
+            return true;
+        }
+    }
+
+
 }
