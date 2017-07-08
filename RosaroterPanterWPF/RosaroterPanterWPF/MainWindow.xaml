@@ -10,13 +10,13 @@
 	<Window.DataContext>
 		<vm:MainViewModel x:Name="model" />
 	</Window.DataContext>
-	<Grid Opacity="0.5">
+	<Grid>
 		<Label Content="Test text" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Center" Width="497" HorizontalContentAlignment="Center"/>
-		<Button x:Name="HomeButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" RenderTransformOrigin="-0.082,0.52" Height="40" BorderBrush="{x:Null}">
-			<Button.Background>
+		<Label x:Name="HomeButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" RenderTransformOrigin="-0.082,0.52" Height="40" BorderBrush="{x:Null}" MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave" Opacity="0.5">
+			<Label.Background>
 				<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/home.png"/>
-			</Button.Background>
-		</Button>
+			</Label.Background>
+		</Label>
 
 	</Grid>
 </Window>
