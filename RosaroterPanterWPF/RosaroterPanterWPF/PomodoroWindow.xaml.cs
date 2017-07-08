@@ -10,41 +10,41 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace RosaroterTigerWPF
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-            
-        }
+	/// <summary>
+	/// Interaktionslogik für PomodoroWindow.xaml
+	/// </summary>
+	public partial class PomodoroWindow : Window
+	{
+		public PomodoroWindow()
+		{
+			InitializeComponent();
+		}
 
-        private void HomeButton_MouseEnter(object sender, EventArgs e)
-        {
-            HomeButton.Opacity = 1;
-        }
 
-        private void HomeButton_MouseLeave(object sender, EventArgs e)
-        {
-            HomeButton.Opacity = .5;
-        }
 
-        private void ReviewButton_MouseEnter(object sender, EventArgs e)
-        {
-            ReviewButton.Opacity = 1;
-        }
+		private void HomeButton_MouseEnter(object sender, EventArgs e)
+		{
+			HomeButton.Opacity = 1;
+		}
 
-        private void ReviewButton_MouseLeave(object sender, EventArgs e)
-        {
-            ReviewButton.Opacity = .5;
-        }
+		private void HomeButton_MouseLeave(object sender, EventArgs e)
+		{
+			HomeButton.Opacity = .5;
+		}
+
+		private void ReviewButton_MouseEnter(object sender, EventArgs e)
+		{
+			ReviewButton.Opacity = 1;
+		}
+
+		private void ReviewButton_MouseLeave(object sender, EventArgs e)
+		{
+			ReviewButton.Opacity = .5;
+		}
 
 		private void PomodoroButton_MouseEnter(object sender, EventArgs e)
 		{
@@ -92,5 +92,4 @@ namespace RosaroterTigerWPF
 			DeleteButton.Opacity = .5;
 		}
 	}
-
 }
