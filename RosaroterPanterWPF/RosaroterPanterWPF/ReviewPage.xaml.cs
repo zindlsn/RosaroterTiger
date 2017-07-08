@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace RosaroterTigerWPF
 {
     /// <summary>
-    /// Interaction logic for ReviewWindow.xaml
+    /// Interaction logic for ReviewPage.xaml
     /// </summary>
-    public partial class ReviewWindow : Window
+    public partial class ReviewPage : Page
     {
-        public ReviewWindow()
+        public ReviewPage()
         {
             InitializeComponent();
         }
