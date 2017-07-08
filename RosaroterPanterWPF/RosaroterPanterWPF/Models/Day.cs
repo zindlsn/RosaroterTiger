@@ -68,7 +68,7 @@ namespace RosaroterTigerWPF.Models
     [Serializable]
     public class Day : ISerializable
     {
-        public DateTime DateTimeCompleted { get; set; }
+        public DateTime DateTime { get; set; }
 
         public string Weekday { get; set; }
 
@@ -78,7 +78,7 @@ namespace RosaroterTigerWPF.Models
 
         public Day(DateTime dateTime, ResultOfTheDay results, string comments)
         {
-            DateTimeCompleted = dateTime;
+            DateTime = dateTime;
             Results = results;
             Comments = comments;
 
@@ -87,7 +87,7 @@ namespace RosaroterTigerWPF.Models
 
         public Day(SerializationInfo info, StreamingContext context)
         {
-            DateTimeCompleted = info.GetDateTime("Day_DateTimeCompleted");
+            DateTime = info.GetDateTime("Day_DateTimeCompleted");
             Results = (ResultOfTheDay) info.GetValue("Day_Results", typeof(ResultOfTheDay));
             Comments = info.GetString("Day_Comments");
 
@@ -96,14 +96,14 @@ namespace RosaroterTigerWPF.Models
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("Day_DateTime", DateTimeCompleted);
+            info.AddValue("Day_DateTime", DateTime);
             info.AddValue("Day_Results", Results, typeof(ResultOfTheDay));
             info.AddValue("Day_Comments", Comments);
         }
 
         private void SetWeekdayString()
         {
-            switch (DateTimeCompleted.DayOfWeek)
+            switch (DateTime.DayOfWeek)
             {
                 case DayOfWeek.Monday:
                     Weekday = "Monday";

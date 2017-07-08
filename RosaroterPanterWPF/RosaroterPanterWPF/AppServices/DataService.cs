@@ -76,6 +76,23 @@ namespace RosaroterTigerWPF
             }
         }
 
+        /// <summary>
+        /// Returns the day for today.
+        /// </summary>
+        public static Day Today
+        {
+            get
+            {
+                DateTime time = DateTime.Now;
+                foreach(Day d in _days)
+                {
+                    if (d.DateTime.Day == time.Day && d.DateTime.Month == time.Month && d.DateTime.Year == d.DateTime.Year) return d;
+                }
+
+                // today was not found. Create a new day object.
+                return new Day(time, null, string.Empty);
+            }
+        }
 
         /// <summary>
         /// Saves goals to goals.sav and days to days.sav
