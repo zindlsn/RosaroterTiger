@@ -9,7 +9,5 @@ namespace RosaroterTigerWPF.ViewModels
     public class ReviewViewModel : BaseViewModel
     {
 
-
-
     }
 }

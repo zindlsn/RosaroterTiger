@@ -72,9 +72,9 @@
 					<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/home.png"/>
 				</Label.Background>
 			</Label>
-			<Label x:Name="ReviewButton" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="2" Margin ="0, 10, 10, 0" Width="40" Height="40" Opacity="0.5" BorderBrush="{x:Null}" MouseEnter="ReviewButton_MouseEnter" MouseLeave="ReviewButton_MouseLeave">
+			<Label x:Name="PomodoroButton" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="2" Margin ="0, 10, 10, 0" Width="40" Height="40" BorderBrush="{x:Null}" MouseEnter="PomodoroButton_MouseEnter" MouseLeave="PomodoroButton_MouseLeave" Opacity="0.75">
 				<Label.Background>
-					<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/review.png"/>
+					<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/tomato.png"/>
 				</Label.Background>
 			</Label>
 

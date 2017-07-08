@@ -1,4 +1,4 @@
-﻿<Page x:Class="RosaroterTigerWPF.HomePage"
+﻿<Page x:Class="RosaroterTigerWPF.ReviewPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,9 +8,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="HomePage">
-	<Page.DataContext>
-		<vm:MainViewModel />
-	</Page.DataContext>
+		<Page.DataContext>
+			<vm:ReviewViewModel />
+		</Page.DataContext>
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*" />
@@ -27,12 +27,7 @@
 				<RowDefinition Height="2*" />
 				<RowDefinition Height="5*" />
 			</Grid.RowDefinitions>
-			<Label x:Name="PomodoroButton" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, 20" Width="140" Height="140" Opacity="0.75">
-				<Label.Background>
-					<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/tomato.png"/>
-				</Label.Background>
-			</Label>
-			<Label x:Name="StartButton" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontFamily="Berlin Sans FB"/>
+			<Label Content="REVIEW" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="60" FontFamily="Berlin Sans FB"/>
 			<Grid Grid.Row="1">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="14*" />
@@ -70,24 +65,20 @@
 						</DataTemplate>
 					</ListView.ItemTemplate>
 				</ListView>
-				<Label x:Name="AddButton" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0">
-					<Label.Background>
-						<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Drawing.png"/>
-					</Label.Background>
-				</Label>
-				<Label x:Name="EditButton" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,40,0,0">
-					<Label.Background>
-						<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/edit.png"/>
-					</Label.Background>
-				</Label>
-				<Label x:Name="DeleteButton" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,75,0,0">
-					<Label.Background>
-						<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/bin.png"/>
-					</Label.Background>
-				</Label>
 			</Grid>
 		</Grid>
 		<Label Grid.Row="0" Grid.Column="2" />
+		<Label x:Name="HomeButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" RenderTransformOrigin="-0.082,0.52" Height="40" BorderBrush="{x:Null}" MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave" Opacity="0.5">
+			<Label.Background>
+				<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/home.png"/>
+			</Label.Background>
+		</Label>
+		<Label x:Name="PomodoroButton" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="2" Margin ="0, 10, 10, 0" Width="40" Height="40" BorderBrush="{x:Null}" MouseEnter="PomodoroButton_MouseEnter" MouseLeave="PomodoroButton_MouseLeave" Opacity="0.75">
+			<Label.Background>
+				<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/tomato.png"/>
+			</Label.Background>
+		</Label>
 
 	</Grid>
 </Page>
+

@@ -17,22 +17,14 @@
 				<RowDefinition Height="*" />
 			</Grid.RowDefinitions>
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="2*" />
-				<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="4*" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="7*" />
+			<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
-			<Grid x:Name="ContentGrid" Grid.Column="1" Grid.Row="1">
-				<Grid.RowDefinitions>
-					<RowDefinition Height="2*" />
-					<RowDefinition Height="5*" />
-				</Grid.RowDefinitions>
-				<Label x:Name="PomodoroButton" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, 20" Width="140" Height="140" Opacity="0.75" BorderBrush="{x:Null}" MouseEnter="PomodoroButton_MouseEnter" MouseLeave="PomodoroButton_MouseLeave">
-					<Label.Background>
-						<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/tomato.png"/>
-					</Label.Background>
-				</Label>
-				<Label x:Name="StartButton" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontFamily="Berlin Sans FB"  BorderBrush="{x:Null}" MouseEnter="StartButton_MouseEnter" MouseLeave="StartButton_MouseLeave" Opacity="0.5"/>
-				<Grid Grid.Row="1">
+			<Grid x:Name="ContentGrid" Grid.Column="3" Grid.Row="1">
+						<Grid Grid.Row="1">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="14*" />
 						<ColumnDefinition Width="*" />
@@ -57,42 +49,36 @@
 										<ColumnDefinition Width="Auto"/>
 										<ColumnDefinition Width="*"/>
 									</Grid.ColumnDefinitions>
-									<Image
-                            Source="{}"
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Grid.RowSpan="3"
-                            VerticalAlignment="Stretch" Height="48"
-                            Stretch="Uniform"
-                            Margin="0,0,4,0" />
+									
 								</Grid>
 							</DataTemplate>
 						</ListView.ItemTemplate>
 					</ListView>
-					<Label x:Name="AddButton" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseEnter="AddButton_MouseEnter" MouseLeave="AddButton_MouseLeave">
+					<Label x:Name="AddButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseEnter="AddButton_MouseEnter" MouseLeave="AddButton_MouseLeave">
 						<Label.Background>
 							<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Drawing.png"/>
 						</Label.Background>
 					</Label>
-					<Label x:Name="EditButton" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,40,0,0" BorderBrush="{x:Null}" MouseEnter="EditButton_MouseEnter" MouseLeave="EditButton_MouseLeave">
+					<Label x:Name="EditButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,40,0,0" BorderBrush="{x:Null}" MouseEnter="EditButton_MouseEnter" MouseLeave="EditButton_MouseLeave">
 						<Label.Background>
 							<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/edit.png"/>
 						</Label.Background>
 					</Label>
-					<Label x:Name="DeleteButton" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,75,0,0" BorderBrush="{x:Null}" MouseEnter="DeleteButton_MouseEnter" MouseLeave="DeleteButton_MouseLeave">
+					<Label x:Name="DeleteButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,75,0,0" BorderBrush="{x:Null}" MouseEnter="DeleteButton_MouseEnter" MouseLeave="DeleteButton_MouseLeave">
 						<Label.Background>
 							<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/bin.png"/>
 						</Label.Background>
 					</Label>
 				</Grid>
 			</Grid>
-			<Label Grid.Row="0" Grid.Column="2" />
-			<Label x:Name="HomeButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" RenderTransformOrigin="-0.082,0.52" Height="40" BorderBrush="{x:Null}" MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave" Opacity="0.5">
+		<TextBlock x:Name="TimeDisplay" Grid.Row="1" Grid.Column="1" Text="{Binding TimerMinutes}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontFamily="Berlin Sans FB" />
+		<Label x:Name="StartButton" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontFamily="Berlin Sans FB"  BorderBrush="{x:Null}" MouseEnter="StartButton_MouseEnter" MouseLeave="StartButton_MouseLeave" Opacity="0.5"/>
+		<Label x:Name="HomeButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" RenderTransformOrigin="-0.082,0.52" Height="40" BorderBrush="{x:Null}" MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave" Opacity="0.5">
 				<Label.Background>
 					<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/home.png"/>
 				</Label.Background>
 			</Label>
-			<Label x:Name="ReviewButton" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="2" Margin ="0, 10, 10, 0" Width="40" Height="40" Opacity="0.5" BorderBrush="{x:Null}" MouseEnter="ReviewButton_MouseEnter" MouseLeave="ReviewButton_MouseLeave">
+			<Label x:Name="ReviewButton" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="4" Margin ="0, 10, 10, 0" Width="40" Height="40" Opacity="0.5" BorderBrush="{x:Null}" MouseEnter="ReviewButton_MouseEnter" MouseLeave="ReviewButton_MouseLeave">
 				<Label.Background>
 					<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/review.png"/>
 				</Label.Background>
