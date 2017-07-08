@@ -74,7 +74,7 @@ namespace RosaroterPanterWPF
             TotalTime = time;
         }
     }
-
+    
     public class Milestone
     {
         private delegate void TaskCompletionChanged(object sender, PropertyChangedEventArgs e);

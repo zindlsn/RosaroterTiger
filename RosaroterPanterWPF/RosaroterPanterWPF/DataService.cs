@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RosaroterPanterWPF
 {
-    public class DataServiceClass
+    public class DataService
     {
         ObservableCollection<Milestone> Milestones { get; set; }
 
