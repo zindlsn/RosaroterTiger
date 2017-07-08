@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RosaroterPanterWPF
+namespace RosaroterTigerWPF
 {
     public class NotifyPropertyChanged : INotifyPropertyChanged
     {
