@@ -62,6 +62,9 @@
     <Compile Include="PomodoroWindow.xaml.cs">
       <DependentUpon>PomodoroWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ReviewPage.xaml.cs">
+      <DependentUpon>ReviewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReviewWindow.xaml.cs">
       <DependentUpon>ReviewWindow.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PomodoroWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReviewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
