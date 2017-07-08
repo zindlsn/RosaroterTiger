@@ -18,6 +18,12 @@ namespace RosaroterPanterWPF
         private Timer _Timer = new Timer();
         private string _Title;
 
+        public MainViewModel()
+        {
+            _Timer.Elapsed += Timer_Elapsed;
+            this._TimerSeconds = 100;
+        }
+
         private Task _CurrentTask;
         /// <summary>
         /// [TODO: CodeDoc]
@@ -38,16 +44,6 @@ namespace RosaroterPanterWPF
             }
         }
 
-        /// <summary>
-        /// Calls when user clicks on a Task to start working on it
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        private void TaskStartedClick(object sender, EventArgs args)
-        {
-           // this.CurrentTask = 
-        }
-
         public string Title
         {
             get {
@@ -62,7 +58,7 @@ namespace RosaroterPanterWPF
             }
         }
 
-        private int _TimerSeconds = 100;
+        private int _TimerSeconds;
         /// <summary>
         /// [TODO: CodeDoc]
         /// </summary>
@@ -183,6 +179,7 @@ namespace RosaroterPanterWPF
             if (this._CurrentSeconds > 0)
             {
                 this._CurrentSeconds--;
+                this._TimerSeconds--;
                 if(this._CurrentSeconds % 60 == 0)
                 {
                     this.TimerMinutes--;
