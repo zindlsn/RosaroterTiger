@@ -10,15 +10,18 @@ using System.Threading.Tasks;
 
 namespace RosaroterPanterWPF
 {
-    public class DataService
+    public static class DataService
     {
+        /// <summary>
+        /// Filename to I/O to
+        /// </summary>
         public static readonly string filename = "milestones.sav";
 
         /// <summary>
         /// Serialize the collection of milestones
         /// </summary>
         /// <param name="milestones">The milestones to serialize.</param>
-        public void SerializeMilestones(ObservableCollection<Milestone> milestones)
+        public static void SerializeMilestones(ObservableCollection<Milestone> milestones)
         {
             IFormatter formatter = new BinaryFormatter();
 
@@ -32,7 +35,7 @@ namespace RosaroterPanterWPF
         /// Deserialize the collection of milestones
         /// </summary>
         /// <returns>Desierialized milestons.</returns>
-        public ObservableCollection<Milestone> DeserializeMilestones()
+        public static ObservableCollection<Milestone> DeserializeMilestones()
         {
             IFormatter formatter = new BinaryFormatter();
 
