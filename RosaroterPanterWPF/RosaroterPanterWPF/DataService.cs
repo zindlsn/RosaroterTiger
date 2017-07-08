@@ -31,19 +31,11 @@ namespace RosaroterPanterWPF
 
         public class Task
         {
-            private Color _color;
-            public Color Color
-            {
-                get
-                {
-                    return _color;
-                }
-                set
-                {
-                    _color = value;
-                }
-            }
-            
+            public Color Color{ get; set; }
+            public string Name { get; set; }
+            public string Description { get; set; }
+            public double TotalTime { get; set; }
+            public bool Finished { get; set; }
         }
     }
 }
