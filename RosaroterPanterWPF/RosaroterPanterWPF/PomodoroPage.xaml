@@ -72,7 +72,7 @@
             </Grid>
         </Grid>
         <TextBlock x:Name="TimeDisplay" Grid.Row="1" Grid.Column="1" Text="{Binding TimerMinutes}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontFamily="Berlin Sans FB" />
-        <Label x:Name="StartButton" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontFamily="Berlin Sans FB"  BorderBrush="{x:Null}" MouseEnter="StartButton_MouseEnter" MouseLeave="StartButton_MouseLeave" Opacity="0.5"/>
+        <Button x:Name="StartButton" Grid.Row="1" Grid.Column="1" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontFamily="Berlin Sans FB"  BorderBrush="{x:Null}" MouseEnter="StartButton_MouseEnter" MouseLeave="StartButton_MouseLeave" Opacity="0.5" Command="{Binding StartTimerCommand}"/>
 
     </Grid>
 </Page>
