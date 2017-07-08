@@ -103,6 +103,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\" />
+    <None Include="Resources\home.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
