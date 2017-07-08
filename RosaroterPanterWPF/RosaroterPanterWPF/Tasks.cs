@@ -13,9 +13,11 @@ namespace RosaroterPanterWPF
     /// </summary>
     public class Color
     {
-        public byte R { get; set; }
-        public byte G { get; set; }
-        public byte B { get; set; }
+        /// <summary>
+        /// The color white.
+        /// </summary>
+        public static readonly Color White = new Color(255, 255, 255);
+
 
         /// <summary>
         /// Default-Constructor
@@ -40,18 +42,66 @@ namespace RosaroterPanterWPF
             B = b;
         }
 
+
         /// <summary>
-        /// The color white.
+        /// The red value of the color from 0-255.
         /// </summary>
-        public static readonly Color White = new Color(255, 255, 255);
+        public byte R { get; set; }
+
+        /// <summary>
+        /// The green value of the color from 0-255.
+        /// </summary>
+        public byte G { get; set; }
+
+        /// <summary>
+        ///The blue value of the color from 0-255.
+        /// </summary>
+        public byte B { get; set; }
     }
 
     /// <summary>
-    /// Class for representing a task.
+    /// Class representing a task.
     /// </summary>
     public class Task : NotifyPropertyChanged
     {
         private bool _completed;
+
+
+        /// <summary>
+        /// Default-Constructor
+        /// </summary>
+        public Task() : this(string.Empty, string.Empty, Color.White)
+        { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="name">The name of the task.</param>
+        public Task(string name) : this(name, string.Empty, Color.White)
+        { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="name">The name of the task.</param>
+        /// <param name="description">The description of the task.</param>
+        public Task(string name, string description) : this(name, description, Color.White)
+        { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="name">The name of the task.</param>
+        /// <param name="description">The description of the task.</param>
+        /// <param name="color">The color value of the task.</param>
+        public Task(string name, string description, Color color)
+        {
+            Name = name;
+            Description = description;
+            Color = color;
+            TotalTime = 0.0;
+        }
+
 
         /// <summary>
         /// A color value of the task
@@ -62,6 +112,10 @@ namespace RosaroterPanterWPF
         /// The description of the task.
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// If the task is completed.
+        /// </summary>
         public bool Completed
         {
             get
@@ -79,38 +133,61 @@ namespace RosaroterPanterWPF
         /// The name of the task.
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Time spent till the completion of the task.
+        /// </summary>
         public double TotalTime { get; private set; }
 
-        public Task(string name, string description, Color color)
-        {
-            Name = name;
-            Description = description;
-            Color = color;
-        }
 
-        public Task(string name, string description) : this(name, description, Color.White)
-        { }
-
-        public Task(string name) : this(name, string.Empty, Color.White)
-        { }
-
-        public Task() : this(string.Empty, string.Empty, Color.White)
-        { }
-
-        void Complete(double time)
+        /// <summary>
+        /// Complete the task and register a total time spent with it.
+        /// </summary>
+        /// <param name="time"></param>
+        public void Complete(double time)
         {
             Completed = true;
-            TotalTime = time;
+            TotalTime += time;
+        }
+
+        /// <summary>
+        /// Sets completed to false while containing the time spent
+        /// </summary>
+        public void UnComplete()
+        {
+            Completed = false;
         }
     }
-    
+
+    /// <summary>
+    /// Class representing a milestone. A milestone is series of tasks.
+    /// </summary>
     public class Milestone
     {
-        private delegate void TaskCompletionChanged(object sender, PropertyChangedEventArgs e);
-
+        private ObservableCollection<Task> _tasks;
         private PropertyChangedEventHandler _completedChanged;
 
-        private ObservableCollection<Task> _tasks;
+        private delegate void TaskCompletionChanged(object sender, PropertyChangedEventArgs e);
+
+
+        /// <summary>
+        /// Default-Constructor
+        /// </summary>
+        public Milestone()
+        {
+            Completed = false;
+            _tasks = new ObservableCollection<Task>();
+            _completedChanged = (object sender, PropertyChangedEventArgs e) =>
+            {
+                if (e.PropertyName.Equals("Completed"))
+                    Completed = CheckForCompletion();
+            };
+        }
+
+
+        /// <summary>
+        /// Array containing every task of the milestone.
+        /// </summary>
         public Task[] Tasks
         {
             get
@@ -118,30 +195,37 @@ namespace RosaroterPanterWPF
                 return _tasks.ToArray();
             }
         }
+
+        /// <summary>
+        /// If the milestone is completed.
+        /// </summary>
         public bool Completed { get; private set; }
 
-        public Milestone()
-        {
-            Completed = false;
-            _tasks = new ObservableCollection<Task>();
-            _completedChanged =  (object sender, PropertyChangedEventArgs e) =>
-            {
-                if (e.PropertyName.Equals("Completed"))
-                    Completed = CheckForCompletion();
-            };
-        }
-
+        
+        /// <summary>
+        /// Adds a task.
+        /// </summary>
+        /// <param name="task">The task to add.</param>
         public void AddTask(Task task)
         {
             _tasks.Add(task);
             task.PropertyChanged += _completedChanged;
         }
 
+        /// <summary>
+        /// Returns the count of tasks.
+        /// </summary>
+        /// <returns>Count of tasks.</returns>
         public int CountOfTasks()
         {
             return _tasks.Count;
         }
 
+        /// <summary>
+        /// Removes a task at a given index.
+        /// </summary>
+        /// <param name="index">Index of the task to remove.</param>
+        /// <returns>If the index was valid.</returns>
         public bool RemoveTaskAt(int index)
         {
             if (_tasks.Count > index)
@@ -157,6 +241,10 @@ namespace RosaroterPanterWPF
             return false;
         }
 
+        /// <summary>
+        /// Checks every task for completion. To verify if the milestone was reached.
+        /// </summary>
+        /// <returns>If the milestone is complete.</returns>
         private bool CheckForCompletion()
         {
             foreach (Task t in _tasks)
@@ -166,6 +254,4 @@ namespace RosaroterPanterWPF
             return true;
         }
     }
-
-
 }
