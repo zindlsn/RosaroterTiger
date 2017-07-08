@@ -33,7 +33,7 @@ namespace RosaroterPanterWPF
     {
         public Color Color { get; set; }
         public string Description { get; set; }
-        public bool Finished { get; private set; }
+        public bool Completed { get; private set; }
         public string Name { get; set; }
         public double TotalTime { get; private set; }
 
@@ -53,10 +53,36 @@ namespace RosaroterPanterWPF
         public Task() : this(string.Empty, string.Empty, Color.White)
         { }
 
-        void Completed(double time)
+        void Complete(double time)
         {
-            Finished = true;
+            Completed = true;
             TotalTime = time;
         }
+    }
+
+    public class Milestone
+    {
+        public List<Task> Tasks { get; set; }
+        public bool Completed { get; private set; }
+
+        public Milestone(int number_of_tasks)
+        {
+            Completed = false;
+            Tasks = new List<Task>(number_of_tasks);
+        }
+
+        public Milestone() : this(0)
+        { }
+
+        void AddTask(Task task)
+        {
+            Tasks.Add(task);
+
+        }
+    }
+
+    public class DataService
+    {
+
     }
 }
