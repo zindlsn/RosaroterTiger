@@ -6,18 +6,12 @@
         xmlns:local="clr-namespace:RosaroterPanterWPF"
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:RosaroterPanterWPF"
-        Title="Project" Height="720" Width="1280">
+        Title="{Binding Title}" Height="720" Width="1280">
 	<Window.DataContext>
 		<vm:MainViewModel x:Name="model" />
 	</Window.DataContext>
-	<Grid Grid.Column="3" Grid.Row="3">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Button Content="Button " Grid.Column="0" Grid.Row="0" IsEnabled="True" Command="{Binding StartTimerCommand}" />
-        <Label Content="{Binding TimerSeconds}" Grid.Row="1" Grid.Column="0" />
-
-    </Grid>
+	<Grid>
+		<Label Content="Test text" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Center" Width="497" HorizontalContentAlignment="Center"/>
+		<HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Margin="10,10,0,0" RenderTransformOrigin="-0.082,0.52" Height="30" Background="#FF7C98F9" BorderBrush="White"/>
+	</Grid>
 </Window>
