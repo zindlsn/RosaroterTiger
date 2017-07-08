@@ -260,7 +260,7 @@ namespace RosaroterTigerWPF
         /// </summary>
         public void FinishDay()
         {
-
+            this._Timer.Dispose();
         }
     }
 }

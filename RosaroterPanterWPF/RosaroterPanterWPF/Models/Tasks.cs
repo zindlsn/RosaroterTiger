@@ -218,9 +218,6 @@ namespace RosaroterTigerWPF
         /// </summary>
         public double TotalTime { get; private set; }
 
-        public double 
-
-
         /// <summary>
         /// Method for serialization
         /// </summary>

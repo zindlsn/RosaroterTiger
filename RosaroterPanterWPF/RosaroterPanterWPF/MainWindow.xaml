@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RosaroterTigerWPF"
         mc:Ignorable="d"
-        xmlns:vm="clr-namespace:RosaroterTigerWPF"
+        xmlns:vm="clr-namespace:RosaroterTigerWPF.ViewModels"
         Title="{Binding Title}" Height="720" Width="1280">
 	<Window.DataContext>
-        <vm:MainViewModel/>
+        <vm:MainViewModel />
     </Window.DataContext>
 	<Grid>
 		<Grid.RowDefinitions>
