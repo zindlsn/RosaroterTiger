@@ -9,7 +9,7 @@ using System.Timers;
 using System.Windows.Input;
 using System.Windows.Navigation;
 
-namespace RosaroterTigerWPF
+namespace RosaroterTigerWPF.ViewModels
 {
     /// <summary>
     /// Start Viewmodel 
@@ -27,6 +27,7 @@ namespace RosaroterTigerWPF
             _Timer.Elapsed += Timer_Elapsed;
             this._CurrentSeconds = _PomodoroTime;
             this.Seconds = _PomodoroTime;
+            RefreshMilestones();
         }
         /// <summary>
         /// Title of the Window.
@@ -193,6 +194,27 @@ namespace RosaroterTigerWPF
             }
         }
 
+        private Goal _SelectedGoal;
+        /// <summary>
+        /// [TODO: CodeDoc]
+        /// </summary>
+        public Goal SelectedGoal
+        {
+            get
+            {
+                return _SelectedGoal;
+            }
+            set
+            {
+                if (_SelectedGoal != value)
+                {
+                    _SelectedGoal = value;
+                    this.OnPropertyChanged(nameof(SelectedGoal));
+                }
+            }
+        }
+
+
 
         /// <summary>
         /// 
@@ -202,6 +224,8 @@ namespace RosaroterTigerWPF
             this.InitTimer(1000);
             this._Timer.Interval = 1000;
             this._Timer.Start();
+            this.IsIdle = false;
+            ChangeStartButtonText();
         }
 
         /// <summary>
@@ -249,7 +273,7 @@ namespace RosaroterTigerWPF
         /// </summary>
         public void StartPomodoroPage()
         {
-            navigator.Navigate(typeof(MainWindow));
+            navigator.Navigate(typeof(HomePage));
         }
 
         public void AddCompletedTask(Task task)
@@ -265,11 +289,132 @@ namespace RosaroterTigerWPF
             this._Timer.Stop();
         }
         /// <summary>
-        /// Closes the word day:
+        /// Closes the work day:
         /// </summary>
         public void FinishDay()
         {
+
             this._Timer.Dispose();
+        }
+
+        private string _StartStopButtonText;
+        /// <summary>
+        /// [TODO: CodeDoc]
+        /// </summary>
+        public string StartStopButtonText
+        {
+            get
+            {
+                return _StartStopButtonText;
+            }
+            set
+            {
+                if (_StartStopButtonText != value)
+                {
+                    _StartStopButtonText = value;
+                    this.OnPropertyChanged(nameof(StartStopButtonText));
+                }
+            }
+        }
+
+
+        private ICommand _FinishDayCommand;
+        public ICommand FinishDayCommand
+        {
+            get
+            {
+                if (_FinishDayCommand == null)
+                {
+                    _FinishDayCommand = new RelayCommand(
+                        p => CanFinishDay,
+                        p => this.FinishDay());
+                }
+                return _StartTimerCommand;
+            }
+        }
+
+        public void ChangeStartButtonText()
+        {
+            if (!_IsIdle)
+            {
+                StartStopButtonText = "Pause";
+            }
+            else
+            {
+                StartStopButtonText = "Start";
+            }
+        }
+
+        private bool _IsIdle;
+        /// <summary>
+        /// [TODO: CodeDoc]
+        /// </summary>
+        public bool IsIdle
+        {
+            get
+            {
+                return _IsIdle;
+            }
+            set
+            {
+                if (_IsIdle != value)
+                {
+                    _IsIdle = value;
+                    this.OnPropertyChanged(nameof(IsIdle));
+                }
+            }
+        }
+        private Task _SelectedTask;
+        /// <summary>
+        /// [TODO: CodeDoc]
+        /// </summary>
+        public Task SelectedTask
+        {
+            get
+            {
+                return _SelectedTask;
+            }
+            set
+            {
+                if (_SelectedTask != value)
+                {
+                    _SelectedTask = value;
+                    this.OnPropertyChanged(nameof(SelectedTask));
+                }
+            }
+        }
+
+
+        public bool CanFinishDay { get; private set; }
+
+        private ICommand _GoToHomePageCommand;
+        public ICommand GotoHomepageCommand
+        {
+            get
+            {
+                if (_GoToHomePageCommand == null)
+                {
+                    _GoToHomePageCommand = new RelayCommand(
+                        p => true,
+                        p => this.GoToHomePage());
+                }
+                return _StartTimerCommand;
+            }
+        }
+
+        /// <summary>
+        /// goes back to the homepage
+        /// </summary>
+        private void GoToHomePage()
+        {
+
+        }
+        /// <summary>
+        /// Deletes the selected goal.
+        /// </summary>
+        public void DeleteSelectedGoal()
+        {
+            this._Milestones.Remove(SelectedGoal);
         }
     }
 }
