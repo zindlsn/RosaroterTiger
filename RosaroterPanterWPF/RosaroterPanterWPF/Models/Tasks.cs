@@ -219,6 +219,12 @@ namespace RosaroterTigerWPF
         public double TotalTime { get; private set; }
 
         /// <summary>
+        /// Date and time on which the task was completed.
+        /// </summary>
+        public DateTime? CompletionDate { get; private set; }
+
+
+        /// <summary>
         /// Method for serialization
         /// </summary>
         /// <param name="info">The serialization information.</param>
