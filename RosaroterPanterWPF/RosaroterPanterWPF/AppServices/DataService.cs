@@ -206,15 +206,15 @@ namespace RosaroterTigerWPF
 
             var milestone2 = new Goal();
 
-            milestone2.AddTask(new Task("Name Gelb", "Beschreibung Gelb", Color.Yellow));
-            milestone2.AddTask(new Task("Name Grün", "Beschreibung Grün", Color.Green));
-            milestone2.AddTask(new Task("Name Rot", "Beschreibung Rot", Color.Red));
-            milestone2.AddTask(new Task("Name Blau", "Beschreibung Blau", Color.Blue));
-            milestone2.AddTask(new Task("Name Lila", "Beschreibung Lila", Color.Purple));
-            milestone2.AddTask(new Task("Name Weiß", "Beschreibung Weiß", Color.White));
-            milestone2.AddTask(new Task("Name Schwarz", "Beschreibung Schwarz", Color.Black));
-            milestone2.AddTask(new Task("Name Orange", "Beschreibung Orange", Color.Orange));
-            milestone2.AddTask(new Task("Name Rosarot", "Beschreibung Rosarot", Color.PinkRed));
+            milestone2.AddTask(new Task("Name Gelb", "Beschreibung Gelb", Color.Colors["Yellow"]));
+            milestone2.AddTask(new Task("Name Grün", "Beschreibung Grün", Color.Colors["Green"]));
+            milestone2.AddTask(new Task("Name Rot", "Beschreibung Rot", Color.Colors["Red"]));
+            milestone2.AddTask(new Task("Name Blau", "Beschreibung Blau", Color.Colors["Blue"]));
+            milestone2.AddTask(new Task("Name Lila", "Beschreibung Lila", Color.Colors["Purple"]));
+            milestone2.AddTask(new Task("Name Weiß", "Beschreibung Weiß", Color.Colors["White"]));
+            milestone2.AddTask(new Task("Name Schwarz", "Beschreibung Schwarz", Color.Colors["Black"]));
+            milestone2.AddTask(new Task("Name Orange", "Beschreibung Orange", Color.Colors["Orange"]));
+            milestone2.AddTask(new Task("Name Rosarot", "Beschreibung Rosarot", Color.Colors["PinkRed"]));
 
             testData.Add(milestone2);
 
