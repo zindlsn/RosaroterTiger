@@ -263,7 +263,7 @@ namespace RosaroterTigerWPF.ViewModels
         /// </summary>
         public void RefreshMilestones()
         {
-            Milestones = DataService.DeserializeGoals();
+            Milestones = DataService.Goals;
         }
 
         private static NavigationService navigator;
