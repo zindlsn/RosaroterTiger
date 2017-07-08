@@ -90,7 +90,11 @@ namespace RosaroterTigerWPF
                 }
 
                 // today was not found. Create a new day object.
-                return new Day(time, null, string.Empty);
+                Day ret = new Day(time, null, string.Empty);
+
+                _days.Add(ret);
+
+                return ret;
             }
         }
 
