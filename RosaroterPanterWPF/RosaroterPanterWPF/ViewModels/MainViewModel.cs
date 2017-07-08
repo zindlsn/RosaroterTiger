@@ -1,4 +1,4 @@
-﻿using RosaroterPanterWPF.Helpers;
+﻿using RosaroterTigerWPF.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Input;
 
-namespace RosaroterPanterWPF
+namespace RosaroterTigerWPF
 {
     /// <summary>
     /// Start Viewmodel 

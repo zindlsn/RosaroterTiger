@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace RosaroterPanterWPF
+namespace RosaroterTigerWPF
 {
     /// <summary>
     /// Color class
