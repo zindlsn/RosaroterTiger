@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace RosaroterPanterWPF
 {
     /// <summary>
     /// Color class
     /// </summary>
-    public class Color
+    [Serializable]
+    public class Color: ISerializable
     {
         /// <summary>
         /// The color white.
@@ -42,6 +41,18 @@ namespace RosaroterPanterWPF
             B = b;
         }
 
+        /// <summary>
+        /// Constructor for serialization
+        /// </summary>
+        /// <param name="info">The serialization information.</param>
+        /// <param name="context">The streaming context.</param>
+        public Color(SerializationInfo info, StreamingContext context)
+        {
+            R = info.GetByte("R_Color_Value");
+            G = info.GetByte("G_Color_Value");
+            B = info.GetByte("B_Color_Value");
+        }
+
 
         /// <summary>
         /// The red value of the color from 0-255.
@@ -57,12 +68,27 @@ namespace RosaroterPanterWPF
         ///The blue value of the color from 0-255.
         /// </summary>
         public byte B { get; set; }
+
+
+        /// <summary>
+        /// Method for serialization
+        /// </summary>
+        /// <param name="info">The serialization information.</param>
+        /// <param name="context">The streaming context.</param>
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("R_Color_Value", R, typeof(byte));
+            info.AddValue("G_Color_Value", G, typeof(byte));
+            info.AddValue("B_Color_Value", B, typeof(byte));
+        }
+
     }
 
     /// <summary>
     /// Class representing a task.
     /// </summary>
-    public class Task : NotifyPropertyChanged
+    [Serializable]
+    public class Task : NotifyPropertyChanged, ISerializable
     {
         private bool _completed;
 
@@ -100,6 +126,20 @@ namespace RosaroterPanterWPF
             Description = description;
             Color = color;
             TotalTime = 0.0;
+        }
+
+        /// <summary>
+        /// Constructor for serialization
+        /// </summary>
+        /// <param name="info">The serialization information.</param>
+        /// <param name="context">The streaming context.</param>
+        public Task(SerializationInfo info, StreamingContext context)
+        {
+            _completed = info.GetBoolean("Task_Completed");
+            Color = (Color) info.GetValue("Task_Color", typeof(Color));
+            Description = info.GetString("Task_Description");
+            Name = info.GetString("Task_Name");
+            TotalTime = info.GetDouble("Task_TotalTime");
         }
 
 
@@ -141,6 +181,20 @@ namespace RosaroterPanterWPF
 
 
         /// <summary>
+        /// Method for serialization
+        /// </summary>
+        /// <param name="info">The serialization information.</param>
+        /// <param name="context">The streaming context.</param>
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Task_Completed", _completed, typeof(bool));
+            info.AddValue("Task_Color", Color, typeof(Color));
+            info.AddValue("Task_Description", Description, typeof(string));
+            info.AddValue("Task_Name", Name, typeof(string));
+            info.AddValue("Task_TotalTime", TotalTime, typeof(double));
+        }
+
+        /// <summary>
         /// Complete the task and register a total time spent with it.
         /// </summary>
         /// <param name="time"></param>
@@ -162,7 +216,8 @@ namespace RosaroterPanterWPF
     /// <summary>
     /// Class representing a milestone. A milestone is series of tasks.
     /// </summary>
-    public class Milestone
+    [Serializable]
+    public class Milestone : ISerializable
     {
         private ObservableCollection<Task> _tasks;
         private PropertyChangedEventHandler _completedChanged;
@@ -182,6 +237,29 @@ namespace RosaroterPanterWPF
                 if (e.PropertyName.Equals("Completed"))
                     Completed = CheckForCompletion();
             };
+        }
+
+        /// <summary>
+        /// Constructor for serialization
+        /// </summary>
+        /// <param name="info">The serialization information.</param>
+        /// <param name="context">The streaming context.</param>
+        public Milestone(SerializationInfo info, StreamingContext context)
+        {
+            _tasks = (ObservableCollection<Task>)info.GetValue("Ms_Tasks", typeof(ObservableCollection<Task>));
+
+            _completedChanged = (object sender, PropertyChangedEventArgs e) =>
+            {
+                if (e.PropertyName.Equals("Completed"))
+                    Completed = CheckForCompletion();
+            };
+
+            foreach (Task t in _tasks)
+            {
+                t.PropertyChanged += _completedChanged;
+            }
+
+            Completed = CheckForCompletion();
         }
 
 
@@ -210,6 +288,7 @@ namespace RosaroterPanterWPF
         {
             _tasks.Add(task);
             task.PropertyChanged += _completedChanged;
+            Completed = CheckForCompletion();
         }
 
         /// <summary>
@@ -242,6 +321,20 @@ namespace RosaroterPanterWPF
         }
 
         /// <summary>
+        /// Method for serialization
+        /// </summary>
+        /// <param name="info">The serialization information.</param>
+        /// <param name="context">The streaming context.</param>
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            // calculate completed in the constructor
+            // initialise _completed changed in constructor
+
+            info.AddValue("Ms_Tasks", _tasks, typeof(ObservableCollection<Task>));
+        }
+
+
+        /// <summary>
         /// Checks every task for completion. To verify if the milestone was reached.
         /// </summary>
         /// <returns>If the milestone is complete.</returns>
@@ -253,5 +346,7 @@ namespace RosaroterPanterWPF
             }
             return true;
         }
+
+       
     }
 }

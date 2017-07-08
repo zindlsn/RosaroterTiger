@@ -10,13 +10,19 @@
 	<Window.DataContext>
 		<vm:MainViewModel x:Name="model" />
 	</Window.DataContext>
-	<Grid>
-		<Label Content="Test text" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Center" Width="497" HorizontalContentAlignment="Center"/>
-		<Label x:Name="HomeButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" RenderTransformOrigin="-0.082,0.52" Height="40" BorderBrush="{x:Null}" MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave" Opacity="0.5">
+	<Grid Grid.Column="3" Grid.Row="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Button Content="Button " Grid.Column="0" Grid.Row="0" IsEnabled="True" Command="{Binding StartTimerCommand}" />
+        <Label Content="{Binding TimerSeconds}" Grid.Row="1" Grid.Column="0" />
+		<Label x:Name="HomeButton" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" RenderTransformOrigin="-0.082,0.52" Height="40" BorderBrush="{x:Null}" MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave" Opacity="0.5">
 			<Label.Background>
 				<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/home.png"/>
 			</Label.Background>
 		</Label>
 
-	</Grid>
+    </Grid>
 </Window>
