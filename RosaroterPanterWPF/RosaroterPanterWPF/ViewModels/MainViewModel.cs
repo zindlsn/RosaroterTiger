@@ -132,7 +132,7 @@ namespace RosaroterTigerWPF
         /// </summary>
         public void RefreshMilestones()
         {
-            Milestones = App.DataService.DeserializeMilestones();
+            Milestones = DataService.DeserializeMilestones();
         }
 
         /// <summary>
