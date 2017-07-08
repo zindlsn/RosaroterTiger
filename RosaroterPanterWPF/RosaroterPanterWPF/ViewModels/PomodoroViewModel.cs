@@ -13,13 +13,13 @@ namespace RosaroterTigerWPF
     /// <summary>
     /// Start Viewmodel 
     /// </summary>
-    public class MainViewModel : BaseViewModel
+    public class PomodoroViewModel : BaseViewModel
     {
         private Timer _Timer = new Timer();
         private string _Title;
         private static int _PomodoroTime = 25 * 60;
 
-        public MainViewModel()
+        public PomodoroViewModel()
         {
             _Timer.Elapsed += Timer_Elapsed;
             this._CurrentSeconds = _PomodoroTime;
@@ -28,6 +28,10 @@ namespace RosaroterTigerWPF
         /// <summary>
         /// Title of the Window.
         /// </summary>
+
+        public bool CanStartTimerCommand = true;
+
+
         public string Title
         {
             get
@@ -65,8 +69,6 @@ namespace RosaroterTigerWPF
                 }
             }
         }
-
-
 
         private string _TimerSeconds;
         /// <summary>
@@ -188,7 +190,6 @@ namespace RosaroterTigerWPF
             }
         }
 
-        public bool CanStartTimerCommand = true;
 
         /// <summary>
         /// 
@@ -218,6 +219,10 @@ namespace RosaroterTigerWPF
             }
         }
 
+        /// <summary>
+        /// Updates the Timer for the View.
+        /// </summary>
+        /// <param name="seconds"></param>
         public void UpdateTimerView(int seconds)
         {
             System.TimeSpan t = System.TimeSpan.FromSeconds(seconds);
@@ -232,6 +237,30 @@ namespace RosaroterTigerWPF
         public void RefreshMilestones()
         {
             Milestones = DataService.DeserializeMilestones();
+        }
+
+        /// <summary>
+        /// Navigates to the ComodoroView.
+        /// </summary>
+        public void StartComodoroView()
+        {
+
+        }
+
+        /// <summary>
+        /// Pause the recent Timer.
+        /// </summary>
+        public void PauseTimer()
+        {
+            this._Timer.Stop();
+        }
+        /// <summary>
+        /// Closes the word day:
+        /// 
+        /// </summary>
+        public void FinishDay()
+        {
+
         }
     }
 }
