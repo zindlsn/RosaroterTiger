@@ -84,7 +84,7 @@ namespace RosaroterTigerWPF
             get
             {
                 DateTime time = DateTime.Now;
-                foreach(Day d in _days)
+                foreach (Day d in _days)
                 {
                     if (d.DateTime.Day == time.Day && d.DateTime.Month == time.Month && d.DateTime.Year == d.DateTime.Year) return d;
                 }
