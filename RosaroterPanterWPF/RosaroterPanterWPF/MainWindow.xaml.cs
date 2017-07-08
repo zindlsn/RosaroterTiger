@@ -41,6 +41,8 @@ namespace RosaroterTigerWPF
             PomodoroButton.Visibility = Visibility.Visible;
             ReviewButton.Visibility = Visibility.Hidden;
             HomeButton.Visibility = Visibility.Visible;
+            BigPomodoroButton.Visibility = Visibility.Hidden;
+            StartButton.Visibility = Visibility.Hidden;
         }
 
         private void LoadHomePage(object sender, EventArgs e)
@@ -49,6 +51,8 @@ namespace RosaroterTigerWPF
             PomodoroButton.Visibility = Visibility.Hidden;
             ReviewButton.Visibility = Visibility.Visible;
             HomeButton.Visibility = Visibility.Hidden;
+            BigPomodoroButton.Visibility = Visibility.Visible;
+            StartButton.Visibility = Visibility.Visible;
         }
 
         private void LoadPomodoroPage(object sender, EventArgs e)
@@ -57,6 +61,8 @@ namespace RosaroterTigerWPF
             PomodoroButton.Visibility = Visibility.Hidden;
             ReviewButton.Visibility = Visibility.Visible;
             HomeButton.Visibility = Visibility.Visible;
+            BigPomodoroButton.Visibility = Visibility.Hidden;
+            StartButton.Visibility = Visibility.Hidden;
         }
 
         private void HomeButton_MouseEnter(object sender, EventArgs e)
@@ -86,21 +92,31 @@ namespace RosaroterTigerWPF
 
         private void PomodoroButton_MouseLeave(object sender, EventArgs e)
         {
-            PomodoroButton.Opacity = .75;
+            PomodoroButton.Opacity = .5;
         }
 
-        //private void StartButton_MouseEnter(object sender, EventArgs e)
-        //{
-        //	StartButton.Opacity = 1;
-        //}
+        private void BigPomodoroButton_MouseEnter(object sender, EventArgs e)
+        {
+            BigPomodoroButton.Opacity = 1;
+        }
 
-        //private void StartButton_MouseLeave(object sender, EventArgs e)
+        private void BigPomodoroButton_MouseLeave(object sender, EventArgs e)
+        {
+            BigPomodoroButton.Opacity = .75;
+        }
+
+        private void StartButton_MouseEnter(object sender, EventArgs e)
+        {
+            StartButton.Opacity = 1;
+        }
+
+        private void StartButton_MouseLeave(object sender, EventArgs e)
+        {
+            StartButton.Opacity = .5;
+        }
+        //private void addbutton_mouseenter(object sender, eventargs e)
         //{
-        //	StartButton.Opacity = .5;
-        //}
-        //private void AddButton_MouseEnter(object sender, EventArgs e)
-        //{
-        //	AddButton.Opacity = 1;
+        //    addbutton.opacity = 1;
         //}
 
         //private void AddButton_MouseLeave(object sender, EventArgs e)
