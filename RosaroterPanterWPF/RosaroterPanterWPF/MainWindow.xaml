@@ -29,7 +29,7 @@
 				<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/home.png"/>
 			</Label.Background>
 		</Label>
-		<Label x:Name="ReviewButton" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2" Margin="270,10,0,0" Width="40" Height="40" Opacity="0.5" BorderBrush="{x:Null}" MouseEnter="ReviewButton_MouseEnter" MouseLeave="ReviewButton_MouseLeave">
+		<Label x:Name="ReviewButton"  HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="2" Margin="270,10,0,0" Width="40" Height="40" Opacity="0.5" BorderBrush="{x:Null}" MouseEnter="ReviewButton_MouseEnter" MouseLeave="ReviewButton_MouseLeave">
 			<Label.Background>
 				<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/review.png"/>
 			</Label.Background>
@@ -37,3 +37,54 @@
 
 	</Grid>
 </Window>
+ <!-- Example ListView in xaml
+     <ListView x:Name="OrderStatusList" 
+                  HorizontalAlignment="Stretch"
+                  SelectionMode="Single"
+                  ItemsSource="{Binding Milestones}"
+                  Margin="8,24,8,4"
+                  Grid.Row="2"
+                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  >
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <Grid Margin="0,4,0,4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image
+                            Source="{}"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.RowSpan="3"
+                            VerticalAlignment="Stretch" Height="48"
+                            Stretch="Uniform"
+                            Margin="0,0,4,0" />
+
+                
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+    </ListView>
+
+
+    -->   
+<!-- Example for Trigger
+    <Button>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseDown" >
+            <i:InvokeCommandAction Command="{Binding MouseDownCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    </Button>
+
+
+
+    -->

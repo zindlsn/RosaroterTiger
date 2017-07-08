@@ -25,7 +25,27 @@ namespace RosaroterTigerWPF
             this._CurrentSeconds = _PomodoroTime;
             this.Seconds = _PomodoroTime;
         }
+        /// <summary>
+        /// Title of the Window.
+        /// </summary>
+        public string Title
+        {
+            get
+            {
+                return _Title;
+            }
+            set
+            {
+                if (_Title != value)
+                {
+                    _Title = value;
+                }
+            }
+        }
 
+        /// <summary>
+        /// Started Task
+        /// </summary>
         private Task _CurrentTask;
         /// <summary>
         /// [TODO: CodeDoc]
@@ -46,19 +66,7 @@ namespace RosaroterTigerWPF
             }
         }
 
-        public string Title
-        {
-            get {
-                return _Title;
-            }
-            set
-            {
-                if(_Title != value)
-                {
-                    _Title = value;
-                }
-            }
-        }
+
 
         private string _TimerSeconds;
         /// <summary>
@@ -128,13 +136,7 @@ namespace RosaroterTigerWPF
                 }
             }
         }
-        /// <summary>
-        /// Refreshes the Milestonelist
-        /// </summary>
-        public void RefreshMilestones()
-        {
-            Milestones = DataService.DeserializeMilestones();
-        }
+
 
         /// <summary>
         /// Sets the Pomodoro Round time
@@ -170,6 +172,34 @@ namespace RosaroterTigerWPF
             this._CurrentSeconds = seconds;
         }
 
+
+        private ICommand _StartTimerCommand;
+        public ICommand StartTimerCommand
+        {
+            get
+            {
+                if (_StartTimerCommand == null)
+                {
+                    _StartTimerCommand = new RelayCommand(
+                        p => true,
+                        p => this.StartTimer());
+                }
+                return _StartTimerCommand;
+            }
+        }
+
+        public bool CanStartTimerCommand = true;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void StartTimer()
+        {
+            this.InitTimer(1000);
+            this._Timer.Interval = 1000;
+            this._Timer.Start();
+        }
+
         /// <summary>
         /// Calls when a second of the timer is elapsed.
         /// </summary>
@@ -195,36 +225,13 @@ namespace RosaroterTigerWPF
             _TimerSeconds = t.Seconds.ToString();
         }
 
-        private ICommand _StartTimerCommand;
-        public ICommand StartTimerCommand
-        {
-            get
-            {
-                if (_StartTimerCommand == null)
-                {
-                    _StartTimerCommand = new RelayCommand(
-                        p => true,
-                        p => this.StartTimer());
-                }
-                return _StartTimerCommand;
-            }
-        }
-
-        public void StartRound()
-        {
-            this.InitTimer(1000);
-            this._Timer.Interval = 1000;
-            this._Timer.Start();
-        }
 
         /// <summary>
-        /// 
+        /// Refreshes the Milestonelist
         /// </summary>
-        private void StartTimer()
+        public void RefreshMilestones()
         {
-            StartRound();
+            Milestones = DataService.DeserializeMilestones();
         }
-
-        public bool CanStartTimerCommand = true;
     }
 }
