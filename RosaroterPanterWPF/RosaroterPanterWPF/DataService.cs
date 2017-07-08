@@ -24,8 +24,8 @@ namespace RosaroterPanterWPF
             public Color(byte r, byte g, byte b)
             {
                 R = r;
-                g = G;
-                b = B;
+                G = g;
+                B = b;
             }
         }
 
