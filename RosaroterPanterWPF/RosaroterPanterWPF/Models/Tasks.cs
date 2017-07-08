@@ -218,7 +218,7 @@ namespace RosaroterTigerWPF
         /// </summary>
         public double TotalTime { get; private set; }
 
-        public double 
+        public DateTime CompletionDate { get; private set; }
 
 
         /// <summary>
