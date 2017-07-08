@@ -8,5 +8,15 @@ namespace RosaroterTigerWPF.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
+        // Properties:
+        // -Goals and Tasks
+        //
+        // Methods:
+        // -Start (Open Pomodoro)
+        // -?Delete/Edit on a Goal/Todo
+        // -?New
+        // -Open Review
+
+
     }
 }

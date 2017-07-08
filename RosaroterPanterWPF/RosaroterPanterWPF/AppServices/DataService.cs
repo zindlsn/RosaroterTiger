@@ -10,19 +10,49 @@ namespace RosaroterTigerWPF
         /// <summary>
         /// Filename to I/O to
         /// </summary>
-        public static readonly string filename = "milestones.sav";
+        public static readonly string filename = "goals.sav";
+
+        /// <summary>
+        /// The goals
+        /// </summary>
+        static ObservableCollection<Goal> _goals = null;
+
+
+        /// <summary>
+        /// The goals
+        /// </summary>
+        public static ObservableCollection<Goal> Goals
+        {
+            set
+            {
+                _goals = value;
+            }
+            get
+            {
+                if(_goals == null)
+                {
+                    // evtl. fixme if DeserializeGoals does not handle a errored file.
+                    _goals = DeserializeGoals();
+                }
+
+                // when goals are still null then create a new Collection
+                if (_goals == null) _goals = new ObservableCollection<Goal>();
+
+                return _goals;
+            }
+        }
+
 
         /// <summary>
         /// Serialize the collection of milestones
         /// </summary>
-        /// <param name="milestones">The milestones to serialize.</param>
-        public static void SerializeMilestones(ObservableCollection<Goal> milestones)
+        public static void SerializeGoals()
         {
             IFormatter formatter = new BinaryFormatter();
 
             using (FileStream s = new FileStream(filename, FileMode.Create))
             {
-                formatter.Serialize(s, milestones);
+                formatter.Serialize(s, _goals);
             }
         }
 
@@ -30,16 +60,23 @@ namespace RosaroterTigerWPF
         /// Deserialize the collection of milestones
         /// </summary>
         /// <returns>Desierialized milestons.</returns>
-        public static ObservableCollection<Goal> DeserializeMilestones()
+        public static ObservableCollection<Goal> DeserializeGoals()
         {
 #if DEBUG && TESTDATA
             return TestData();
 #else
             IFormatter formatter = new BinaryFormatter();
 
-            using (FileStream s = new FileStream(filename, FileMode.Open))
+            try
             {
-                return (ObservableCollection<Goal>)formatter.Deserialize(s);
+                using (FileStream s = new FileStream(filename, FileMode.Open))
+                {
+                    return (ObservableCollection<Goal>)formatter.Deserialize(s);
+                }
+            }
+            catch(System.IO.FileNotFoundException)
+            {
+                return null;
             }
 #endif
         }
@@ -72,7 +109,7 @@ namespace RosaroterTigerWPF
             milestone2.AddTask(new Task("Name Lila", "Beschreibung Lila", Color.Purple));
             milestone2.AddTask(new Task("Name Weiß", "Beschreibung Weiß", Color.White));
             milestone2.AddTask(new Task("Name Schwarz", "Beschreibung Schwarz", Color.Black));
-            milestone2.AddTask(new Task("Name Orange", "Beschreibung Orange",Color.Orange));
+            milestone2.AddTask(new Task("Name Orange", "Beschreibung Orange", Color.Orange));
             milestone2.AddTask(new Task("Name Rosarot", "Beschreibung Rosarot", Color.PinkRed));
 
             testData.Add(milestone2);
