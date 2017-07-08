@@ -72,14 +72,16 @@ namespace RosaroterPanterWPF
             }
         }
         /// <summary>
-        /// Loads 
+        /// Refreshes the Milestonelist
         /// </summary>
-        public void FillMilstones()
+        public void RefreshMilestones()
         {
             Milestones = App.DataService.LoadMilestones();
         }
 
-
+        /// <summary>
+        /// Sets the Pomodoro Round time
+        /// </summary>
         public int Seconds { get; set; }
         private int _CurrentSeconds;
         /// <summary>
