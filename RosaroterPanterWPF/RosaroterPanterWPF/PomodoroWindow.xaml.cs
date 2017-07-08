@@ -22,6 +22,7 @@ namespace RosaroterTigerWPF
 		public PomodoroWindow()
 		{
 			InitializeComponent();
+			PomodoroViewModel pomodoroViewModel = new PomodoroViewModel();
 		}
 
 
@@ -35,26 +36,6 @@ namespace RosaroterTigerWPF
 		{
 			HomeButton.Opacity = .5;
 		}
-
-		private void ReviewButton_MouseEnter(object sender, EventArgs e)
-		{
-			ReviewButton.Opacity = 1;
-		}
-
-		private void ReviewButton_MouseLeave(object sender, EventArgs e)
-		{
-			ReviewButton.Opacity = .5;
-		}
-
-		private void PomodoroButton_MouseEnter(object sender, EventArgs e)
-		{
-			PomodoroButton.Opacity = 1;
-		}
-
-		private void PomodoroButton_MouseLeave(object sender, EventArgs e)
-		{
-			PomodoroButton.Opacity = .5;
-		}
 		private void StartButton_MouseEnter(object sender, EventArgs e)
 		{
 			StartButton.Opacity = 1;
@@ -63,6 +44,15 @@ namespace RosaroterTigerWPF
 		private void StartButton_MouseLeave(object sender, EventArgs e)
 		{
 			StartButton.Opacity = .5;
+		}
+			private void ReviewButton_MouseEnter(object sender, EventArgs e)
+		{
+			ReviewButton.Opacity = 1;
+		}
+
+		private void ReviewButton_MouseLeave(object sender, EventArgs e)
+		{
+			ReviewButton.Opacity = .5;
 		}
 		private void AddButton_MouseEnter(object sender, EventArgs e)
 		{
