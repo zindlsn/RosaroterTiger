@@ -218,7 +218,10 @@ namespace RosaroterTigerWPF
         /// </summary>
         public double TotalTime { get; private set; }
 
-        public DateTime CompletionDate { get; private set; }
+        /// <summary>
+        /// Date and time on which the task was completed.
+        /// </summary>
+        public DateTime? CompletionDate { get; private set; }
 
 
         /// <summary>
