@@ -77,7 +77,11 @@ namespace RosaroterPanterWPF
 
     public class Milestone
     {
-        ObservableCollection<Task> _tasks;
+        private delegate void TaskCompletionChanged(object sender, PropertyChangedEventArgs e);
+
+        private PropertyChangedEventHandler _completedChanged;
+
+        private ObservableCollection<Task> _tasks;
         public Task[] Tasks
         {
             get
@@ -91,16 +95,17 @@ namespace RosaroterPanterWPF
         {
             Completed = false;
             _tasks = new ObservableCollection<Task>();
+            _completedChanged =  (object sender, PropertyChangedEventArgs e) =>
+            {
+                if (e.PropertyName.Equals("Completed"))
+                    Completed = CheckForCompletion();
+            };
         }
 
         public void AddTask(Task task)
         {
             _tasks.Add(task);
-            task.PropertyChanged += (object sender, PropertyChangedEventArgs e) =>
-            {
-                if (e.PropertyName.Equals("Completed"))
-                    Completed = CheckForCompletion();
-            };
+            task.PropertyChanged += _completedChanged;
         }
 
         public int CountOfTasks()
@@ -112,6 +117,11 @@ namespace RosaroterPanterWPF
         {
             if (_tasks.Count > index)
             {
+                _tasks.ElementAt(index).PropertyChanged -= (object sender, PropertyChangedEventArgs e) =>
+                {
+                    if (e.PropertyName.Equals("Completed"))
+                        Completed = CheckForCompletion();
+                };
                 _tasks.RemoveAt(index);
                 return true;
             }
