@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace RosaroterTigerWPF
 {
@@ -18,6 +19,8 @@ namespace RosaroterTigerWPF
         private Timer _Timer = new Timer();
         private string _Title;
         private static int _PomodoroTime = 25 * 60;
+
+        private List<Task> CompletedTasksPerDay { get; set; }
 
         public PomodoroViewModel()
         {
@@ -239,12 +242,19 @@ namespace RosaroterTigerWPF
             Milestones = DataService.DeserializeMilestones();
         }
 
+        private static NavigationService navigator;
+
         /// <summary>
         /// Navigates to the ComodoroView.
         /// </summary>
-        public void StartComodoroView()
+        public void StartPomodoroPage()
         {
+            navigator.Navigate(typeof(MainWindow));
+        }
 
+        public void AddCompletedTask(Task task)
+        {
+            this.CompletedTasksPerDay.Add(task);
         }
 
         /// <summary>
@@ -256,7 +266,6 @@ namespace RosaroterTigerWPF
         }
         /// <summary>
         /// Closes the word day:
-        /// 
         /// </summary>
         public void FinishDay()
         {

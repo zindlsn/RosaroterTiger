@@ -8,7 +8,7 @@
         xmlns:vm="clr-namespace:RosaroterTigerWPF"
         Title="{Binding Title}" Height="720" Width="1280">
 	<Window.DataContext>
-        <vm:MainViewModel/>
+        <vm:MainViewModel />
     </Window.DataContext>
 	<Grid>
 		<Grid.RowDefinitions>
