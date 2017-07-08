@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BaseViewModel.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Tasks.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
