@@ -8,6 +8,9 @@ using System.Timers;
 
 namespace RosaroterPanterWPF
 {
+    /// <summary>
+    /// Start Viewmodel
+    /// </summary>
     public class MainViewModel : BaseViewModel
     {
         private Timer _Timer = new Timer();
@@ -33,7 +36,12 @@ namespace RosaroterPanterWPF
             }
         }
 
-        public void TaskStartedClick(object sender, EventArgs args)
+        /// <summary>
+        /// Calls when user clicks on a Task to start working on it
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void TaskStartedClick(object sender, EventArgs args)
         {
            // this.CurrentTask = 
         }
@@ -50,6 +58,55 @@ namespace RosaroterPanterWPF
                     _Title = value;
                 }
             }
+        }
+
+        private int _TimerSeconds;
+        /// <summary>
+        /// [TODO: CodeDoc]
+        /// </summary>
+        public int TimerSeconds
+        {
+            get
+            {
+                return _TimerSeconds;
+            }
+            set
+            {
+                if (_TimerSeconds != value)
+                {
+                    _TimerSeconds = value;
+                    this.OnPropertyChanged(nameof(TimerSeconds));
+                }
+            }
+        }
+
+
+        private int _TimerMinutes;
+        /// <summary>
+        /// [TODO: CodeDoc]
+        /// </summary>
+        public int TimerHour
+        {
+            get
+            {
+                return _TimerMinutes;
+            }
+            set
+            {
+                if (_TimerMinutes != value)
+                {
+                    _TimerMinutes = value;
+                    this.OnPropertyChanged(nameof(TimerHour));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Resets timer after each Round
+        /// </summary>
+        public void ResetTimer()
+        {
+
         }
 
         private ObservableCollection<Milestone> _Milestones;
@@ -103,15 +160,22 @@ namespace RosaroterPanterWPF
             }
         }
 
-
-        public void SetTimerPerRound(int seconds)
+        /// <summary>
+        /// Inits the Timer
+        /// </summary>
+        /// <param name="seconds"></param>
+        public void InitTimer(int seconds)
         {
             this.Seconds = seconds;
             this._CurrentSeconds = seconds;
         }
 
 
-
+        /// <summary>
+        /// Calls when a second of the timer is elapsed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             if (this._CurrentSeconds > 0)
