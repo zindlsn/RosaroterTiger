@@ -1,0 +1,21 @@
+﻿<Window x:Class="RosaroterTigerWPF.ColorPicker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RosaroterTigerWPF"
+        mc:Ignorable="d"
+        Title="ColorPicker" Height="180" Width="160" ResizeMode="NoResize">
+    <Grid>
+        <Button Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="40" Height="40" Background="#FFF0B7B7"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="55,10,0,0" VerticalAlignment="Top" Width="40" Height="40" Background="#FFF0D3B7"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="40" Height="40" Background="#FFFFEFC3"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="40" Height="40" Background="#FFECFFC3"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="55,55,0,0" VerticalAlignment="Top" Width="40" Height="40" Background="#FFC3FFDE"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="100,55,0,0" VerticalAlignment="Top" Width="40" Height="40" Background="#FFC3FFFA"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="40" Height="40" Background="#FFC3E6FF"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="55,100,0,0" VerticalAlignment="Top" Width="40" Height="40" Background="#FFCEC3FF"/>
+        <Button Content="" HorizontalAlignment="Left" Margin="100,100,0,0" VerticalAlignment="Top" Width="40" Height="40" Background="#FFFAC3FF"/>
+
+    </Grid>
+</Window>
