@@ -8,7 +8,7 @@
         xmlns:vm="clr-namespace:RosaroterTigerWPF.ViewModels"
         Title="{Binding Title}" Height="720" Width="1280">
     <Page.DataContext>
-        <vm:MainViewModel />
+        <vm:PomodoroViewModel />
     </Page.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -71,8 +71,11 @@
                 </Label>
             </Grid>
         </Grid>
-        <TextBlock x:Name="TimeDisplay" Grid.Row="1" Grid.Column="1" Text="{Binding TimerMinutes}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontFamily="Berlin Sans FB" />
-        <Button x:Name="StartButton" Grid.Row="1" Grid.Column="1" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontFamily="Berlin Sans FB"  BorderBrush="{x:Null}" MouseEnter="StartButton_MouseEnter" MouseLeave="StartButton_MouseLeave" Opacity="0.5" Command="{Binding StartTimerCommand}"/>
+        <StackPanel>
+        <TextBlock x:Name="TimeDisplay" Grid.Row="1" Grid.Column="1" Text="{Binding TimerSeconds}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontFamily="Berlin Sans FB" />
+            <TextBlock x:Name="TimeDisplay2" Grid.Row="1" Grid.Column="1" Text="{Binding TimerMinutes}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontFamily="Berlin Sans FB" />
 
+            <Button x:Name="StartButton" Grid.Row="1" Grid.Column="1" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontFamily="Berlin Sans FB"  BorderBrush="{x:Null}" MouseEnter="StartButton_MouseEnter" MouseLeave="StartButton_MouseLeave" Opacity="0.5" Command="{Binding StartTimerCommand}"/>
+        </StackPanel>
     </Grid>
 </Page>
