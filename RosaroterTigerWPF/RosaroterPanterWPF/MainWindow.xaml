@@ -49,13 +49,15 @@
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="5*" />
             </Grid.RowDefinitions>
-            <Label x:Name="BigPomodoroButton" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, 20" Width="140" Height="140" Opacity="0.75" BorderBrush="{x:Null}" MouseEnter="BigPomodoroButton_MouseEnter" MouseLeave="BigPomodoroButton_MouseLeave" MouseUp="LoadPomodoroPage">
+                <StackPanel HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" MouseUp="LoadPomodoroPage">
+            <Label x:Name="BigPomodoroButton" Width="130" Height="130" Opacity="0.75" BorderBrush="{x:Null}" MouseUp="LoadPomodoroPage">
                 <Label.Background>
                     <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/tomato.png"/>
                 </Label.Background>
             </Label>
-            <Label x:Name="StartButton" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontFamily="Berlin Sans FB"  BorderBrush="{x:Null}" MouseEnter="StartButton_MouseEnter" MouseLeave="StartButton_MouseLeave" Opacity="0.5" MouseUp="LoadPomodoroPage"/>
-        </Grid>
+            <Label x:Name="StartButton" Content="Start" HorizontalAlignment="Center" FontSize="14" FontFamily="Berlin Sans FB"  BorderBrush="{x:Null}" Opacity="0.5" MouseUp="LoadPomodoroPage"/>
+                </StackPanel>
+            </Grid>
     </Grid>
     </Grid>
 
