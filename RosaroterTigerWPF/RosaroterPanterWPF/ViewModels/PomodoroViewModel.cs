@@ -16,11 +16,38 @@ namespace RosaroterTigerWPF.ViewModels
     /// </summary>
     public class PomodoroViewModel : BaseViewModel
     {
-        private Timer _Timer = new Timer();
-        private string _Title;
+        public bool CanStartTimerCommand = true;
+
         private static int _PomodoroTime = 25 * 60;
 
+        private string _Title;
+        private string _StartStopButtonText = "Start";
+        
+        private ObservableCollection<Goal> _Goals;
+
+        private Timer _Timer = new Timer();
+        private string _TimerSeconds;
+        private string _TimerMinutes;
+
+        /// <summary>
+        /// Started Task
+        /// </summary>
+        private Task _CurrentTask;
         private List<Task> CompletedTasksPerDay { get; set; }
+        private Task _SelectedTask;
+        private Goal _SelectedGoal;
+
+        private ICommand _StartTimerCommand;
+        private ICommand _FinishDayCommand;
+        private ICommand _GoToHomePageCommand;
+
+        private bool _IsIdle = true;
+
+        /// <summary>
+        /// Sets the Pomodoro Round time
+        /// </summary>
+        private int _CurrentSeconds;
+
 
         public PomodoroViewModel()
         {
@@ -32,8 +59,6 @@ namespace RosaroterTigerWPF.ViewModels
         /// <summary>
         /// Title of the Window.
         /// </summary>
-
-        public bool CanStartTimerCommand = true;
 
 
         public string Title
@@ -51,10 +76,6 @@ namespace RosaroterTigerWPF.ViewModels
             }
         }
 
-        /// <summary>
-        /// Started Task
-        /// </summary>
-        private Task _CurrentTask;
         /// <summary>
         /// [TODO: CodeDoc]
         /// </summary>
@@ -74,9 +95,8 @@ namespace RosaroterTigerWPF.ViewModels
             }
         }
 
-        private string _TimerSeconds;
         /// <summary>
-        /// [TODO: CodeDoc]
+        /// Seconds of the timer as a string.
         /// </summary>
         public string TimerSeconds
         {
@@ -94,9 +114,8 @@ namespace RosaroterTigerWPF.ViewModels
             }
         }
 
-        private string _TimerMinutes;
         /// <summary>
-        /// [TODO: CodeDoc]
+        /// Minutes of the timer as a string
         /// </summary>
         public string TimerMinutes
         {
@@ -115,41 +134,29 @@ namespace RosaroterTigerWPF.ViewModels
         }
 
         /// <summary>
-        /// Resets timer after each Round
-        /// </summary>
-        public void ResetTimer()
-        {
-            this._CurrentSeconds = _PomodoroTime;
-            this._Timer.Stop();
-        }
-
-        private ObservableCollection<Goal> _Milestones;
-        /// <summary>
-        /// [TODO: CodeDoc]
+        /// Goals
         /// </summary>
         public ObservableCollection<Goal> Milestones
         {
+            // todo rename to Goals
             get
             {
-                return _Milestones;
+                return _Goals;
+                //return DataService.Goals;
             }
             set
             {
-                if (_Milestones != value)
+                if (_Goals != value)
                 {
-                    _Milestones = value;
+                    _Goals = value;
+                    //DataService.Goals = value;
                     this.OnPropertyChanged(nameof(Milestones));
                 }
             }
         }
 
-
         /// <summary>
-        /// Sets the Pomodoro Round time
-        /// </summary>
-        private int _CurrentSeconds;
-        /// <summary>
-        /// [TODO: CodeDoc]
+        /// Current seconds.
         /// </summary>
         public int CurrentSeconds
         {
@@ -167,18 +174,6 @@ namespace RosaroterTigerWPF.ViewModels
             }
         }
 
-        /// <summary>
-        /// Inits the Timer
-        /// </summary>
-        /// <param name="seconds"></param>
-        public void InitTimer(int seconds)
-        {
-            _PomodoroTime = seconds;
-            this.CurrentSeconds = seconds;
-        }
-
-
-        private ICommand _StartTimerCommand;
         public ICommand StartTimerCommand
         {
             get
@@ -193,7 +188,6 @@ namespace RosaroterTigerWPF.ViewModels
             }
         }
 
-        private Goal _SelectedGoal;
         /// <summary>
         /// [TODO: CodeDoc]
         /// </summary>
@@ -212,16 +206,147 @@ namespace RosaroterTigerWPF.ViewModels
                 }
             }
         }
+        
+        /// <summary>
+        /// [TODO: CodeDoc]
+        /// </summary>
+        public string StartStopButtonText
+        {
+            get
+            {
+                return _StartStopButtonText;
+            }
+            set
+            {
+                if (_StartStopButtonText != value)
+                {
+                    _StartStopButtonText = value;
+                    this.OnPropertyChanged(nameof(StartStopButtonText));
+                }
+            }
+        }
+
+        public ICommand FinishDayCommand
+        {
+            get
+            {
+                if (_FinishDayCommand == null)
+                {
+                    _FinishDayCommand = new RelayCommand(
+                        p => CanFinishDay,
+                        p => this.FinishDay());
+                }
+                return _FinishDayCommand;
+            }
+        }
+
+        /// <summary>
+        /// [TODO: CodeDoc]
+        /// </summary>
+        public bool IsIdle
+        {
+            get
+            {
+                return _IsIdle;
+            }
+            set
+            {
+                if (_IsIdle != value)
+                {
+                    _IsIdle = value;
+                    this.OnPropertyChanged(nameof(IsIdle));
+                }
+            }
+        }
+
+        /// <summary>
+        /// [TODO: CodeDoc]
+        /// </summary>
+        public Task SelectedTask
+        {
+            get
+            {
+                return _SelectedTask;
+            }
+            set
+            {
+                if (_SelectedTask != value)
+                {
+                    _SelectedTask = value;
+                    this.OnPropertyChanged(nameof(SelectedTask));
+                }
+            }
+        }
+
+        public bool CanFinishDay { get; private set; }
+
+
+        /// <summary>
+        /// Inits the Timer
+        /// </summary>
+        /// <param name="seconds"></param>
+        public void InitTimer(int seconds)
+        {
+            _PomodoroTime = seconds;
+            this.CurrentSeconds = seconds;
+        }
+
+        /// <summary>
+        /// Pause the recent Timer.
+        /// </summary>
+        public void PauseTimer()
+        {
+            this._Timer.Stop();
+            ChangeStartButtonText();
+        }
+
+        /// <summary>
+        /// Closes the work day:
+        /// </summary>
+        public void FinishDay()
+        {
+
+            this._Timer.Dispose();
+        }
+
+        /// <summary>
+        /// Refreshes the Milestonelist
+        /// </summary>
+        public void RefreshMilestones()
+        {
+            Milestones = DataService.Goals;
+        }
+
+        public void AddCompletedTask(Task task)
+        {
+            this.CompletedTasksPerDay.Add(task);
+        }
+
+        /// <summary>
+        /// Change the startButtonText
+        /// </summary>
+        public void ChangeStartButtonText()
+        {
+            if (!_IsIdle)
+            {
+                StartStopButtonText = "Pause";
+            }
+            else
+            {
+                StartStopButtonText = "Start";
+            }
+        }
 
         /// <summary>
         /// 
         /// </summary>
         private void StartTimer()
         {
-            if (_IsIdle) { 
-            this._Timer.Interval = 1000;
-            this._Timer.Start();
-            this.IsIdle = false;
+            if (_IsIdle)
+            {
+                this._Timer.Interval = 1000;
+                this._Timer.Start();
+                this.IsIdle = false;
             }
             else
             {
@@ -255,177 +380,27 @@ namespace RosaroterTigerWPF.ViewModels
         /// <param name="seconds"></param>
         public void UpdateTimerView(int seconds)
         {
-            TimerMinutes = ((seconds % 3600) / 60).ToString() ;
+            TimerMinutes = ((seconds % 3600) / 60).ToString();
             TimerMinutes = (int.Parse(TimerMinutes)).ToString("00");
             TimerSeconds = (seconds % 60).ToString();
             TimerSeconds = (int.Parse(TimerSeconds)).ToString("00");
         }
 
-
         /// <summary>
-        /// Refreshes the Milestonelist
+        /// Resets timer after each Round
         /// </summary>
-        public void RefreshMilestones()
+        public void ResetTimer()
         {
-            Milestones = DataService.Goals;
-        }
-
-#pragma warning disable CS0649 // Field 'PomodoroViewModel.navigator' is never assigned to, and will always have its default value null
-        private static NavigationService navigator;
-#pragma warning restore CS0649 // Field 'PomodoroViewModel.navigator' is never assigned to, and will always have its default value null
-
-        /// <summary>
-        /// Navigates to the ComodoroView.
-        /// </summary>
-        public void StartPomodoroPage()
-        {
-            navigator.Navigate(typeof(HomePage));
-        }
-
-        public void AddCompletedTask(Task task)
-        {
-            this.CompletedTasksPerDay.Add(task);
-        }
-
-        /// <summary>
-        /// Pause the recent Timer.
-        /// </summary>
-        public void PauseTimer()
-        {
+            this._CurrentSeconds = _PomodoroTime;
             this._Timer.Stop();
-            ChangeStartButtonText();
         }
 
-        /// <summary>
-        /// Closes the work day:
-        /// </summary>
-        public void FinishDay()
-        {
-
-            this._Timer.Dispose();
-        }
-
-        private string _StartStopButtonText = "Start";
-        /// <summary>
-        /// [TODO: CodeDoc]
-        /// </summary>
-        public string StartStopButtonText
-        {
-            get
-            {
-                return _StartStopButtonText;
-            }
-            set
-            {
-                if (_StartStopButtonText != value)
-                {
-                    _StartStopButtonText = value;
-                    this.OnPropertyChanged(nameof(StartStopButtonText));
-                }
-            }
-        }
-
-
-        private ICommand _FinishDayCommand;
-        public ICommand FinishDayCommand
-        {
-            get
-            {
-                if (_FinishDayCommand == null)
-                {
-                    _FinishDayCommand = new RelayCommand(
-                        p => CanFinishDay,
-                        p => this.FinishDay());
-                }
-                return _FinishDayCommand;
-            }
-        }
-
-        /// <summary>
-        /// Change the startButtonText
-        /// </summary>
-        public void ChangeStartButtonText()
-        {
-            if (!_IsIdle)
-            {
-                StartStopButtonText = "Pause";
-            }
-            else
-            {
-                StartStopButtonText = "Start";
-            }
-        }
-
-        private bool _IsIdle = true;
-        /// <summary>
-        /// [TODO: CodeDoc]
-        /// </summary>
-        public bool IsIdle
-        {
-            get
-            {
-                return _IsIdle;
-            }
-            set
-            {
-                if (_IsIdle != value)
-                {
-                    _IsIdle = value;
-                    this.OnPropertyChanged(nameof(IsIdle));
-                }
-            }
-        }
-        private Task _SelectedTask;
-        /// <summary>
-        /// [TODO: CodeDoc]
-        /// </summary>
-        public Task SelectedTask
-        {
-            get
-            {
-                return _SelectedTask;
-            }
-            set
-            {
-                if (_SelectedTask != value)
-                {
-                    _SelectedTask = value;
-                    this.OnPropertyChanged(nameof(SelectedTask));
-                }
-            }
-        }
-
-
-        public bool CanFinishDay { get; private set; }
-
-        private ICommand _GoToHomePageCommand;
-        public ICommand GotoHomepageCommand
-        {
-            get
-            {
-                if (_GoToHomePageCommand == null)
-                {
-                    _GoToHomePageCommand = new RelayCommand(
-                        p => true,
-                        p => this.GoToHomePage());
-                }
-                return _StartTimerCommand;
-            }
-        }
-
-        /// <summary>
-        /// goes back to the homepage
-        /// </summary>
-        private void GoToHomePage()
-        {
-
-        }
         /// <summary>
         /// Deletes the selected goal.
         /// </summary>
         public void DeleteSelectedGoal()
         {
-            this._Milestones.Remove(SelectedGoal);
+            this._Goals.Remove(SelectedGoal);
         }
     }
 }
