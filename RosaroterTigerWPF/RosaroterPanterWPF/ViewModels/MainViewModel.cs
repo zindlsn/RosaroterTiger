@@ -46,6 +46,27 @@ namespace RosaroterTigerWPF.ViewModels
             }
         }
 
+        private Task _SelectedTask;
+        /// <summary>
+        /// [TODO: CodeDoc]
+        /// </summary>
+        public Task SelectedTask
+        {
+            get
+            {
+                return _SelectedTask;
+            }
+            set
+            {
+                if (_SelectedTask != value)
+                {
+                    _SelectedTask = value;
+                    this.OnPropertyChanged(nameof(SelectedTask));
+                }
+            }
+        }
+
+
         private Goal _SelectedGoal;
         /// <summary>
         /// [TODO: CodeDoc]

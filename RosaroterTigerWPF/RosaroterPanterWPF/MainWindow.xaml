@@ -26,9 +26,9 @@
         </Grid.ColumnDefinitions>
 
 
-        
+            <Label Content="{Binding SelectedTask}" />
 
-        <Label x:Name="HomeButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" RenderTransformOrigin="-0.082,0.52" Height="40" BorderBrush="{x:Null}" MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave" Opacity="0.5" MouseUp="LoadHomePage">
+            <Label x:Name="HomeButton" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Margin="10,10,0,0" RenderTransformOrigin="-0.082,0.52" Height="40" BorderBrush="{x:Null}" MouseEnter="HomeButton_MouseEnter" MouseLeave="HomeButton_MouseLeave" Opacity="0.5" MouseUp="LoadHomePage">
             <Label.Background>
                 <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/home.png"/>
             </Label.Background>
