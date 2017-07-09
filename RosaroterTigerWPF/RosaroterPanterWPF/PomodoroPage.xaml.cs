@@ -98,7 +98,7 @@ namespace RosaroterTigerWPF
 
         private void EndButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            new PopUp().Show();
+            new AddComment().Show();
         }
 
         private void TextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
