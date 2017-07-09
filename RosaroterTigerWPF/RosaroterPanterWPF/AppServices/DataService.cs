@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 using RosaroterTigerWPF.Models;
+using System.Collections.Generic;
 
 namespace RosaroterTigerWPF
 {
@@ -68,6 +69,13 @@ namespace RosaroterTigerWPF
 
                 if (_days == null) _days = new ObservableCollection<Day>();
 
+                if (!CorrectOrderOfDays())
+                {
+                    OrderDays();
+                }
+
+                ShrinkDays();
+
                 return _days;
             }
             set
@@ -109,12 +117,19 @@ namespace RosaroterTigerWPF
 
         private static void ShrinkGoals()
         {
-            for(int i = 0; i< Goals.Count; i++)
+            for(int i = 0; i< _goals.Count; i++)
             {
+                if(_goals[i].TimeOfTheLastCompletedTask > DateTime.Now.AddDays(7.0))
+                {
+                    _goals.RemoveAt(i);
+                    i--;
+                }
             }
-
         }
 
+        /// <summary>
+        /// Reduces the number of days by removing the day at index 0.
+        /// </summary>
         private static void ShrinkDays()
         {
             while(Days.Count > 7)
@@ -123,6 +138,10 @@ namespace RosaroterTigerWPF
             }
         }
 
+        /// <summary>
+        /// Checks if the order of day is correct (from oldest at index 0 to latest in index 1).
+        /// </summary>
+        /// <returns>If order is correct.</returns>
         private static bool CorrectOrderOfDays()
         {
             Day dayBefore = null;
@@ -140,9 +159,14 @@ namespace RosaroterTigerWPF
             return true;
         }
 
+        /// <summary>
+        /// Sorts days.
+        /// </summary>
         private static void OrderDays()
         {
-
+            List<Day> sort = new List<Day>(_days);
+            sort.Sort();
+            _days = new ObservableCollection<Day>(sort);
         }
 
         /// <summary>
