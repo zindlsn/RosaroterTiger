@@ -156,6 +156,5 @@ namespace RosaroterTigerWPF.ViewModels
                 return string.Empty;
             }
         }
-
     }
 }
