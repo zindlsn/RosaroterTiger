@@ -60,6 +60,24 @@ namespace RosaroterTigerWPF.Models
             info.AddValue("ROTDay_CompletedTasks", CompletedTasks, typeof(ObservableCollection<Task>));
             info.AddValue("ROTDay_TimeSpentWorking", TimeSpentWorking);
         }
+
+        public override string ToString()
+        {
+            string ret = "Completed Goals: \n";
+
+            foreach(string s in CompletedGoals)
+            {
+                ret += "- " + s + "\n";
+            }
+
+            ret += "Tasks: \n";
+            foreach(Task s in CompletedTasks)
+            {
+                ret += "- " + s.Name + "\n";
+            }
+
+            return ret;
+        }
     }
 
     [Serializable]
@@ -74,6 +92,9 @@ namespace RosaroterTigerWPF.Models
         public string Comments { get; set; }
 
         public Color Color { get; set; }
+
+        public Day() : this(DateTime.MaxValue, null, String.Empty, Color.Colors["White"])
+        { }
 
         public Day(DateTime dateTime, ResultOfTheDay results, string comments, Color color)
         {
