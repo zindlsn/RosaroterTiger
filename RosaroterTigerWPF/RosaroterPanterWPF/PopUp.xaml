@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RosaroterTigerWPF"
         mc:Ignorable="d"
-        Title="PopUp" Height="300" Width="300">
-    <Grid>
-		<TextBox HorizontalAlignment="Center" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Center" Width="300" Height="200" Margin="98,71,94,198"/>
-	</Grid>
+        Title="PopUp" Height="275" Width="300">
+    <StackPanel>
+        <StackPanel HorizontalAlignment="Left" Height="200" VerticalAlignment="Top" Width="300">
+            <Label Content="Please enter a comment about your day:" FontFamily="Berlin Sans FB"/>
+            <TextBox Height="174" TextWrapping="Wrap" Margin="10,0,20,0"/>
+        </StackPanel>
+        <Label Content="Submit" Margin="50,5,50,0" MouseUp="Submit" HorizontalContentAlignment="Center" BorderBrush="Black" ClipToBounds="True" BorderThickness="1"/>
+    </StackPanel>
+
 </Window>

@@ -23,5 +23,12 @@ namespace RosaroterTigerWPF
 		{
 			InitializeComponent();
 		}
+
+        private void Submit(object sender, EventArgs e)
+        {
+            new ColorPicker().Show();
+            this.Close();
+        }
+            
 	}
 }

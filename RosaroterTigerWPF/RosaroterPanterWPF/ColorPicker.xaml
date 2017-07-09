@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RosaroterTigerWPF"
         xmlns:vm="clr-namespace:RosaroterTigerWPF.ViewModels"
         mc:Ignorable="d"
-        Title="ColorPicker" Height="180" Width="160" ResizeMode="NoResize">
+        Title="ColorPicker" Height="190" Width="170" ResizeMode="NoResize">
     <Window.DataContext>
         <vm:ColorPickerViewModel x:Name="model"/>
     </Window.DataContext>
