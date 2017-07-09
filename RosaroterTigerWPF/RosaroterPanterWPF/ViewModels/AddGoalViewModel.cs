@@ -47,10 +47,12 @@ namespace RosaroterTigerWPF.ViewModels
 
         public void SaveGoal()
         {
-            DataService.Goals.Add(new Goal()
+            Goal newGoal = new Goal()
             {
                 Name = this.GoalTitle
-            });
+            };
+            DataService.Goals.Add(newGoal);
+            DataService.SaveEverything();
         }
     }
 }
