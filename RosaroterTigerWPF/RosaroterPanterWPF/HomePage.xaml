@@ -32,30 +32,16 @@
                     <ColumnDefinition Width="14*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <ListView 
-                  HorizontalAlignment="Stretch"
-                  SelectionMode="Single"
-                  SelectedItem="{Binding SelectedGoal, Mode=TwoWay}"
-                  ItemsSource="{Binding Goals}"
-                  Margin="0,0,0,0"
-                  Grid.Column="0"
-                  ScrollViewer.VerticalScrollBarVisibility="Visible"
-                  SelectedIndex="0"
-                  >
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Margin="0,4,0,4">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBox Text="{Binding Name}" Grid.Column="0" Grid.Row="0"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                <TreeView ItemsSource="{Binding Goals}">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate DataType="local:ProductCategory" ItemsSource="{Binding Tasks}">
+                            <TextBlock Text="{Binding Name}"/>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+
+
+               
                 <Label x:Name="AddButton" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseUp="AddButton_MouseUp" MouseEnter="AddButton_MouseEnter" MouseLeave="AddButton_MouseLeave">
                     <Label.Background>
                         <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Drawing.png"/>
