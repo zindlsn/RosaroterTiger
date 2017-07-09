@@ -161,7 +161,7 @@ namespace RosaroterTigerWPF.ViewModels
         {
             if (DataService.Days.Count - 1 >= 0 && day > 0)
             {
-                return DataService.Days[DataService.Days.Count - day].DateTime.ToString();
+                return DataService.Days[DataService.Days.Count - day].Weekday;
             }
             else
             {
