@@ -256,7 +256,9 @@ namespace RosaroterTigerWPF.ViewModels
         public void UpdateTimerView(int seconds)
         {
             TimerMinutes = ((seconds % 3600) / 60).ToString() ;
+            TimerMinutes = (int.Parse(TimerMinutes)).ToString("00");
             TimerSeconds = (seconds % 60).ToString();
+            TimerSeconds = (int.Parse(TimerSeconds)).ToString("00");
         }
 
 
