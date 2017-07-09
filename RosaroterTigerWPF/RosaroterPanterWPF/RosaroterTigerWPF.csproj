@@ -107,6 +107,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="ViewModels\ColorPickerViewModel.cs" />
     <Compile Include="ViewModels\EditGoalViewModel.cs" />
     <Compile Include="ViewModels\ReviewViewModel.cs" />
     <Page Include="MainWindow.xaml">
