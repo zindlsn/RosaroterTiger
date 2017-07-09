@@ -79,7 +79,7 @@ namespace RosaroterTigerWPF
 
 		private void StartTask_MouseLeave(object sender, EventArgs e)
 		{
-			treeView.StartTask.Opacity = .5;
+			StartTask.Opacity = .5;
 		}
 
 		private void EndButton_MouseEnter(object sender, EventArgs e)
