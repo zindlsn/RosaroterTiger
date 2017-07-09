@@ -23,7 +23,6 @@ namespace RosaroterTigerWPF
         public ReviewPage()
         {
             InitializeComponent();
-			
         }
 
     }
