@@ -1,0 +1,19 @@
+﻿<Window x:Class="RosaroterTigerWPF.AddComment"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RosaroterTigerWPF"
+        xmlns:vm="clr-namespace:RosaroterTigerWPF.ViewModels"
+        mc:Ignorable="d"
+        Title="AddComment" Height="287.637" Width="342.858">
+    <Window.DataContext>
+        <vm:AddCommentViewModel x:Name="model"/>
+    </Window.DataContext>
+    <Grid>
+        <Label Content="Your comment for the day:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Text}" Margin="10,41,10,35" TextWrapping="Wrap"/>
+        <Button Click="Button_Click" Content="Finish" HorizontalAlignment="Left" Margin="10,227,0,0" VerticalAlignment="Top" Width="315"/>
+
+    </Grid>
+</Window>

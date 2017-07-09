@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddComment.xaml.cs">
+      <DependentUpon>AddComment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddGoalWindow.xaml.cs">
       <DependentUpon>AddGoalWindow.xaml</DependentUpon>
     </Compile>
@@ -74,9 +77,14 @@
       <DependentUpon>ReviewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Day.cs" />
+    <Compile Include="ViewModels\AddCommentViewModel.cs" />
     <Compile Include="ViewModels\AddGoalViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="Models\Task.cs" />
+    <Page Include="AddComment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AddGoalWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

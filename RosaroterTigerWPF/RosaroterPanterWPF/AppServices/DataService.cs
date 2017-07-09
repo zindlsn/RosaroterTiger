@@ -93,6 +93,7 @@ namespace RosaroterTigerWPF
         /// </summary>
         public static Day Today
         {
+            // todo: give functions to define a new day or begin a new one.
             get
             {
                 DateTime time = DateTime.Now;
