@@ -38,11 +38,10 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel x:Name="Day0" Grid.Column="0" Background="#FFD4FFD6">
                     <Label Content="July 8, 2017" FontSize="18"/>
-                    <WrapPanel>
-                        <Label Content="Comment: Had a surprise meeting, couldn't finish everything."/>
-                    </WrapPanel>
-                    <Label Content="Label"/>
-                    <Label Content="Label"/>
+                    <TextBlock TextWrapping="Wrap" Text="Comment: Had a surprise meeting, couldn't finish everything." Margin="0, 0, 0, 10"/>
+                    <TextBlock TextWrapping="Wrap" Text="Pomodori Completed: 5" Margin="0, 0, 0, 10"/>
+                    <TextBlock TextWrapping="Wrap" Text="Tasks Completed" Margin="0, 0, 0, 5"/>
+                    
                 </StackPanel>
                 <StackPanel x:Name="Day1" Grid.Column="1" Background="#FFC7CFFF">
 
