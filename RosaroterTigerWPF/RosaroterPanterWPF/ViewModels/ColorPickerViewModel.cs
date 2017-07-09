@@ -10,7 +10,7 @@ namespace RosaroterTigerWPF.ViewModels
     {
         public void PickColor(Color color)
         {
-
+            DataService.Today.Color = color;
         }
     }
 }

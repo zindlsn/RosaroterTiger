@@ -26,7 +26,7 @@ namespace RosaroterTigerWPF.Models
         /// <summary>
         /// Default Constuctor
         /// </summary>
-        public ResultOfTheDay() : this(null, null, 0.0)
+        public ResultOfTheDay() : this(new ObservableCollection<string>(), new ObservableCollection<Task>(), 0.0)
         { }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace RosaroterTigerWPF.Models
         /// <param name="completedGoals">The names of the completed Goals of the day.</param>
         /// <param name="completedTasks">The tasks completed this day.</param>
         /// <param name="timeSpentWorking">The time spent working on that day.</param>
-        public ResultOfTheDay(ObservableCollection<String> completedGoals, ObservableCollection<Task> completedTasks, double timeSpentWorking)
+        public ResultOfTheDay(ObservableCollection<string> completedGoals, ObservableCollection<Task> completedTasks, double timeSpentWorking)
         {
             CompletedGoals = completedGoals;
             CompletedTasks = completedTasks;
