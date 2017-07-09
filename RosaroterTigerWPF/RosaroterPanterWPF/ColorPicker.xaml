@@ -4,8 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RosaroterTigerWPF"
+        xmlns:vm="clr-namespace:RosaroterTigerWPF.ViewModels"
         mc:Ignorable="d"
         Title="ColorPicker" Height="180" Width="160" ResizeMode="NoResize">
+    <Window.DataContext>
+        <vm:ColorPickerViewModel x:Name="model"/>
+    </Window.DataContext>
     <Grid>
         <Button x:Name="PastRed" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="40" Height="40" Background="#FFF0B7B7" Click="Button_Click"/>
         <Button x:Name="PastBrown" Content="" HorizontalAlignment="Left" Margin="55,10,0,0" VerticalAlignment="Top" Width="40" Height="40" Background="#FFF0D3B7" Click="PastBrown_Click"/>
