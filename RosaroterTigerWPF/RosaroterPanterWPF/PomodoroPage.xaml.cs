@@ -25,9 +25,6 @@ namespace RosaroterTigerWPF
         {
             InitializeComponent();
         }
-
-
-
         
         private void StartButton_MouseEnter(object sender, EventArgs e)
         {
@@ -66,7 +63,15 @@ namespace RosaroterTigerWPF
         {
             DeleteButton.Opacity = .5;
         }
+		private void EndButton_MouseEnter(object sender, EventArgs e)
+		{
+			EndButton.Opacity = 1;
+		}
 
+		private void EndButton_MouseLeave(object sender, EventArgs e)
+		{
+			EndButton.Opacity = .5;
+		}
 		private void StartButton_MouseUp(object sender, MouseButtonEventArgs e)
 		{
 			model.StartTimer();
