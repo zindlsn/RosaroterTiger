@@ -33,6 +33,14 @@ namespace RosaroterTigerWPF.ViewModels
             }
         }
 
+        public Color Day1Color
+        {
+            get
+            {
+                return GetColorOf(1);
+            }
+        }
+
         public string Day2Weekday
         {
             get
@@ -52,6 +60,13 @@ namespace RosaroterTigerWPF.ViewModels
             get
             {
                 return GetCommentOf(2);
+            }
+        }
+        public Color Day2Color
+        {
+            get
+            {
+                return GetColorOf(2);
             }
         }
 
@@ -76,6 +91,13 @@ namespace RosaroterTigerWPF.ViewModels
                 return GetCommentOf(1);
             }
         }
+        public Color Day3Color
+        {
+            get
+            {
+                return GetColorOf(3);
+            }
+        }
 
         public string Day4Weekday
         {
@@ -98,6 +120,13 @@ namespace RosaroterTigerWPF.ViewModels
                 return GetCommentOf(1);
             }
         }
+        public Color Day4Color
+        {
+            get
+            {
+                return GetColorOf(4);
+            }
+        }
 
         public string Day5Weekday
         {
@@ -118,6 +147,13 @@ namespace RosaroterTigerWPF.ViewModels
             get
             {
                 return GetCommentOf(1);
+            }
+        }
+        public Color Day5Color
+        {
+            get
+            {
+                return GetColorOf(5);
             }
         }
 
@@ -154,6 +190,18 @@ namespace RosaroterTigerWPF.ViewModels
             else
             {
                 return string.Empty;
+            }
+        }
+
+        private Color GetColorOf(int day)
+        {
+            if (DataService.Days.Count - 1 >= 0)
+            {
+                return DataService.Days[DataService.Days.Count - 1].Color;
+            }
+            else
+            {
+                return Color.Colors["Black"];
             }
         }
     }
