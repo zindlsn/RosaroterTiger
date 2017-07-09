@@ -439,6 +439,11 @@ namespace RosaroterTigerWPF.ViewModels
 
         }
 
+        public void SaveEditedTasks()
+        {
+           
+        }
+
 
 
     }

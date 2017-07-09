@@ -35,52 +35,51 @@
 
 		<Grid x:Name="ContentGrid" Grid.Column="3" Grid.Row="1">
 
-			<Grid Grid.Row="1">
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="14*" />
-					<ColumnDefinition Width="*" />
-				</Grid.ColumnDefinitions>
-				<ListView x:Name="OrderStatusList" 
-                  HorizontalAlignment="Stretch"
-                  SelectionMode="Single"
-                  ItemsSource="{Binding Milestones}"
-                  Margin="0,0,0,0"
-                  Grid.Column="0"
-                  ScrollViewer.VerticalScrollBarVisibility="Visible"
-                  >
-					<ListView.ItemTemplate>
-						<DataTemplate>
-							<Grid Margin="0,4,0,4">
-								<Grid.RowDefinitions>
-									<RowDefinition Height="Auto" />
-									<RowDefinition Height="Auto" />
-									<RowDefinition Height="Auto" />
-								</Grid.RowDefinitions>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="Auto"/>
-									<ColumnDefinition Width="*"/>
-								</Grid.ColumnDefinitions>
-							</Grid>
-						</DataTemplate>
-					</ListView.ItemTemplate>
-				</ListView>
-				<Label x:Name="AddButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseEnter="AddButton_MouseEnter" MouseLeave="AddButton_MouseLeave">
-					<Label.Background>
-						<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Drawing.png"/>
-					</Label.Background>
-				</Label>
-				<Label x:Name="EditButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,40,0,0" BorderBrush="{x:Null}" MouseEnter="EditButton_MouseEnter" MouseLeave="EditButton_MouseLeave">
-					<Label.Background>
-						<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/edit.png"/>
-					</Label.Background>
-				</Label>
-				<Label x:Name="DeleteButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,75,0,0" BorderBrush="{x:Null}" MouseEnter="DeleteButton_MouseEnter" MouseLeave="DeleteButton_MouseLeave">
-					<Label.Background>
-						<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/bin.png"/>
-					</Label.Background>
-				</Label>
-			</Grid>
-		</Grid>
-		<StackPanel/>
-	</Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="14*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TreeView ItemsSource="{Binding Goals}" Grid.Column="0" SelectedItemChanged="TreeView_SelectedItemChanged">
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Tasks}">
+                                <TextBox Text="{Binding Name}"  />
+                                <HierarchicalDataTemplate.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBox Text="{Binding Name, Mode=TwoWay}" Grid.Column="0"></TextBox>
+                                            <Label x:Name="CheckTask" Content="Done" Grid.Column="1" MouseUp="CheckTask_MouseUp"></Label>
+                                            <Label x:Name="StartTask" Content="Start" Grid.Column="2" MouseUp="StartTask_MouseUp"></Label>
+                                        </Grid>
+                                    </DataTemplate>
+                                    
+                                </HierarchicalDataTemplate.ItemTemplate>
+
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                    <Label x:Name="AddButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseEnter="AddButton_MouseEnter" MouseLeave="AddButton_MouseLeave">
+                        <Label.Background>
+                            <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Drawing.png"/>
+                        </Label.Background>
+                    </Label>
+                    <Label x:Name="EditButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,40,0,0" BorderBrush="{x:Null}" MouseUp="EditButton_MouseUp" MouseEnter="EditButton_MouseEnter" MouseLeave="EditButton_MouseLeave">
+                        <Label.Background>
+                            <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/edit.png"/>
+                        </Label.Background>
+                    </Label>
+                    <Label x:Name="DeleteButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,75,0,0" BorderBrush="{x:Null}" MouseEnter="DeleteButton_MouseEnter" MouseLeave="DeleteButton_MouseLeave">
+                        <Label.Background>
+                            <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/bin.png"/>
+                        </Label.Background>
+                    </Label>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
 </Page>

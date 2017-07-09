@@ -14,7 +14,7 @@ namespace RosaroterTigerWPF.ViewModels
     {
         public EditGoalViewModel()
         {
-            this.GoalTitle = CacheService.CurrentGoal.Name;
+
         }
         public string GoalTitle { get; set; }
 

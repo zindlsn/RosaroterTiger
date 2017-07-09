@@ -71,5 +71,29 @@ namespace RosaroterTigerWPF
             editWindow.Show();
 
         }
+
+        private void TreeView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void HierarchicalDataTemplate_Selected(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void OnItemMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+           
+        }
+
+        TreeViewItem TryGetClickedItem(TreeView treeView, MouseButtonEventArgs e)
+        {
+            var hit = e.OriginalSource as DependencyObject;
+            while (hit != null && !(hit is TreeViewItem))
+                hit = VisualTreeHelper.GetParent(hit);
+
+            return hit as TreeViewItem;
+        }
     }
 }

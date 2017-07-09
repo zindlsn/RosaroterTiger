@@ -32,16 +32,38 @@
                     <ColumnDefinition Width="14*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TreeView ItemsSource="{Binding Goals}">
+                <TreeView ItemsSource="{Binding Goals}"
+                          Grid.Column="0" 
+                          MouseDoubleClick="TreeView_MouseDoubleClick"
+                          x:Name="goalView"
+                          >
+                    <TreeView.ItemContainerStyle>
+                        <Style TargetType="{x:Type TreeViewItem}">
+                            <EventSetter Event="MouseDoubleClick" Handler="OnItemMouseDoubleClick" />
+                        </Style>
+                    </TreeView.ItemContainerStyle>
                     <TreeView.ItemTemplate>
-                        <HierarchicalDataTemplate DataType="local:ProductCategory" ItemsSource="{Binding Tasks}">
-                            <TextBlock Text="{Binding Name}"/>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Tasks}"  >
+                            <TextBox Text="{Binding Name}" />
+                            <HierarchicalDataTemplate.ItemTemplate >
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox Text="{Binding Name}" Grid.Column="0"></TextBox>
+                                    </Grid>
+                                </DataTemplate>
+
+                            </HierarchicalDataTemplate.ItemTemplate>
+
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
 
 
-               
+
                 <Label x:Name="AddButton" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseUp="AddButton_MouseUp" MouseEnter="AddButton_MouseEnter" MouseLeave="AddButton_MouseLeave">
                     <Label.Background>
                         <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Drawing.png"/>

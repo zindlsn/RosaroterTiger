@@ -100,5 +100,41 @@ namespace RosaroterTigerWPF
         {
 
         }
+
+        private void TextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        int selectedlabel =1;
+
+        private void CheckTask_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            selectedlabel = 2;
+        }
+
+        private void StartTask_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            selectedlabel = 3;
+        }
+
+        private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if(selectedlabel == 3)
+            {
+                MessageBox.Show("Done");
+
+            }
+            else if(selectedlabel ==2)
+            {
+                MessageBox.Show("Start");
+
+            }
+           // MessageBox.Show(((Task)e.NewValue).ToString());
+        }
+
+        private void EditButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
