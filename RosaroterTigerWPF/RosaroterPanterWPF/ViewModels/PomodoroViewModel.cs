@@ -268,7 +268,9 @@ namespace RosaroterTigerWPF.ViewModels
             Milestones = DataService.Goals;
         }
 
+#pragma warning disable CS0649 // Field 'PomodoroViewModel.navigator' is never assigned to, and will always have its default value null
         private static NavigationService navigator;
+#pragma warning restore CS0649 // Field 'PomodoroViewModel.navigator' is never assigned to, and will always have its default value null
 
         /// <summary>
         /// Navigates to the ComodoroView.

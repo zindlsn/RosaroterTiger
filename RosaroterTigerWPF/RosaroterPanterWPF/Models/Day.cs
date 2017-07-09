@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RosaroterTigerWPF.Models
 {
@@ -39,7 +35,7 @@ namespace RosaroterTigerWPF.Models
         /// <param name="completedGoals">The names of the completed Goals of the day.</param>
         /// <param name="completedTasks">The tasks completed this day.</param>
         /// <param name="timeSpentWorking">The time spent working on that day.</param>
-        public ResultOfTheDay(ObservableCollection<String> completedGoals, ObservableCollection<Task> completedTasks, double timeSpentWorking)
+        protected ResultOfTheDay(ObservableCollection<String> completedGoals, ObservableCollection<Task> completedTasks, double timeSpentWorking)
         {
             CompletedGoals = completedGoals;
             CompletedTasks = completedTasks;
@@ -51,14 +47,14 @@ namespace RosaroterTigerWPF.Models
         /// </summary>
         /// <param name="info"></param>
         /// <param name="context"></param>
-        public ResultOfTheDay(SerializationInfo info, StreamingContext context)
+        protected ResultOfTheDay(SerializationInfo info, StreamingContext context)
         {
             CompletedGoals = (ObservableCollection<string>)info.GetValue("ROTDay_CompletedGoals", typeof(ObservableCollection<string>));
             CompletedTasks = (ObservableCollection<Task>)info.GetValue("ROTDay_CompletedTasks", typeof(ObservableCollection<Task>));
             TimeSpentWorking = info.GetDouble("ROTDay_TimeSpentWorking");
         }
 
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        public virtual void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("ROTDay_CompletedGoals", CompletedGoals, typeof(ObservableCollection<string>));
             info.AddValue("ROTDay_CompletedTasks", CompletedTasks, typeof(ObservableCollection<Task>));
@@ -88,7 +84,7 @@ namespace RosaroterTigerWPF.Models
             SetWeekdayString();
         }
 
-        public Day(SerializationInfo info, StreamingContext context)
+        protected Day(SerializationInfo info, StreamingContext context)
         {
             DateTime = info.GetDateTime("Day_DateTimeCompleted");
             Results = (ResultOfTheDay) info.GetValue("Day_Results", typeof(ResultOfTheDay));
@@ -98,7 +94,7 @@ namespace RosaroterTigerWPF.Models
             SetWeekdayString();
         }
 
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        public virtual void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("Day_DateTime", DateTime);
             info.AddValue("Day_Results", Results, typeof(ResultOfTheDay));
