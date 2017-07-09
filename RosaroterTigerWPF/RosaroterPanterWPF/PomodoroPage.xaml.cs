@@ -63,7 +63,15 @@ namespace RosaroterTigerWPF
         {
             DeleteButton.Opacity = .5;
         }
+		private void EndButton_MouseEnter(object sender, EventArgs e)
+		{
+			EndButton.Opacity = 1;
+		}
 
+		private void EndButton_MouseLeave(object sender, EventArgs e)
+		{
+			EndButton.Opacity = .5;
+		}
 		private void StartButton_MouseUp(object sender, MouseButtonEventArgs e)
 		{
 			model.StartTimer();
@@ -76,6 +84,11 @@ namespace RosaroterTigerWPF
 				StartButton.Background = new ImageBrush(new BitmapImage(new Uri("pack://siteoforigin:,,,/Resources/Play.png")));
 			}
 		}
-		
+		private void EndButton_MouseUp(object sender, MouseButtonEventArgs e)
+		{
+
+			new PopUp().Show();
+
+		}
 	}
 }
