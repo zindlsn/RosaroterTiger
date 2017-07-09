@@ -292,7 +292,29 @@ namespace RosaroterTigerWPF
         {
             var ret = new ObservableCollection<Day>();
 
-            // todo
+
+            ResultOfTheDay result1 = new ResultOfTheDay();
+            result1.CompletedTasks.Add(new Task("Task 1"));
+            result1.CompletedTasks.Add(new Task("Task 2"));
+            result1.CompletedGoals.Add("Goal 1");
+            result1.CompletedGoals.Add("Goal 2");
+            result1.CompletedGoals.Add("Goal 3");
+            result1.TimeSpentWorking = 20.0;
+
+            Day test1 = new Day(new DateTime(2000, 10, 10), result1, "Ein echt guter Kommentar 1", Color.Colors["Yellow"]);
+
+            ResultOfTheDay result2 = new ResultOfTheDay();
+            result2.CompletedTasks.Add(new Task("Another Task1"));
+            result2.CompletedTasks.Add(new Task("Another Task2"));
+            result2.CompletedGoals.Add("Another Goal1");
+            result2.CompletedGoals.Add("Another Goal2");
+            result2.CompletedGoals.Add("Another Goal3");
+            result2.TimeSpentWorking = 10.0;
+
+            Day test2 = new Day(new DateTime(2010, 10, 10), result2, "Ein weiterer guter Kommentar", Color.Colors["Orange"]);
+
+            ret.Add(test1);
+            ret.Add(test2);
             
             return ret;
         }
