@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 
 namespace RosaroterTigerWPF
 {
-  
+
 
     /// <summary>
     /// Class representing a task.
@@ -60,7 +60,7 @@ namespace RosaroterTigerWPF
         protected Task(SerializationInfo info, StreamingContext context)
         {
             _completed = info.GetBoolean("Task_Completed");
-            Color = (Color) info.GetValue("Task_Color", typeof(Color));
+            Color = (Color)info.GetValue("Task_Color", typeof(Color));
             Description = info.GetString("Task_Description");
             Name = info.GetString("Task_Name");
             TotalTime = info.GetDouble("Task_TotalTime");
@@ -162,12 +162,22 @@ namespace RosaroterTigerWPF
         public Goal()
         {
             Completed = false;
+            Name = string.Empty;
             _tasks = new ObservableCollection<Task>();
             _completedChanged = (object sender, PropertyChangedEventArgs e) =>
             {
                 if (e.PropertyName.Equals("Completed"))
                     Completed = CheckForCompletion();
             };
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="name">The name of the goal.</param>
+        public Goal(string name) : this()
+        {
+            Name = name;
         }
 
         /// <summary>
@@ -219,9 +229,9 @@ namespace RosaroterTigerWPF
                 if (!Completed || Tasks.Length == 0) return null;
 
                 Task mostRecentlyCompletedTask = Tasks[0];
-                foreach(Task t in Tasks)
+                foreach (Task t in Tasks)
                 {
-                    if(t.CompletionDate > mostRecentlyCompletedTask.CompletionDate)
+                    if (t.CompletionDate > mostRecentlyCompletedTask.CompletionDate)
                     {
                         mostRecentlyCompletedTask = t;
                     }
@@ -230,7 +240,7 @@ namespace RosaroterTigerWPF
                 return mostRecentlyCompletedTask.CompletionDate;
             }
         }
-        
+
         /// <summary>
         /// Adds a task.
         /// </summary>

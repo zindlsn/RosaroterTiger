@@ -25,24 +25,6 @@ namespace RosaroterTigerWPF
             InitializeComponent();
         }
 
-        private void PomodoroButton_MouseEnter(object sender, EventArgs e)
-        {
-            PomodoroButton.Opacity = 1;
-        }
-
-        private void PomodoroButton_MouseLeave(object sender, EventArgs e)
-        {
-            PomodoroButton.Opacity = .5;
-        }
-        private void StartButton_MouseEnter(object sender, EventArgs e)
-        {
-            StartButton.Opacity = 1;
-        }
-
-        private void StartButton_MouseLeave(object sender, EventArgs e)
-        {
-            StartButton.Opacity = .5;
-        }
         private void AddButton_MouseEnter(object sender, EventArgs e)
         {
             AddButton.Opacity = 1;

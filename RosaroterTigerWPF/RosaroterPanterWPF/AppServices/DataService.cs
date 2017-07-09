@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 using RosaroterTigerWPF.Models;
+using System.Collections.Generic;
 
 namespace RosaroterTigerWPF
 {
@@ -48,6 +49,8 @@ namespace RosaroterTigerWPF
                 // when goals are still null then create a new Collection
                 if (_goals == null) _goals = new ObservableCollection<Goal>();
 
+                ShrinkGoals();
+
                 return _goals;
             }
             set
@@ -69,6 +72,13 @@ namespace RosaroterTigerWPF
                 }
 
                 if (_days == null) _days = new ObservableCollection<Day>();
+
+                if (!CorrectOrderOfDays())
+                {
+                    OrderDays();
+                }
+
+                ShrinkDays();
 
                 return _days;
             }
@@ -100,6 +110,7 @@ namespace RosaroterTigerWPF
             }
         }
 
+
         /// <summary>
         /// Saves goals to goals.sav and days to days.sav
         /// </summary>
@@ -109,14 +120,25 @@ namespace RosaroterTigerWPF
             SerializeDays();
         }
 
+
+        /// <summary>
+        /// Shrinks the goals to only contain the last 7 days
+        /// </summary>
         private static void ShrinkGoals()
         {
-            for(int i = 0; i< Goals.Count; i++)
+            for(int i = 0; i< _goals.Count; i++)
             {
+                if(_goals[i].TimeOfTheLastCompletedTask > DateTime.Now.AddDays(7.0))
+                {
+                    _goals.RemoveAt(i);
+                    i--;
+                }
             }
-
         }
 
+        /// <summary>
+        /// Reduces the number of days by removing the day at index 0.
+        /// </summary>
         private static void ShrinkDays()
         {
             while(Days.Count > 7)
@@ -125,6 +147,10 @@ namespace RosaroterTigerWPF
             }
         }
 
+        /// <summary>
+        /// Checks if the order of day is correct (from oldest at index 0 to latest in index 1).
+        /// </summary>
+        /// <returns>If order is correct.</returns>
         private static bool CorrectOrderOfDays()
         {
             Day dayBefore = null;
@@ -142,9 +168,14 @@ namespace RosaroterTigerWPF
             return true;
         }
 
+        /// <summary>
+        /// Sorts days.
+        /// </summary>
         private static void OrderDays()
         {
-
+            List<Day> sort = new List<Day>(_days);
+            sort.Sort();
+            _days = new ObservableCollection<Day>(sort);
         }
 
         /// <summary>
@@ -269,7 +300,29 @@ namespace RosaroterTigerWPF
         {
             var ret = new ObservableCollection<Day>();
 
-            // todo
+
+            ResultOfTheDay result1 = new ResultOfTheDay();
+            result1.CompletedTasks.Add(new Task("Task 1"));
+            result1.CompletedTasks.Add(new Task("Task 2"));
+            result1.CompletedGoals.Add("Goal 1");
+            result1.CompletedGoals.Add("Goal 2");
+            result1.CompletedGoals.Add("Goal 3");
+            result1.TimeSpentWorking = 20.0;
+
+            Day test1 = new Day(new DateTime(2000, 10, 10), result1, "Ein echt guter Kommentar 1", Color.Colors["Yellow"]);
+
+            ResultOfTheDay result2 = new ResultOfTheDay();
+            result2.CompletedTasks.Add(new Task("Another Task1"));
+            result2.CompletedTasks.Add(new Task("Another Task2"));
+            result2.CompletedGoals.Add("Another Goal1");
+            result2.CompletedGoals.Add("Another Goal2");
+            result2.CompletedGoals.Add("Another Goal3");
+            result2.TimeSpentWorking = 10.0;
+
+            Day test2 = new Day(new DateTime(2010, 10, 10), result2, "Ein weiterer guter Kommentar", Color.Colors["Orange"]);
+
+            ret.Add(test1);
+            ret.Add(test2);
             
             return ret;
         }

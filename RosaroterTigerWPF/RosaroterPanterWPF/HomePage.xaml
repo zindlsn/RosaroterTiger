@@ -27,12 +27,6 @@
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="5*" />
             </Grid.RowDefinitions>
-            <Label x:Name="PomodoroButton" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, 20" Width="140" Height="140" Opacity="0.75" BorderBrush="{x:Null}" MouseEnter="PomodoroButton_MouseEnter" MouseLeave="PomodoroButton_MouseLeave">
-                <Label.Background>
-                    <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/tomato.png"/>
-                </Label.Background>
-            </Label>
-            <Label x:Name="StartButton" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontFamily="Berlin Sans FB"  BorderBrush="{x:Null}" MouseEnter="StartButton_MouseEnter" MouseLeave="StartButton_MouseLeave" Opacity="0.5"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="14*" />

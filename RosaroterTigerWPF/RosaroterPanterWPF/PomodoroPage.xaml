@@ -7,29 +7,38 @@
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:RosaroterTigerWPF.ViewModels"
         Title="{Binding Title}" Height="720" Width="1280">
-    <Page.DataContext>
-        <vm:PomodoroViewModel />
-    </Page.DataContext>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="8*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="4*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="7*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid x:Name="ContentGrid" Grid.Column="3" Grid.Row="1">
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="14*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <ListView x:Name="OrderStatusList" 
+	<Page.DataContext>
+		<vm:PomodoroViewModel x:Name="model"/>
+	</Page.DataContext>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="8*" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="4*" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="7*" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<TextBlock x:Name="TimeDisplay" Grid.Row="1" Grid.Column="1" Text="{Binding TimerSeconds}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Berlin Sans FB" Margin="196,197,90,313" Width="80" />
+		<TextBlock Grid.Row="1" Grid.Column="1" Text=":" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Berlin Sans FB" RenderTransformOrigin="-1.371,0.594" Margin="175,185,121,325" Width="70" />
+		<TextBlock x:Name="TimeDisplay2" Grid.Row="1" Grid.Column="1" Text="{Binding TimerMinutes}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Berlin Sans FB" RenderTransformOrigin="-1.371,0.594" Margin="103,197,74,313" Width="189" />
+		<Label x:Name="StartButton" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="30" Height="30" BorderBrush="{x:Null}" MouseEnter="StartButton_MouseEnter" MouseLeave="StartButton_MouseLeave" Opacity="0.5" MouseUp="StartButton_MouseUp" >
+			<Label.Background>
+				<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Play.png"/>
+			</Label.Background>
+		</Label>
+		<Grid x:Name="ContentGrid" Grid.Column="3" Grid.Row="1">
+			
+			<Grid Grid.Row="1">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="14*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<ListView x:Name="OrderStatusList" 
                   HorizontalAlignment="Stretch"
                   SelectionMode="Single"
                   ItemsSource="{Binding Milestones}"

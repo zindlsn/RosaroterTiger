@@ -20,7 +20,8 @@ namespace RosaroterTigerWPF
     /// </summary>
     public partial class PomodoroPage : Page
     {
-        public PomodoroPage()
+		private bool PlayActive = false;
+		public PomodoroPage()
         {
             InitializeComponent();
         }
@@ -65,5 +66,19 @@ namespace RosaroterTigerWPF
         {
             DeleteButton.Opacity = .5;
         }
-    }
+
+		private void StartButton_MouseUp(object sender, MouseButtonEventArgs e)
+		{
+			model.StartTimer();
+			if (!PlayActive)
+			{
+				PlayActive = true;
+				StartButton.Background = new ImageBrush(new BitmapImage(new Uri("pack://siteoforigin:,,,/Resources/Pause.png")));
+			} else {
+				PlayActive = false;
+				StartButton.Background = new ImageBrush(new BitmapImage(new Uri("pack://siteoforigin:,,,/Resources/Play.png")));
+			}
+		}
+		
+	}
 }
