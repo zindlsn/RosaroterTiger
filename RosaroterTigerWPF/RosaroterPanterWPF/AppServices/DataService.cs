@@ -142,9 +142,9 @@ namespace RosaroterTigerWPF
         /// </summary>
         private static void ShrinkDays()
         {
-            while(Days.Count > 7)
+            while(_days.Count > 7)
             {
-                Days.RemoveAt(0);
+                _days.RemoveAt(0);
             }
         }
 
@@ -155,7 +155,7 @@ namespace RosaroterTigerWPF
         private static bool CorrectOrderOfDays()
         {
             Day dayBefore = null;
-            foreach(Day d in Days)
+            foreach(Day d in _days)
             {
                 if(dayBefore != null)
                 {
