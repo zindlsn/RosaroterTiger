@@ -218,7 +218,7 @@ namespace RosaroterTigerWPF.ViewModels
         /// </summary>
         private void StartTimer()
         {
-            if (!_IsIdle) { 
+            if (_IsIdle) { 
             this._Timer.Interval = 1000;
             this._Timer.Start();
             this.IsIdle = false;
@@ -303,7 +303,7 @@ namespace RosaroterTigerWPF.ViewModels
             this._Timer.Dispose();
         }
 
-        private string _StartStopButtonText;
+        private string _StartStopButtonText = "Start";
         /// <summary>
         /// [TODO: CodeDoc]
         /// </summary>
@@ -354,7 +354,7 @@ namespace RosaroterTigerWPF.ViewModels
             }
         }
 
-        private bool _IsIdle;
+        private bool _IsIdle = true;
         /// <summary>
         /// [TODO: CodeDoc]
         /// </summary>
