@@ -32,8 +32,10 @@ namespace RosaroterTigerWPF
             ReviewPage = new ReviewPage();
             PomodoroPage = new PomodoroPage();
             MainFrame.NavigationService.Navigate(new HomePage());
-
+            
         }
+
+
 
         private void LoadReviewPage(object sender, EventArgs e)
         {
