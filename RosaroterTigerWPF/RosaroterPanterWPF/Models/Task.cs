@@ -57,7 +57,7 @@ namespace RosaroterTigerWPF
         /// </summary>
         /// <param name="info">The serialization information.</param>
         /// <param name="context">The streaming context.</param>
-        public Task(SerializationInfo info, StreamingContext context)
+        protected Task(SerializationInfo info, StreamingContext context)
         {
             _completed = info.GetBoolean("Task_Completed");
             Color = (Color) info.GetValue("Task_Color", typeof(Color));
@@ -115,7 +115,7 @@ namespace RosaroterTigerWPF
         /// </summary>
         /// <param name="info">The serialization information.</param>
         /// <param name="context">The streaming context.</param>
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        public virtual void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("Task_Completed", _completed, typeof(bool));
             info.AddValue("Task_Color", Color, typeof(Color));
@@ -175,7 +175,7 @@ namespace RosaroterTigerWPF
         /// </summary>
         /// <param name="info">The serialization information.</param>
         /// <param name="context">The streaming context.</param>
-        public Goal(SerializationInfo info, StreamingContext context)
+        protected Goal(SerializationInfo info, StreamingContext context)
         {
             _tasks = (ObservableCollection<Task>)info.GetValue("Ms_Tasks", typeof(ObservableCollection<Task>));
 
@@ -256,7 +256,7 @@ namespace RosaroterTigerWPF
         /// </summary>
         /// <param name="info">The serialization information.</param>
         /// <param name="context">The streaming context.</param>
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        public virtual void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             // calculate completed in the constructor
             // initialise _completed changed in constructor
