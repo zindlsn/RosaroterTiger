@@ -79,6 +79,8 @@ namespace RosaroterTigerWPF
                 }
 
                 ShrinkDays();
+                
+                DataService.Today.Color = Color.Colors["White"];
 
                 return _days;
             }
@@ -103,7 +105,8 @@ namespace RosaroterTigerWPF
                 }
 
                 // today was not found. Create a new day object.
-                Day ret = new Day(time, null, string.Empty,Color.Colors["White"]);
+
+                Day ret = new Day(time, new ResultOfTheDay(), string.Empty,Color.Colors["White"]);
 
                 _days.Add(ret);
 

@@ -13,6 +13,9 @@ namespace RosaroterTigerWPF
     /// </summary>
     public partial class App : Application
     {
+        App()
+        {
+        }
 
     }
 }
