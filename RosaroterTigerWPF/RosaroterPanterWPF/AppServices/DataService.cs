@@ -1,4 +1,4 @@
-﻿#define TESTDATA 
+﻿#define TESTDATA
 
 using System;
 using System.Collections.ObjectModel;
