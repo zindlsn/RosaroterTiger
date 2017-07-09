@@ -54,7 +54,7 @@ namespace RosaroterTigerWPF
         /// </summary>
         /// <param name="info">The serialization information.</param>
         /// <param name="context">The streaming context.</param>
-        public Color(SerializationInfo info, StreamingContext context)
+        protected Color(SerializationInfo info, StreamingContext context)
         {
             R = info.GetByte("R_Color_Value");
             G = info.GetByte("G_Color_Value");
@@ -83,7 +83,7 @@ namespace RosaroterTigerWPF
         /// </summary>
         /// <param name="info">The serialization information.</param>
         /// <param name="context">The streaming context.</param>
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        public virtual void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("R_Color_Value", R, typeof(byte));
             info.AddValue("G_Color_Value", G, typeof(byte));
