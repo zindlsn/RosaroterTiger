@@ -95,5 +95,10 @@ namespace RosaroterTigerWPF
         {
 
         }
+
+        private void EndButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

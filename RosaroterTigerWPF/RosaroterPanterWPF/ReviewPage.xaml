@@ -59,7 +59,7 @@
                         </BulletDecorator.Bullet>
                         <TextBlock TextWrapping="Wrap" Text="Implement save button" Background="{x:Null}" />
                     </BulletDecorator>
-
+                    
 
                 </StackPanel>
                 <StackPanel x:Name="Day1" Grid.Column="1" Background="#FFC7CFFF">
