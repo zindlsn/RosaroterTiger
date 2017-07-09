@@ -46,21 +46,6 @@ namespace RosaroterTigerWPF.ViewModels
             }
         }
 
-        private ICommand _AddGoalCommand;
-        public ICommand AddGoalCommand
-        {
-            get
-            {
-                if (_AddGoalCommand == null)
-                {
-                    _AddGoalCommand = new RelayCommand(
-                        p => true,
-                        p => this.AddGoal());
-                }
-                return _AddGoalCommand;
-            }
-        }
-
         private Goal _SelectedGoal;
         /// <summary>
         /// [TODO: CodeDoc]
