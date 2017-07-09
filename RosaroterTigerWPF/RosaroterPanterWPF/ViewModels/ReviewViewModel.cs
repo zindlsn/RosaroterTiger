@@ -33,7 +33,7 @@ namespace RosaroterTigerWPF.ViewModels
             }
         }
 
-        public Color Day1Color
+        public string Day1Color
         {
             get
             {
@@ -62,7 +62,7 @@ namespace RosaroterTigerWPF.ViewModels
                 return GetCommentOf(2);
             }
         }
-        public Color Day2Color
+        public string Day2Color
         {
             get
             {
@@ -91,7 +91,7 @@ namespace RosaroterTigerWPF.ViewModels
                 return GetCommentOf(1);
             }
         }
-        public Color Day3Color
+        public string Day3Color
         {
             get
             {
@@ -120,7 +120,7 @@ namespace RosaroterTigerWPF.ViewModels
                 return GetCommentOf(1);
             }
         }
-        public Color Day4Color
+        public string Day4Color
         {
             get
             {
@@ -149,7 +149,7 @@ namespace RosaroterTigerWPF.ViewModels
                 return GetCommentOf(1);
             }
         }
-        public Color Day5Color
+        public string Day5Color
         {
             get
             {
@@ -193,15 +193,15 @@ namespace RosaroterTigerWPF.ViewModels
             }
         }
 
-        private Color GetColorOf(int day)
+        private string GetColorOf(int day)
         {
             if (DataService.Days.Count - 1 >= 0 && day > 0)
             {
-                return DataService.Days[DataService.Days.Count - day].Color;
+                return DataService.Days[DataService.Days.Count - day].Color.ToString();
             }
             else
             {
-                return Color.Colors["Black"];
+                return Color.Colors["Black"].ToString();
             }
         }
     }
