@@ -195,13 +195,13 @@ namespace RosaroterTigerWPF.ViewModels
 
         private string GetColorOf(int day)
         {
-            if (DataService.Days.Count - 1 >= 0 && day > 0)
+            if (DataService.Days.Count - 1 >= 0 && day > 0 && DataService.Days[DataService.Days.Count - day].Color != null)
             {
                 return DataService.Days[DataService.Days.Count - day].Color.ToString();
             }
             else
             {
-                return Color.Colors["Black"].ToString();
+                return Color.Colors["White"].ToString();
             }
         }
     }
