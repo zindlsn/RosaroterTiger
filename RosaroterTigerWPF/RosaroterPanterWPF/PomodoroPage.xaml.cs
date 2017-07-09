@@ -25,9 +25,6 @@ namespace RosaroterTigerWPF
         {
             InitializeComponent();
         }
-
-
-
         
         private void StartButton_MouseEnter(object sender, EventArgs e)
         {

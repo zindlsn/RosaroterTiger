@@ -8,20 +8,20 @@
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="HomePage">
-		<Page.DataContext>
-			<vm:ReviewViewModel />
-		</Page.DataContext>
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="*" />
-			<RowDefinition Height="8*" />
-			<RowDefinition Height="*" />
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*" />
-			<ColumnDefinition Width="10*" />
-			<ColumnDefinition Width="*" />
-		</Grid.ColumnDefinitions>
+    <Page.DataContext>
+        <vm:ReviewViewModel />
+    </Page.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         <Grid x:Name="ContentGrid" Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*" />
@@ -36,7 +36,26 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
+                <StackPanel x:Name="Day0" Grid.Column="0" Background="#FFD4FFD6">
+                    <Label Content="July 8, 2017" FontSize="18"/>
+                    <WrapPanel>
+                        <Label Content="Comment: Had a surprise meeting, couldn't finish everything."/>
+                    </WrapPanel>
+                    <Label Content="Label"/>
+                    <Label Content="Label"/>
+                </StackPanel>
+                <StackPanel x:Name="Day1" Grid.Column="1" Background="#FFC7CFFF">
 
+                </StackPanel>
+                <StackPanel x:Name="Day2" Grid.Column="2" Background="#FFFFD4D4">
+
+                </StackPanel>
+                <StackPanel x:Name="Day3" Grid.Column="3" Background="#FFC7CFFF">
+
+                </StackPanel>
+                <StackPanel x:Name="Day4" Grid.Column="4" Background="#FFFFD4D4">
+
+                </StackPanel>
             </Grid>
         </Grid>
 
