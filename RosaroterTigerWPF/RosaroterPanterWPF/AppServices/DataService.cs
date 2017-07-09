@@ -177,9 +177,9 @@ namespace RosaroterTigerWPF
         /// </summary>
         private static void OrderDays()
         {
-            List<Day> sort = new List<Day>(_days);
-            sort.Sort();
-            _days = new ObservableCollection<Day>(sort);
+            //List<Day> sort = new List<Day>(_days);
+            //sort.Sort();
+            //_days = new ObservableCollection<Day>(sort);
         }
 
         /// <summary>
@@ -306,27 +306,62 @@ namespace RosaroterTigerWPF
 
 
             ResultOfTheDay result1 = new ResultOfTheDay();
-            result1.CompletedTasks.Add(new Task("Task 1"));
-            result1.CompletedTasks.Add(new Task("Task 2"));
-            result1.CompletedGoals.Add("Goal 1");
-            result1.CompletedGoals.Add("Goal 2");
-            result1.CompletedGoals.Add("Goal 3");
-            result1.TimeSpentWorking = 20.0;
+            result1.CompletedTasks.Add(new Task("Finish layout"));
+            result1.CompletedTasks.Add(new Task("Fix design inconsistencies"));
+            result1.CompletedTasks.Add(new Task("Clean up my mess"));
+            result1.CompletedGoals.Add("Make something presentable");
+            result1.CompletedGoals.Add("Sleep");
+            result1.CompletedGoals.Add("Eat a lot");
+            result1.TimeSpentWorking = 8.0;
 
-            Day test1 = new Day(new DateTime(2000, 10, 10), result1, "Ein echt guter Kommentar 1", Color.Colors["Yellow"]);
+            Day test1 = new Day(new DateTime(2000, 10, 10), result1, "I hoped to have completed everything today, but it just didn't happen.  Oh well, I had fun!", Color.Colors["Yellow"]);
 
             ResultOfTheDay result2 = new ResultOfTheDay();
-            result2.CompletedTasks.Add(new Task("Another Task1"));
-            result2.CompletedTasks.Add(new Task("Another Task2"));
-            result2.CompletedGoals.Add("Another Goal1");
-            result2.CompletedGoals.Add("Another Goal2");
-            result2.CompletedGoals.Add("Another Goal3");
+            result2.CompletedTasks.Add(new Task("Evaluate project"));
+            result2.CompletedTasks.Add(new Task("Design GUI"));
+            result2.CompletedTasks.Add(new Task("Finish basic layout"));
+            result2.CompletedTasks.Add(new Task("Finish navigation"));
+            result2.CompletedGoals.Add("Pick a project");
             result2.TimeSpentWorking = 10.0;
 
-            Day test2 = new Day(new DateTime(2010, 10, 10), result2, "Ein weiterer guter Kommentar", Color.Colors["Orange"]);
+            Day test2 = new Day(new DateTime(2010, 10, 9), result2, "I had a good start", Color.Colors["Orange"]);
+
+            ResultOfTheDay result3 = new ResultOfTheDay();
+            result3.CompletedTasks.Add(new Task("Another Task1"));
+            result3.CompletedTasks.Add(new Task("Another Task2"));
+            result3.CompletedGoals.Add("Another Goal1");
+            result3.CompletedGoals.Add("Another Goal2");
+            result3.CompletedGoals.Add("Another Goal3");
+            result3.TimeSpentWorking = 10.0;
+
+            Day test3 = new Day(new DateTime(2010, 10, 8), result3, "A really awesome comment, maybe even better than the last comment!", Color.Colors["Orange"]);
+
+            ResultOfTheDay result4 = new ResultOfTheDay();
+            result4.CompletedTasks.Add(new Task("Another Task1"));
+            result4.CompletedTasks.Add(new Task("Another Task2"));
+            result4.CompletedGoals.Add("Another Goal1");
+            result4.CompletedGoals.Add("Another Goal2");
+            result4.CompletedGoals.Add("Another Goal3");
+            result4.TimeSpentWorking = 10.0;
+
+            Day test4 = new Day(new DateTime(2010, 10, 7), result4, "This comment is really good.", Color.Colors["Orange"]);
+
+            ResultOfTheDay result5 = new ResultOfTheDay();
+            result5.CompletedTasks.Add(new Task("Finish layout"));
+            result5.CompletedTasks.Add(new Task("Fix design inconsistencies"));
+            result5.CompletedTasks.Add(new Task("Clean up my mess"));
+            result5.CompletedGoals.Add("Make something presentable");
+            result5.CompletedGoals.Add("Sleep");
+            result5.CompletedGoals.Add("Eat a lot");
+            result5.TimeSpentWorking = 8.0;
+
+            Day test5 = new Day(new DateTime(2010, 10, 6), result5, "I did nothing today!", Color.Colors["Orange"]);
 
             ret.Add(test1);
             ret.Add(test2);
+            ret.Add(test3);
+            ret.Add(test4);
+            ret.Add(test5);
             
             return ret;
         }
