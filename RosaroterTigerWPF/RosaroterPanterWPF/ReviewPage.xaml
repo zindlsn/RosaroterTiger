@@ -37,29 +37,32 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 				<StackPanel x:Name="Day0" Grid.Column="0" Background="{Binding Day1Color}">
-				    <TextBlock TextWrapping="Wrap" Text="Pomodori Completed: 5" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB"/>
-                    <TextBlock TextWrapping="Wrap" Text="Total Time: 2:05" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB"/>
-                    <TextBlock TextWrapping="Wrap" Text="Tasks Completed" Margin="0, 0, 0, 5" FontFamily="Berlin Sans FB"/>
-
-
-					<TextBlock TextWrapping="Wrap" Text="{Binding Day1Weekday}" Margin="0, 0, 0, 10" FontSize="18" FontFamily="Berlin Sans FB"/>
+				   	<TextBlock TextWrapping="Wrap" Text="{Binding Day1Weekday}" Margin="0, 0, 0, 10" FontSize="18" FontFamily="Berlin Sans FB"/>
 					<TextBlock TextWrapping="Wrap" Text="{Binding Day1Results}" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB" />
 					<TextBlock TextWrapping="Wrap" Text="{Binding Day1Comment}" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB"/>
-					<TextBlock TextWrapping="Wrap" Text="Tasks Completed" Margin="0, 0, 0, 5" FontFamily="Berlin Sans FB"/>
+
 
 				</StackPanel>
                 <StackPanel x:Name="Day1" Grid.Column="1" Background="#FFC7CFFF">
-
-                </StackPanel>
+					<TextBlock TextWrapping="Wrap" Text="{Binding Day2Weekday}" Margin="0, 0, 0, 10" FontSize="18" FontFamily="Berlin Sans FB"/>
+					<TextBlock TextWrapping="Wrap" Text="{Binding Day2Results}" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB" />
+					<TextBlock TextWrapping="Wrap" Text="{Binding Day2Comment}" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB"/>
+				</StackPanel>
                 <StackPanel x:Name="Day2" Grid.Column="2" Background="#FFFFD4D4">
-
-                </StackPanel>
+					<TextBlock TextWrapping="Wrap" Text="Thursday" Margin="0, 0, 0, 10" FontSize="18" FontFamily="Berlin Sans FB"/>
+					<TextBlock TextWrapping="Wrap" Text="{Binding Day1Results}" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB" />
+					<TextBlock TextWrapping="Wrap" Text="{Binding Day2Comment}" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB"/>
+				</StackPanel>
                 <StackPanel x:Name="Day3" Grid.Column="3" Background="#FFC7CFFF">
-
-                </StackPanel>
+					<TextBlock TextWrapping="Wrap" Text="Friday" Margin="0, 0, 0, 10" FontSize="18" FontFamily="Berlin Sans FB"/>
+					<TextBlock TextWrapping="Wrap" Text="{Binding Day1Results}" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB" />
+					<TextBlock TextWrapping="Wrap" Text="{Binding Day1Comment}" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB"/>
+				</StackPanel>
                 <StackPanel x:Name="Day4" Grid.Column="4" Background="#FFFFD4D4">
-
-                </StackPanel>
+					<TextBlock TextWrapping="Wrap" Text="Friday" Margin="0, 0, 0, 10" FontSize="18" FontFamily="Berlin Sans FB"/>
+					<TextBlock TextWrapping="Wrap" Text="{Binding Day2Results}" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB" />
+					<TextBlock TextWrapping="Wrap" Text="{Binding Day1Comment}" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB"/>
+				</StackPanel>
             </Grid>
         </Grid>
 
