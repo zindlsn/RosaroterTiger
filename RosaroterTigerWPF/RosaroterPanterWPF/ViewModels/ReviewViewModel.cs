@@ -11,87 +11,151 @@ namespace RosaroterTigerWPF.ViewModels
 {
     public class ReviewViewModel : BaseViewModel
     {
-        private ICommand _SaveReviewCommand;
-        public ICommand SaveReviewCommand
+        public string Day1Weekday
         {
             get
             {
-                if (_SaveReviewCommand == null)
-                {
-                    _SaveReviewCommand = new RelayCommand(
-                        p => CanSaveReview,
-                        p => this.SaveReview());
-                }
-                return _SaveReviewCommand;
+                return GetWeekdayOf(1);
             }
         }
-
-        private Models.Day _SelectedDay;
-        /// <summary>
-        /// [TODO: CodeDoc]
-        /// </summary>
-        public Models.Day SelectedDay
+        public string Day1Results
         {
             get
             {
-                return _SelectedDay;
-            }
-            set
-            {
-                if (_SelectedDay != value)
-                {
-                    _SelectedDay = value;
-                    this.OnPropertyChanged(nameof(SelectedDay));
-                }
+                return GetResultsOf(1);
             }
         }
-
-        private string _Comment;
-        /// <summary>
-        /// [TODO: CodeDoc]
-        /// </summary>
-        public string Comment
+        public string Day1Comment
         {
             get
             {
-                return _Comment;
-            }
-            set
-            {
-                if (_Comment != value)
-                {
-                    _Comment = value;
-                    this.OnPropertyChanged(nameof(Comment));
-                }
+                return GetCommentOf(1);
             }
         }
 
-        private object _MyProperty;
-        /// <summary>
-        /// [TODO: CodeDoc]
-        /// </summary>
-        public object MyProperty
+        public string Day2Weekday
         {
             get
             {
-                return _MyProperty;
-            }
-            set
-            {
-                if (_MyProperty != value)
-                {
-                    _MyProperty = value;
-                    this.OnPropertyChanged(nameof(MyProperty));
-                }
+                return GetWeekdayOf(2);
             }
         }
-
-
-        private void SaveReview()
+        public string Day2Results
         {
-            SelectedDay.Comments = this.Comment;
+            get
+            {
+                return GetResultsOf(2);
+            }
+        }
+        public string Day2Comment
+        {
+            get
+            {
+                return GetCommentOf(2);
+            }
         }
 
-        public bool CanSaveReview { get; private set; }
+        public string Day3Weekday
+        {
+            get
+            {
+                return GetWeekdayOf(3);
+            }
+        }
+        public string Day3Results
+        {
+            get
+            {
+                return GetResultsOf(1);
+            }
+        }
+        public string Day3Comment
+        {
+            get
+            {
+                return GetCommentOf(1);
+            }
+        }
+
+        public string Day4Weekday
+        {
+            get
+            {
+                return GetWeekdayOf(4);
+            }
+        }
+        public string Day4Results
+        {
+            get
+            {
+                return GetResultsOf(4);
+            }
+        }
+        public string Day4Comment
+        {
+            get
+            {
+                return GetCommentOf(1);
+            }
+        }
+
+        public string Day5Weekday
+        {
+            get
+            {
+                return GetWeekdayOf(5);
+            }
+        }
+        public string Day5Results
+        {
+            get
+            {
+                return GetResultsOf(5);
+            }
+        }
+        public string Day5Comment
+        {
+            get
+            {
+                return GetCommentOf(1);
+            }
+        }
+
+        private string GetWeekdayOf(int day)
+        {
+            if (DataService.Days.Count - 1 >= 0)
+            {
+                return DataService.Days[DataService.Days.Count - 1].Weekday;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        private string GetResultsOf(int day)
+        {
+            if (DataService.Days.Count - 1 >= 0)
+            {
+                return DataService.Days[DataService.Days.Count - 1].Results.ToString();
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        private string GetCommentOf(int day)
+        {
+            if (DataService.Days.Count - 1 >= 0)
+            {
+                return DataService.Days[DataService.Days.Count - 1].Comments;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
     }
 }

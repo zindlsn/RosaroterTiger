@@ -55,7 +55,7 @@ namespace RosaroterTigerWPF
 
         private void AddButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            EditGoalWindow addWindow = new EditGoalWindow();
+            Window addWindow = new AddGoalWindow();
             addWindow.Show();
         }
 

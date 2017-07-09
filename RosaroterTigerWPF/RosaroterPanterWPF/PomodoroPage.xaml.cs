@@ -84,11 +84,16 @@ namespace RosaroterTigerWPF
 				StartButton.Background = new ImageBrush(new BitmapImage(new Uri("pack://siteoforigin:,,,/Resources/Play.png")));
 			}
 		}
-		private void EndButton_MouseUp(object sender, MouseButtonEventArgs e)
-		{
 
-			new PopUp().Show();
+        private void AddButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Window addWindow = new AddGoalWindow();
+            addWindow.Show();
+        }
 
-		}
-	}
+        private void StartTask_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+    }
 }

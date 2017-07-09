@@ -6,14 +6,14 @@
         xmlns:local="clr-namespace:RosaroterTigerWPF"
         xmlns:vm="clr-namespace:RosaroterTigerWPF.ViewModels"
         mc:Ignorable="d"
-        Title="AddComment" Height="287.637" Width="342.858">
+        Title="Add a Comment" Height="200.0" Width="300.0">
     <Window.DataContext>
         <vm:AddCommentViewModel x:Name="model"/>
     </Window.DataContext>
     <Grid>
-        <Label Content="Your comment for the day:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Your comment for the day:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="151" Grid.ColumnSpan="2"/>
         <TextBox Text="{Binding Text}" Margin="10,41,10,35" TextWrapping="Wrap"/>
-        <Button Click="Button_Click" Content="Finish" HorizontalAlignment="Left" Margin="10,227,0,0" VerticalAlignment="Top" Width="315"/>
+        <Button Click="Button_Click" Content="Finish" Margin="10,0,10,10" Height="20" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>

@@ -39,7 +39,6 @@ namespace RosaroterTigerWPF.ViewModels
 
         private ICommand _StartTimerCommand;
         private ICommand _FinishDayCommand;
-        private ICommand _GoToHomePageCommand;
 
         private bool _IsIdle = true;
 
@@ -136,7 +135,7 @@ namespace RosaroterTigerWPF.ViewModels
         /// <summary>
         /// Goals
         /// </summary>
-        public ObservableCollection<Goal> Milestones
+        public ObservableCollection<Goal> Goals
         {
             // todo rename to Goals
             get
@@ -150,7 +149,7 @@ namespace RosaroterTigerWPF.ViewModels
                 {
                     _Goals = value;
                     //DataService.Goals = value;
-                    this.OnPropertyChanged(nameof(Milestones));
+                    this.OnPropertyChanged(nameof(Goals));
                 }
             }
         }
@@ -314,7 +313,7 @@ namespace RosaroterTigerWPF.ViewModels
         /// </summary>
         public void RefreshMilestones()
         {
-            Milestones = DataService.Goals;
+            Goals = DataService.Goals;
         }
 
         public void AddCompletedTask(Task task)
@@ -334,6 +333,26 @@ namespace RosaroterTigerWPF.ViewModels
             else
             {
                 StartStopButtonText = "Start";
+            }
+        }
+
+        private string _WorkingTask;
+        /// <summary>
+        /// 
+        /// </summary>
+        public string WorkingTask
+        {
+            get
+            {
+                return _WorkingTask;
+            }
+            set
+            {
+                if (_WorkingTask != value)
+                {
+                    _WorkingTask = value;
+                    this.OnPropertyChanged(nameof(WorkingTask));
+                }
             }
         }
 
@@ -402,5 +421,25 @@ namespace RosaroterTigerWPF.ViewModels
         {
             this._Goals.Remove(SelectedGoal);
         }
+
+        public void RefreshGoals()
+        {
+            Goals = DataService.Goals;
+        }
+
+
+
+        public void UpdateWorkingTask()
+        {
+
+        }
+
+        public void FinishTimer()
+        {
+
+        }
+
+
+
     }
 }
