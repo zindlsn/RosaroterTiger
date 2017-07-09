@@ -107,7 +107,7 @@ namespace RosaroterTigerWPF.Models
 
         protected Day(SerializationInfo info, StreamingContext context)
         {
-            DateTime = info.GetDateTime("Day_DateTimeCompleted");
+            DateTime = info.GetDateTime("Day_DateTime");
             Results = (ResultOfTheDay) info.GetValue("Day_Results", typeof(ResultOfTheDay));
             Comments = info.GetString("Day_Comments");
             Color = (Color) info.GetValue("Day_Color", typeof(Color));
