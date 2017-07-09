@@ -81,7 +81,6 @@ namespace RosaroterTigerWPF.ViewModels
         {
             CacheService.CurrentGoal = SelectedGoal;
         }
-
         
     }
 }
