@@ -41,7 +41,26 @@
                     <TextBlock TextWrapping="Wrap" Text="Comment: Had a surprise meeting, couldn't finish everything." Margin="0, 0, 0, 10"/>
                     <TextBlock TextWrapping="Wrap" Text="Pomodori Completed: 5" Margin="0, 0, 0, 10"/>
                     <TextBlock TextWrapping="Wrap" Text="Tasks Completed" Margin="0, 0, 0, 5"/>
-                    
+                    <BulletDecorator Margin="10,0,0,5">
+                        <BulletDecorator.Bullet>
+                            <Ellipse Height="8" Width="8" Fill="Black"/>
+                        </BulletDecorator.Bullet>
+                        <TextBlock TextWrapping="Wrap" Text="Implement save button" Background="{x:Null}" />
+                    </BulletDecorator>
+                    <BulletDecorator Margin="10,0,0,5">
+                        <BulletDecorator.Bullet>
+                            <Ellipse Height="8" Width="8" Fill="Black"/>
+                        </BulletDecorator.Bullet>
+                        <TextBlock TextWrapping="Wrap" Text="Implement save button" Background="{x:Null}" />
+                    </BulletDecorator>
+                    <BulletDecorator Margin="10,0,0,5">
+                        <BulletDecorator.Bullet>
+                            <Ellipse Height="8" Width="8" Fill="Black"/>
+                        </BulletDecorator.Bullet>
+                        <TextBlock TextWrapping="Wrap" Text="Implement save button" Background="{x:Null}" />
+                    </BulletDecorator>
+
+
                 </StackPanel>
                 <StackPanel x:Name="Day1" Grid.Column="1" Background="#FFC7CFFF">
 
