@@ -7,29 +7,38 @@
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:RosaroterTigerWPF.ViewModels"
         Title="{Binding Title}" Height="720" Width="1280">
-    <Page.DataContext>
-        <vm:PomodoroViewModel />
-    </Page.DataContext>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="8*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="4*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="7*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid x:Name="ContentGrid" Grid.Column="3" Grid.Row="1">
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="14*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <ListView x:Name="OrderStatusList" 
+	<Page.DataContext>
+		<vm:PomodoroViewModel x:Name="model"/>
+	</Page.DataContext>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="8*" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="4*" />
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="7*" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<TextBlock x:Name="TimeDisplay" Grid.Row="1" Grid.Column="1" Text="{Binding TimerSeconds}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Berlin Sans FB" Margin="196,197,90,313" Width="80" />
+		<TextBlock Grid.Row="1" Grid.Column="1" Text=":" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Berlin Sans FB" RenderTransformOrigin="-1.371,0.594" Margin="175,185,121,325" Width="70" />
+		<TextBlock x:Name="TimeDisplay2" Grid.Row="1" Grid.Column="1" Text="{Binding TimerMinutes}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Berlin Sans FB" RenderTransformOrigin="-1.371,0.594" Margin="103,197,74,313" Width="189" />
+		<Label x:Name="StartButton" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="30" Height="30" BorderBrush="{x:Null}" MouseEnter="StartButton_MouseEnter" MouseLeave="StartButton_MouseLeave" Opacity="0.5" MouseUp="StartButton_MouseUp" >
+			<Label.Background>
+				<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Play.png"/>
+			</Label.Background>
+		</Label>
+		<Grid x:Name="ContentGrid" Grid.Column="3" Grid.Row="1">
+			
+			<Grid Grid.Row="1">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="14*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<ListView x:Name="OrderStatusList" 
                   HorizontalAlignment="Stretch"
                   SelectionMode="Single"
                   ItemsSource="{Binding Milestones}"
@@ -37,45 +46,40 @@
                   Grid.Column="0"
                   ScrollViewer.VerticalScrollBarVisibility="Visible"
                   >
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Margin="0,4,0,4">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                            </Grid>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <Label x:Name="AddButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseEnter="AddButton_MouseEnter" MouseLeave="AddButton_MouseLeave">
-                    <Label.Background>
-                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Drawing.png"/>
-                    </Label.Background>
-                </Label>
-                <Label x:Name="EditButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,40,0,0" BorderBrush="{x:Null}" MouseEnter="EditButton_MouseEnter" MouseLeave="EditButton_MouseLeave">
-                    <Label.Background>
-                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/edit.png"/>
-                    </Label.Background>
-                </Label>
-                <Label x:Name="DeleteButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,75,0,0" BorderBrush="{x:Null}" MouseEnter="DeleteButton_MouseEnter" MouseLeave="DeleteButton_MouseLeave">
-                    <Label.Background>
-                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/bin.png"/>
-                    </Label.Background>
-                </Label>
-            </Grid>
-        </Grid>
-        <StackPanel>
-        <TextBlock x:Name="TimeDisplay" Grid.Row="1" Grid.Column="1" Text="{Binding TimerSeconds}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontFamily="Berlin Sans FB" />
-            <TextBlock x:Name="TimeDisplay2" Grid.Row="1" Grid.Column="1" Text="{Binding TimerMinutes}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" FontFamily="Berlin Sans FB" />
-
-            <Button x:Name="StartButton" Grid.Row="1" Grid.Column="1" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="14" FontFamily="Berlin Sans FB"  BorderBrush="{x:Null}" MouseEnter="StartButton_MouseEnter" MouseLeave="StartButton_MouseLeave" Opacity="0.5" Command="{Binding StartTimerCommand}"/>
-        </StackPanel>
-    </Grid>
+					<ListView.ItemTemplate>
+						<DataTemplate>
+							<Grid Margin="0,4,0,4">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="Auto" />
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto"/>
+									<ColumnDefinition Width="*"/>
+								</Grid.ColumnDefinitions>
+							</Grid>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+				<Label x:Name="AddButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseEnter="AddButton_MouseEnter" MouseLeave="AddButton_MouseLeave">
+					<Label.Background>
+						<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Drawing.png"/>
+					</Label.Background>
+				</Label>
+				<Label x:Name="EditButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,40,0,0" BorderBrush="{x:Null}" MouseEnter="EditButton_MouseEnter" MouseLeave="EditButton_MouseLeave">
+					<Label.Background>
+						<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/edit.png"/>
+					</Label.Background>
+				</Label>
+				<Label x:Name="DeleteButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,75,0,0" BorderBrush="{x:Null}" MouseEnter="DeleteButton_MouseEnter" MouseLeave="DeleteButton_MouseLeave">
+					<Label.Background>
+						<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/bin.png"/>
+					</Label.Background>
+				</Label>
+			</Grid>
+		</Grid>
+		<StackPanel>
+		</StackPanel>
+	</Grid>
 </Page>
