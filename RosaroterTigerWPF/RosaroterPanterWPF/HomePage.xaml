@@ -9,7 +9,7 @@
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="HomePage">
     <Page.DataContext>
-        <vm:MainViewModel />
+        <vm:MainViewModel x:Name="model"/>
     </Page.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -38,49 +38,41 @@
                     <ColumnDefinition Width="14*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <ListView x:Name="OrderStatusList" 
+                <ListView 
                   HorizontalAlignment="Stretch"
                   SelectionMode="Single"
-                  ItemsSource="{Binding Milestones}"
+                  SelectedItem="{Binding SelectedGoal, Mode=TwoWay}"
+                  ItemsSource="{Binding Goals}"
                   Margin="0,0,0,0"
                   Grid.Column="0"
                   ScrollViewer.VerticalScrollBarVisibility="Visible"
+                  SelectedIndex="0"
                   >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0,4,0,4">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image
-                            Source="{}"
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Grid.RowSpan="3"
-                            VerticalAlignment="Stretch" Height="48"
-                            Stretch="Uniform"
-                            Margin="0,0,4,0" />
+                                <TextBlock Text="{Binding Name}" Grid.Column="0" Grid.Row="0"/>
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Label x:Name="AddButton" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseEnter="AddButton_MouseEnter" MouseLeave="AddButton_MouseLeave">
+                <Label x:Name="AddButton" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseUp="AddButton_MouseUp" MouseEnter="AddButton_MouseEnter" MouseLeave="AddButton_MouseLeave">
                     <Label.Background>
                         <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Drawing.png"/>
                     </Label.Background>
                 </Label>
-                <Label x:Name="EditButton" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,40,0,0" BorderBrush="{x:Null}" MouseEnter="EditButton_MouseEnter" MouseLeave="EditButton_MouseLeave">
+                <Label x:Name="EditButton" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,40,0,0" BorderBrush="{x:Null}" MouseUp="EditButton_MouseUp" MouseEnter="EditButton_MouseEnter" MouseLeave="EditButton_MouseLeave">
                     <Label.Background>
                         <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/edit.png"/>
                     </Label.Background>
                 </Label>
-                <Label x:Name="DeleteButton" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,75,0,0" BorderBrush="{x:Null}" MouseEnter="DeleteButton_MouseEnter" MouseLeave="DeleteButton_MouseLeave">
+                <Label x:Name="DeleteButton" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,75,0,0" BorderBrush="{x:Null}" MouseUp="DeleteButton_MouseUp" MouseEnter="DeleteButton_MouseEnter" MouseLeave="DeleteButton_MouseLeave">
                     <Label.Background>
                         <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/bin.png"/>
                     </Label.Background>

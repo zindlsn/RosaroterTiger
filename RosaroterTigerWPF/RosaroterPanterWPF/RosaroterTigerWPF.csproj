@@ -55,6 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddGoalWindow.xaml.cs">
+      <DependentUpon>AddGoalWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AppServices\CacheService.cs" />
+    <Compile Include="EditGoalWindow.xaml.cs">
+      <DependentUpon>EditGoalWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
@@ -67,12 +74,22 @@
       <DependentUpon>ReviewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Day.cs" />
+    <Compile Include="ViewModels\AddGoalViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="Models\Task.cs" />
+    <Page Include="AddGoalWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditGoalWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="ViewModels\EditGoalViewModel.cs" />
     <Compile Include="ViewModels\ReviewViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define TESTDATA 
+
+using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Runtime.Serialization;
@@ -227,7 +229,10 @@ namespace RosaroterTigerWPF
         {
             var testData = new ObservableCollection<Goal>();
 
-            var milestone1 = new Goal();
+            var milestone1 = new Goal()
+            {
+                Name = "Goal1"
+            };
 
             milestone1.AddTask(new Task("Name 1", "Beschreibung 1"));
             milestone1.AddTask(new Task("Name 2", "Beschreibung 2"));
@@ -241,7 +246,10 @@ namespace RosaroterTigerWPF
 
             testData.Add(milestone1);
 
-            var milestone2 = new Goal();
+            var milestone2 = new Goal()
+            {
+                Name = "Goal2"
+            };
 
             milestone2.AddTask(new Task("Name Gelb", "Beschreibung Gelb", Color.Colors["Yellow"]));
             milestone2.AddTask(new Task("Name Grün", "Beschreibung Grün", Color.Colors["Green"]));

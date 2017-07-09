@@ -71,5 +71,23 @@ namespace RosaroterTigerWPF
             DeleteButton.Opacity = .5;
         }
 
+        private void AddButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            EditGoalWindow addWindow = new EditGoalWindow();
+            addWindow.Show();
+        }
+
+        private void DeleteButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            model.RemoveSelectedGoal();
+        }
+
+        private void EditButton_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            model.EditGoal();
+            EditGoalWindow editWindow = new EditGoalWindow();
+            editWindow.Show();
+
+        }
     }
 }
