@@ -40,7 +40,7 @@
                         <ColumnDefinition Width="14*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <TreeView ItemsSource="{Binding Goals}" Grid.Column="0" SelectedItemChanged="TreeView_SelectedItemChanged">
+                <TreeView ItemsSource="{Binding Goals}" Grid.Column="0" MouseUp="TreeView_MouseUp" >
                         <TreeView.ItemTemplate>
                             <HierarchicalDataTemplate ItemsSource="{Binding Tasks}">
                                 <TextBox Text="{Binding Name}"  />
