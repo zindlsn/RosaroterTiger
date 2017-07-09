@@ -65,12 +65,12 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBox Text="{Binding Name, Mode=TwoWay}" Grid.Column="0"></TextBox>
-										<Label x:Name="CheckTask" Grid.Column="1" MouseUp="CheckTask_MouseUp" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseEnter="ChackTask_MouseEnter" MouseLeave="ChackTask_MouseLeave">
+										<Label x:Name="CheckTask" Grid.Column="1" MouseUp="CheckTask_MouseUp" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" >
 											<Label.Background>
 												<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Check.png"/>
 											</Label.Background>
 										</Label>
-										<Label x:Name="StartTask" Grid.Column="2" MouseUp="StartTask_MouseUp" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseEnter="StartTask_MouseEnter" MouseLeave="StartTask_MouseLeave">
+										<Label x:Name="StartTask" Grid.Column="2" MouseUp="StartTask_MouseUp" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" >
 											<Label.Background>
 												<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Arrow.png"/>
 											</Label.Background>

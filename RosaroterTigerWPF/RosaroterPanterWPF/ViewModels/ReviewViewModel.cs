@@ -159,7 +159,7 @@ namespace RosaroterTigerWPF.ViewModels
 
         private string GetWeekdayOf(int day)
         {
-            if (DataService.Days.Count - 1 >= 0 && day > 0)
+            if (DataService.Days.Count - day >= 0 && day > 0)
             {
                 return DataService.Days[DataService.Days.Count - day].Weekday;
             }
@@ -171,7 +171,7 @@ namespace RosaroterTigerWPF.ViewModels
 
         private string GetResultsOf(int day)
         {
-            if (DataService.Days.Count - 1 >= 0 && day > 0)
+            if (DataService.Days.Count - day >= 0 && day > 0)
             {
                 return DataService.Days[DataService.Days.Count - day].Results.ToString();
             }
@@ -183,7 +183,7 @@ namespace RosaroterTigerWPF.ViewModels
 
         private string GetCommentOf(int day)
         {
-            if (DataService.Days.Count - 1 >= 0 && day > 0)
+            if (DataService.Days.Count - day >= 0 && day > 0)
             {
                 return DataService.Days[DataService.Days.Count - day].Comments;
             }
@@ -195,7 +195,7 @@ namespace RosaroterTigerWPF.ViewModels
 
         private string GetColorOf(int day)
         {
-            if (DataService.Days.Count - 1 >= 0 && day > 0 && DataService.Days[DataService.Days.Count - day].Color != null)
+            if (DataService.Days.Count - day >= 0 && day > 0 && DataService.Days[DataService.Days.Count - day].Color != null)
             {
                 return DataService.Days[DataService.Days.Count - day].Color.ToString();
             }
