@@ -63,6 +63,25 @@ namespace RosaroterTigerWPF
         {
             DeleteButton.Opacity = .5;
         }
+		private void CheckTask_MouseEnter(object sender, EventArgs e)
+		{
+			CheckTask.Opacity = 1;
+		}
+
+		private void CheckTask_MouseLeave(object sender, EventArgs e)
+		{
+			CheckTask.Opacity = .5;
+		}
+		private void StartTask_MouseEnter(object sender, EventArgs e)
+		{
+			StartTask.Opacity = 1;
+		}
+
+		private void StartTask_MouseLeave(object sender, EventArgs e)
+		{
+			treeView.StartTask.Opacity = .5;
+		}
+
 		private void EndButton_MouseEnter(object sender, EventArgs e)
 		{
 			EndButton.Opacity = 1;

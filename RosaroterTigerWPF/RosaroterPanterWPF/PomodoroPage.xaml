@@ -40,21 +40,32 @@
                         <ColumnDefinition Width="14*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <TreeView ItemsSource="{Binding Goals}" Grid.Column="0" SelectedItemChanged="TreeView_SelectedItemChanged">
+                    <TreeView x:Name="treeView" ItemsSource="{Binding Goals}" Grid.Column="0" SelectedItemChanged="TreeView_SelectedItemChanged">
                         <TreeView.ItemTemplate>
-                            <HierarchicalDataTemplate ItemsSource="{Binding Tasks}">
+                            <HierarchicalDataTemplate ItemsSource="{Binding Tasks}" x:Name="subtree">
                                 <TextBox Text="{Binding Name}"  />
                                 <HierarchicalDataTemplate.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <Grid.ColumnDefinitions>
+										<Grid.Background>
+											<ImageBrush/>
+										</Grid.Background>
+										<Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="Auto"/>
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <TextBox Text="{Binding Name, Mode=TwoWay}" Grid.Column="0"></TextBox>
-                                            <Label x:Name="CheckTask" Content="Done" Grid.Column="1" MouseUp="CheckTask_MouseUp"></Label>
-                                            <Label x:Name="StartTask" Content="Start" Grid.Column="2" MouseUp="StartTask_MouseUp"></Label>
+										<Label x:Name="CheckTask" Grid.Column="1" MouseUp="CheckTask_MouseUp" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseEnter="ChackTask_MouseEnter" MouseLeave="ChackTask_MouseLeave">
+											<Label.Background>
+												<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Check.png"/>
+											</Label.Background>
+										</Label>
+										<Label x:Name="StartTask" Grid.Column="2" MouseUp="StartTask_MouseUp" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseEnter="StartTask_MouseEnter" MouseLeave="StartTask_MouseLeave">
+											<Label.Background>
+												<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Arrow.png"/>
+											</Label.Background>
+										</Label>
                                         </Grid>
                                     </DataTemplate>
                                     
@@ -70,7 +81,7 @@
                     </Label>
                     <Label x:Name="EditButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,40,0,0" BorderBrush="{x:Null}" MouseUp="EditButton_MouseUp" MouseEnter="EditButton_MouseEnter" MouseLeave="EditButton_MouseLeave">
                         <Label.Background>
-                            <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/edit.png"/>
+                            <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Save.png"/>
                         </Label.Background>
                     </Label>
                     <Label x:Name="DeleteButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,75,0,0" BorderBrush="{x:Null}" MouseEnter="DeleteButton_MouseEnter" MouseLeave="DeleteButton_MouseLeave">
