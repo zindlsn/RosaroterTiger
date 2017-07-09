@@ -107,6 +107,43 @@ namespace RosaroterTigerWPF
             SerializeDays();
         }
 
+        private static void ShrinkGoals()
+        {
+            for(int i = 0; i< Goals.Count; i++)
+            {
+            }
+
+        }
+
+        private static void ShrinkDays()
+        {
+            while(Days.Count > 7)
+            {
+                Days.RemoveAt(0);
+            }
+        }
+
+        private static bool CorrectOrderOfDays()
+        {
+            Day dayBefore = null;
+            foreach(Day d in Days)
+            {
+                if(dayBefore != null)
+                {
+                    if(dayBefore.DateTime > d.DateTime)
+                    {
+                        return false;
+                    }
+                }
+                dayBefore = d;
+            }
+            return true;
+        }
+
+        private static void OrderDays()
+        {
+
+        }
 
         /// <summary>
         /// Serialize the collection of goals

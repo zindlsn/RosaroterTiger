@@ -177,7 +177,8 @@ namespace RosaroterTigerWPF
         /// <param name="context">The streaming context.</param>
         protected Goal(SerializationInfo info, StreamingContext context)
         {
-            _tasks = (ObservableCollection<Task>)info.GetValue("Ms_Tasks", typeof(ObservableCollection<Task>));
+            _tasks = (ObservableCollection<Task>)info.GetValue("G_Tasks", typeof(ObservableCollection<Task>));
+            Name = info.GetString("G_Name");
 
             _completedChanged = (object sender, PropertyChangedEventArgs e) =>
             {
@@ -193,6 +194,7 @@ namespace RosaroterTigerWPF
             Completed = CheckForCompletion();
         }
 
+        public string Name { get; set; }
 
         /// <summary>
         /// Array containing every task of the milestone.
@@ -210,6 +212,24 @@ namespace RosaroterTigerWPF
         /// </summary>
         public bool Completed { get; private set; }
 
+        public DateTime? TimeOfTheLastCompletedTask
+        {
+            get
+            {
+                if (!Completed || Tasks.Length == 0) return null;
+
+                Task mostRecentlyCompletedTask = Tasks[0];
+                foreach(Task t in Tasks)
+                {
+                    if(t.CompletionDate > mostRecentlyCompletedTask.CompletionDate)
+                    {
+                        mostRecentlyCompletedTask = t;
+                    }
+                }
+
+                return mostRecentlyCompletedTask.CompletionDate;
+            }
+        }
         
         /// <summary>
         /// Adds a task.
@@ -261,7 +281,8 @@ namespace RosaroterTigerWPF
             // calculate completed in the constructor
             // initialise _completed changed in constructor
 
-            info.AddValue("Ms_Tasks", _tasks, typeof(ObservableCollection<Task>));
+            info.AddValue("G_Tasks", _tasks, typeof(ObservableCollection<Task>));
+            info.AddValue("GMs_Name", Name);
         }
 
 
@@ -277,7 +298,5 @@ namespace RosaroterTigerWPF
             }
             return true;
         }
-
-       
     }
 }
