@@ -20,14 +20,14 @@ namespace RosaroterTigerWPF
         /// <summary>
         /// Default-Constructor
         /// </summary>
-        public Task() : this(string.Empty, string.Empty, Color.White)
+        public Task() : this(string.Empty, string.Empty, Color.Colors["White"])
         { }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="name">The name of the task.</param>
-        public Task(string name) : this(name, string.Empty, Color.White)
+        public Task(string name) : this(name, string.Empty, Color.Colors["White"])
         { }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace RosaroterTigerWPF
         /// </summary>
         /// <param name="name">The name of the task.</param>
         /// <param name="description">The description of the task.</param>
-        public Task(string name, string description) : this(name, description, Color.White)
+        public Task(string name, string description) : this(name, description, Color.Colors["White"])
         { }
 
         /// <summary>
