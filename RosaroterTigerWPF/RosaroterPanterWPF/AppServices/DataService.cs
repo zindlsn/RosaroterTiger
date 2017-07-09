@@ -47,6 +47,8 @@ namespace RosaroterTigerWPF
                 // when goals are still null then create a new Collection
                 if (_goals == null) _goals = new ObservableCollection<Goal>();
 
+                ShrinkGoals();
+
                 return _goals;
             }
             set
@@ -106,6 +108,7 @@ namespace RosaroterTigerWPF
             }
         }
 
+
         /// <summary>
         /// Saves goals to goals.sav and days to days.sav
         /// </summary>
@@ -115,6 +118,10 @@ namespace RosaroterTigerWPF
             SerializeDays();
         }
 
+
+        /// <summary>
+        /// Shrinks the goals to only contain the last 7 days
+        /// </summary>
         private static void ShrinkGoals()
         {
             for(int i = 0; i< _goals.Count; i++)
