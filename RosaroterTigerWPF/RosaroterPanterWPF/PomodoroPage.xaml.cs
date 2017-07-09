@@ -98,7 +98,8 @@ namespace RosaroterTigerWPF
 			{
 				PlayActive = true;
 				StartButton.Background = new ImageBrush(new BitmapImage(new Uri("pack://siteoforigin:,,,/Resources/Pause.png")));
-			} else {
+			}
+            else {
 				PlayActive = false;
 				StartButton.Background = new ImageBrush(new BitmapImage(new Uri("pack://siteoforigin:,,,/Resources/Play.png")));
 			}
@@ -138,22 +139,27 @@ namespace RosaroterTigerWPF
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            if(selectedlabel == 3)
-            {
-                MessageBox.Show("Done");
-
-            }
-            else if(selectedlabel ==2)
-            {
-                MessageBox.Show("Start");
-
-            }
            // MessageBox.Show(((Task)e.NewValue).ToString());
         }
 
         private void EditButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void TreeView_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+            if (selectedlabel == 3)
+            {
+                MessageBox.Show("Done");
+
+            }
+            else if (selectedlabel == 2)
+            {
+                MessageBox.Show("Start");
+
+            }
         }
     }
 }
