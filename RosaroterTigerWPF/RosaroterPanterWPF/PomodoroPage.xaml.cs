@@ -63,6 +63,25 @@ namespace RosaroterTigerWPF
         {
             DeleteButton.Opacity = .5;
         }
+		private void CheckTask_MouseEnter(object sender, EventArgs e)
+		{
+			CheckTask.Opacity = 1;
+		}
+
+		private void CheckTask_MouseLeave(object sender, EventArgs e)
+		{
+			CheckTask.Opacity = .5;
+		}
+		private void StartTask_MouseEnter(object sender, EventArgs e)
+		{
+			StartTask.Opacity = 1;
+		}
+
+		private void StartTask_MouseLeave(object sender, EventArgs e)
+		{
+			StartTask.Opacity = .5;
+		}
+
 		private void EndButton_MouseEnter(object sender, EventArgs e)
 		{
 			EndButton.Opacity = 1;
@@ -79,7 +98,8 @@ namespace RosaroterTigerWPF
 			{
 				PlayActive = true;
 				StartButton.Background = new ImageBrush(new BitmapImage(new Uri("pack://siteoforigin:,,,/Resources/Pause.png")));
-			} else {
+			}
+            else {
 				PlayActive = false;
 				StartButton.Background = new ImageBrush(new BitmapImage(new Uri("pack://siteoforigin:,,,/Resources/Play.png")));
 			}
@@ -98,7 +118,7 @@ namespace RosaroterTigerWPF
 
         private void EndButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            new PopUp().Show();
+            new AddComment().Show();
         }
 
         private void TextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -119,22 +139,27 @@ namespace RosaroterTigerWPF
 
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            if(selectedlabel == 3)
-            {
-                MessageBox.Show("Done");
-
-            }
-            else if(selectedlabel ==2)
-            {
-                MessageBox.Show("Start");
-
-            }
            // MessageBox.Show(((Task)e.NewValue).ToString());
         }
 
         private void EditButton_MouseUp(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void TreeView_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+            if (selectedlabel == 3)
+            {
+                MessageBox.Show("Done");
+
+            }
+            else if (selectedlabel == 2)
+            {
+                MessageBox.Show("Start");
+
+            }
         }
     }
 }

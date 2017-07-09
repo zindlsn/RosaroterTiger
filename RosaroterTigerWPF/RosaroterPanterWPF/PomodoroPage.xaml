@@ -7,78 +7,91 @@
         mc:Ignorable="d"
         xmlns:vm="clr-namespace:RosaroterTigerWPF.ViewModels"
         Title="{Binding Title}" Height="720" Width="1280">
-	<Page.DataContext>
-		<vm:PomodoroViewModel x:Name="model"/>
-	</Page.DataContext>
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="*" />
-			<RowDefinition Height="8*" />
-			<RowDefinition Height="*" />
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*" />
-			<ColumnDefinition Width="4*" />
-			<ColumnDefinition Width="*" />
-			<ColumnDefinition Width="7*" />
-			<ColumnDefinition Width="*" />
-		</Grid.ColumnDefinitions>
-		<TextBlock x:Name="TimeDisplay" Grid.Row="1" Grid.Column="1" Text="{Binding TimerSeconds}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Berlin Sans FB" Margin="196,197,90,313" Width="80" />
-		<TextBlock Grid.Row="1" Grid.Column="1" Text=":" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Berlin Sans FB" RenderTransformOrigin="-1.371,0.594" Margin="175,185,121,325" Width="70" />
-		<TextBlock x:Name="TimeDisplay2" Grid.Row="1" Grid.Column="1" Text="{Binding TimerMinutes}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Berlin Sans FB" RenderTransformOrigin="-1.371,0.594" Margin="103,197,74,313" Width="189" />
-		<Label x:Name="StartButton" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="30" Height="30" BorderBrush="{x:Null}" MouseEnter="StartButton_MouseEnter" MouseLeave="StartButton_MouseLeave" Opacity="0.5" MouseUp="StartButton_MouseUp" >
-			<Label.Background>
-				<ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Play.png"/>
-			</Label.Background>
-		</Label>
-		<Label x:Name="EndButton" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="End" FontSize="24" FontFamily="Berlin Sans FB" Width="70" Height="40" BorderBrush="{x:Null}" MouseEnter="EndButton_MouseEnter" MouseLeave="EndButton_MouseLeave" MouseUp="EndButton_MouseUp" Opacity="0.5"  />
+    <Page.DataContext>
+        <vm:PomodoroViewModel x:Name="model"/>
+    </Page.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="7*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="TimeDisplay" Grid.Row="1" Grid.Column="1" Text="{Binding TimerSeconds}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Berlin Sans FB" Margin="196,197,90,313" Width="80" />
+        <TextBlock Grid.Row="1" Grid.Column="1" Text=":" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Berlin Sans FB" RenderTransformOrigin="-1.371,0.594" Margin="175,185,121,325" Width="70" />
+        <TextBlock x:Name="TimeDisplay2" Grid.Row="1" Grid.Column="1" Text="{Binding TimerMinutes}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="60" FontFamily="Berlin Sans FB" RenderTransformOrigin="-1.371,0.594" Margin="103,197,74,313" Width="189" />
+        <Label x:Name="StartButton" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="30" Height="30" BorderBrush="{x:Null}" MouseEnter="StartButton_MouseEnter" MouseLeave="StartButton_MouseLeave" Opacity="0.5" MouseUp="StartButton_MouseUp" >
+            <Label.Background>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Play.png"/>
+            </Label.Background>
+        </Label>
+        <Label x:Name="EndButton" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Content="End" FontSize="24" FontFamily="Berlin Sans FB" Width="70" Height="40" BorderBrush="{x:Null}" MouseEnter="EndButton_MouseEnter" MouseLeave="EndButton_MouseLeave" MouseUp="EndButton_MouseUp" Opacity="0.5"  />
+        <Label x:Name="CheckTask" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,5,0" MouseUp="CheckTask_MouseUp" Opacity="0.5" Width="30" Height="30" BorderBrush="{x:Null}" MouseEnter="CheckTask_MouseEnter" MouseLeave="CheckTask_MouseLeave">
+            <Label.Background>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Check.png"/>
+            </Label.Background>
+        </Label>
+        <Label x:Name="StartTask" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,40,5,0" MouseUp="StartTask_MouseUp" Opacity="0.5" Width="30" Height="30" BorderBrush="{x:Null}" MouseEnter="StartTask_MouseEnter" MouseLeave="StartTask_MouseLeave">
+            <Label.Background>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Arrow.png"/>
+            </Label.Background>
+        </Label>
+        <Grid x:Name="ContentGrid" Grid.Column="3" Grid.Row="1">
 
-		<Grid x:Name="ContentGrid" Grid.Column="3" Grid.Row="1">
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TreeView x:Name="treeView" ItemsSource="{Binding Goals}" Grid.Column="0" SelectedItemChanged="TreeView_SelectedItemChanged">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Tasks}" x:Name="subtree">
+                            <TextBox Text="{Binding Name}"  />
+                            <HierarchicalDataTemplate.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.Background>
+                                            <ImageBrush/>
+                                        </Grid.Background>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox Text="{Binding Name, Mode=TwoWay}" Grid.Column="0"></TextBox>
 
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="14*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <TreeView ItemsSource="{Binding Goals}" Grid.Column="0" SelectedItemChanged="TreeView_SelectedItemChanged">
-                        <TreeView.ItemTemplate>
-                            <HierarchicalDataTemplate ItemsSource="{Binding Tasks}">
-                                <TextBox Text="{Binding Name}"  />
-                                <HierarchicalDataTemplate.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <TextBox Text="{Binding Name, Mode=TwoWay}" Grid.Column="0"></TextBox>
-                                            <Label x:Name="CheckTask" Content="Done" Grid.Column="1" MouseUp="CheckTask_MouseUp"></Label>
-                                            <Label x:Name="StartTask" Content="Start" Grid.Column="2" MouseUp="StartTask_MouseUp"></Label>
-                                        </Grid>
-                                    </DataTemplate>
-                                    
-                                </HierarchicalDataTemplate.ItemTemplate>
+                                    </Grid>
+                                </DataTemplate>
 
-                            </HierarchicalDataTemplate>
-                        </TreeView.ItemTemplate>
-                    </TreeView>
-                    <Label x:Name="AddButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseEnter="AddButton_MouseEnter" MouseLeave="AddButton_MouseLeave">
-                        <Label.Background>
-                            <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Drawing.png"/>
-                        </Label.Background>
-                    </Label>
-                    <Label x:Name="EditButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,40,0,0" BorderBrush="{x:Null}" MouseUp="EditButton_MouseUp" MouseEnter="EditButton_MouseEnter" MouseLeave="EditButton_MouseLeave">
-                        <Label.Background>
-                            <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/edit.png"/>
-                        </Label.Background>
-                    </Label>
-                    <Label x:Name="DeleteButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,75,0,0" BorderBrush="{x:Null}" MouseEnter="DeleteButton_MouseEnter" MouseLeave="DeleteButton_MouseLeave">
-                        <Label.Background>
-                            <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/bin.png"/>
-                        </Label.Background>
-                    </Label>
-                </Grid>
+                            </HierarchicalDataTemplate.ItemTemplate>
+
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+                <Label x:Name="AddButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,5,0,0" BorderBrush="{x:Null}" MouseEnter="AddButton_MouseEnter" MouseLeave="AddButton_MouseLeave">
+                    <Label.Background>
+                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Drawing.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="EditButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,40,0,0" BorderBrush="{x:Null}" MouseUp="EditButton_MouseUp" MouseEnter="EditButton_MouseEnter" MouseLeave="EditButton_MouseLeave">
+                    <Label.Background>
+                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/Save.png"/>
+                    </Label.Background>
+                </Label>
+                <Label x:Name="DeleteButton" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Top" Opacity="0.5" Width="30" Height="30" Margin="0,75,0,0" BorderBrush="{x:Null}" MouseEnter="DeleteButton_MouseEnter" MouseLeave="DeleteButton_MouseLeave">
+                    <Label.Background>
+                        <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/bin.png"/>
+                    </Label.Background>
+                </Label>
             </Grid>
         </Grid>
+        <Label Content="Current Task" Grid.Column="1" HorizontalAlignment="Center" Margin="0,390,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="{Binding CurrentTask}" Grid.Column="1" HorizontalAlignment="Center" Margin="0,420,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+    </Grid>
 </Page>

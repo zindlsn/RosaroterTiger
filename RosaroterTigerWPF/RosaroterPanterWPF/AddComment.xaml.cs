@@ -26,7 +26,9 @@ namespace RosaroterTigerWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            new ColorPicker().Show();
             model.Finish();
+            this.Close();
         }
     }
 }
