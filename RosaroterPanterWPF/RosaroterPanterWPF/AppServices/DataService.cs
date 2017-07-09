@@ -90,7 +90,7 @@ namespace RosaroterTigerWPF
                 }
 
                 // today was not found. Create a new day object.
-                Day ret = new Day(time, null, string.Empty,Color.White);
+                Day ret = new Day(time, null, string.Empty,null);
 
                 _days.Add(ret);
 
@@ -206,15 +206,15 @@ namespace RosaroterTigerWPF
 
             var milestone2 = new Goal();
 
-            milestone2.AddTask(new Task("Name Gelb", "Beschreibung Gelb", Color.Yellow));
-            milestone2.AddTask(new Task("Name Grün", "Beschreibung Grün", Color.Green));
-            milestone2.AddTask(new Task("Name Rot", "Beschreibung Rot", Color.Red));
-            milestone2.AddTask(new Task("Name Blau", "Beschreibung Blau", Color.Blue));
-            milestone2.AddTask(new Task("Name Lila", "Beschreibung Lila", Color.Purple));
-            milestone2.AddTask(new Task("Name Weiß", "Beschreibung Weiß", Color.White));
-            milestone2.AddTask(new Task("Name Schwarz", "Beschreibung Schwarz", Color.Black));
-            milestone2.AddTask(new Task("Name Orange", "Beschreibung Orange", Color.Orange));
-            milestone2.AddTask(new Task("Name Rosarot", "Beschreibung Rosarot", Color.PinkRed));
+            //milestone2.AddTask(new Task("Name Gelb", "Beschreibung Gelb", Color.Yellow));
+            //milestone2.AddTask(new Task("Name Grün", "Beschreibung Grün", Color.Green));
+            //milestone2.AddTask(new Task("Name Rot", "Beschreibung Rot", Color.Red));
+            //milestone2.AddTask(new Task("Name Blau", "Beschreibung Blau", Color.Blue));
+            //milestone2.AddTask(new Task("Name Lila", "Beschreibung Lila", Color.Purple));
+            //milestone2.AddTask(new Task("Name Weiß", "Beschreibung Weiß", Color.White));
+            //milestone2.AddTask(new Task("Name Schwarz", "Beschreibung Schwarz", Color.Black));
+            //milestone2.AddTask(new Task("Name Orange", "Beschreibung Orange", Color.Orange));
+            //milestone2.AddTask(new Task("Name Rosarot", "Beschreibung Rosarot", Color.PinkRed));
 
             testData.Add(milestone2);
 

@@ -26,7 +26,7 @@ namespace RosaroterTigerWPF.ViewModels
         {
             _Timer.Elapsed += Timer_Elapsed;
             this._CurrentSeconds = _PomodoroTime;
-            this.Seconds = _PomodoroTime;
+            UpdateTimerView(_CurrentSeconds);
             RefreshMilestones();
         }
         /// <summary>
@@ -119,7 +119,7 @@ namespace RosaroterTigerWPF.ViewModels
         /// </summary>
         public void ResetTimer()
         {
-            this._CurrentSeconds = this.Seconds;
+            this._CurrentSeconds = _PomodoroTime;
             this._Timer.Stop();
         }
 
@@ -147,7 +147,6 @@ namespace RosaroterTigerWPF.ViewModels
         /// <summary>
         /// Sets the Pomodoro Round time
         /// </summary>
-        public int Seconds { get; set; }
         private int _CurrentSeconds;
         /// <summary>
         /// [TODO: CodeDoc]
@@ -174,8 +173,8 @@ namespace RosaroterTigerWPF.ViewModels
         /// <param name="seconds"></param>
         public void InitTimer(int seconds)
         {
-            this.Seconds = seconds;
-            this._CurrentSeconds = seconds;
+            _PomodoroTime = seconds;
+            this.CurrentSeconds = seconds;
         }
 
 
@@ -187,7 +186,7 @@ namespace RosaroterTigerWPF.ViewModels
                 if (_StartTimerCommand == null)
                 {
                     _StartTimerCommand = new RelayCommand(
-                        p => true,
+                        p => CanStartTimerCommand,
                         p => this.StartTimer());
                 }
                 return _StartTimerCommand;
@@ -214,17 +213,21 @@ namespace RosaroterTigerWPF.ViewModels
             }
         }
 
-
-
         /// <summary>
         /// 
         /// </summary>
         private void StartTimer()
         {
-            this.InitTimer(1000);
+            if (!_IsIdle) { 
             this._Timer.Interval = 1000;
             this._Timer.Start();
             this.IsIdle = false;
+            }
+            else
+            {
+                this.IsIdle = true;
+                this.PauseTimer();
+            }
             ChangeStartButtonText();
         }
 
@@ -252,9 +255,8 @@ namespace RosaroterTigerWPF.ViewModels
         /// <param name="seconds"></param>
         public void UpdateTimerView(int seconds)
         {
-            System.TimeSpan t = System.TimeSpan.FromSeconds(seconds);
-            _TimerMinutes = t.Minutes.ToString();
-            _TimerSeconds = t.Seconds.ToString();
+            TimerMinutes = ((seconds % 3600) / 60).ToString() ;
+            TimerSeconds = (seconds % 60).ToString();
         }
 
 
@@ -331,7 +333,7 @@ namespace RosaroterTigerWPF.ViewModels
                         p => CanFinishDay,
                         p => this.FinishDay());
                 }
-                return _StartTimerCommand;
+                return _FinishDayCommand;
             }
         }
 
