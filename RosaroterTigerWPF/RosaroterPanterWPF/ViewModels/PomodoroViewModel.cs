@@ -340,7 +340,7 @@ namespace RosaroterTigerWPF.ViewModels
         /// <summary>
         /// 
         /// </summary>
-        private void StartTimer()
+        public void StartTimer()
         {
             if (_IsIdle)
             {
