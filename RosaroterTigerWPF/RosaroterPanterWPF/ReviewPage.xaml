@@ -9,7 +9,7 @@
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="HomePage">
     <Page.DataContext>
-        <vm:ReviewViewModel />
+        <vm:ReviewViewModel x:Name="model" />
     </Page.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -37,11 +37,30 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <StackPanel x:Name="Day0" Grid.Column="0" Background="#FFD4FFD6">
-                    <Label Content="July 8, 2017" FontSize="18"/>
-                    <TextBlock TextWrapping="Wrap" Text="Comment: Had a surprise meeting, couldn't finish everything." Margin="0, 0, 0, 10"/>
-                    <TextBlock TextWrapping="Wrap" Text="Pomodori Completed: 5" Margin="0, 0, 0, 10"/>
-                    <TextBlock TextWrapping="Wrap" Text="Tasks Completed" Margin="0, 0, 0, 5"/>
-                    
+                    <Label Content="July 8, 2017" FontSize="18" FontFamily="Berlin Sans FB"/>
+                    <TextBlock TextWrapping="Wrap" Text="Pomodori Completed: 5" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB"/>
+                    <TextBlock TextWrapping="Wrap" Text="Total Time: 2:05" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB"/>
+                    <TextBlock TextWrapping="Wrap" Text="Tasks Completed" Margin="0, 0, 0, 5" FontFamily="Berlin Sans FB"/>
+                    <BulletDecorator Margin="10,0,0,5">
+                        <BulletDecorator.Bullet>
+                            <Ellipse Height="8" Width="8" Fill="Black" />
+                        </BulletDecorator.Bullet>
+                        <TextBlock TextWrapping="Wrap" Text="Implement save button" Background="{x:Null}" FontFamily="Berlin Sans FB" Margin="5,0,0,0"/>
+                    </BulletDecorator>
+                    <BulletDecorator Margin="10,0,0,5">
+                        <BulletDecorator.Bullet>
+                            <Ellipse Height="8" Width="8" Fill="Black"/>
+                        </BulletDecorator.Bullet>
+                        <TextBlock TextWrapping="Wrap" Text="Implement save button" Background="{x:Null}" FontFamily="Berlin Sans FB" Margin="5,0,0,0"/>
+                    </BulletDecorator>
+                    <BulletDecorator Margin="10,0,0,5">
+                        <BulletDecorator.Bullet>
+                            <Ellipse Height="8" Width="8" Fill="Black"/>
+                        </BulletDecorator.Bullet>
+                        <TextBlock TextWrapping="Wrap" Text="Implement save button" Background="{x:Null}" FontFamily="Berlin Sans FB" Margin="5,0,0,0"/>
+                    </BulletDecorator>
+                    <TextBlock TextWrapping="Wrap" Text="{Binding Day1Comment}" Margin="0, 25, 0, 10" FontFamily="Berlin Sans FB"/>
+
                 </StackPanel>
                 <StackPanel x:Name="Day1" Grid.Column="1" Background="#FFC7CFFF">
 
