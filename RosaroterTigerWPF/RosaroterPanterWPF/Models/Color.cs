@@ -87,5 +87,10 @@ namespace RosaroterTigerWPF
             info.AddValue("B_Color_Value", B, typeof(byte));
         }
 
+        public override string ToString()
+        {
+            return "#FF"+R.ToString("X2") + G.ToString("X2") + B.ToString("X2");
+        }
+
     }
 }
