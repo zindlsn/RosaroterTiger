@@ -9,7 +9,7 @@
       d:DesignHeight="720" d:DesignWidth="1280"
       Title="HomePage">
     <Page.DataContext>
-        <vm:ReviewViewModel />
+        <vm:ReviewViewModel x:Name="model" />
     </Page.DataContext>
     <Grid>
         <Grid.RowDefinitions>
@@ -36,13 +36,18 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <StackPanel x:Name="Day0" Grid.Column="0" Background="#FFD4FFD6">
-                    <Label Content="July 8, 2017" FontSize="18"/>
-                    <TextBlock TextWrapping="Wrap" Text="Comment: Had a surprise meeting, couldn't finish everything." Margin="0, 0, 0, 10"/>
-                    <TextBlock TextWrapping="Wrap" Text="Pomodori Completed: 5" Margin="0, 0, 0, 10"/>
-                    <TextBlock TextWrapping="Wrap" Text="Tasks Completed" Margin="0, 0, 0, 5"/>
-                    
-                </StackPanel>
+				<StackPanel x:Name="Day0" Grid.Column="0" Background="{Binding Day1Color}">
+				    <TextBlock TextWrapping="Wrap" Text="Pomodori Completed: 5" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB"/>
+                    <TextBlock TextWrapping="Wrap" Text="Total Time: 2:05" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB"/>
+                    <TextBlock TextWrapping="Wrap" Text="Tasks Completed" Margin="0, 0, 0, 5" FontFamily="Berlin Sans FB"/>
+
+
+					<TextBlock TextWrapping="Wrap" Text="{Binding Day1Weekday}" Margin="0, 0, 0, 10" FontSize="18" FontFamily="Berlin Sans FB"/>
+					<TextBlock TextWrapping="Wrap" Text="{Binding Day1Results}" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB" />
+					<TextBlock TextWrapping="Wrap" Text="{Binding Day1Comment}" Margin="0, 0, 0, 10" FontFamily="Berlin Sans FB"/>
+					<TextBlock TextWrapping="Wrap" Text="Tasks Completed" Margin="0, 0, 0, 5" FontFamily="Berlin Sans FB"/>
+
+				</StackPanel>
                 <StackPanel x:Name="Day1" Grid.Column="1" Background="#FFC7CFFF">
 
                 </StackPanel>
