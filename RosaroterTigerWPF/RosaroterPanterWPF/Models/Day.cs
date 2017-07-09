@@ -67,13 +67,13 @@ namespace RosaroterTigerWPF.Models
 
             foreach(string s in CompletedGoals)
             {
-                ret += "- " + s + "\n";
+                ret += "• " + s + "\n";
             }
 
-            ret += "Tasks: \n";
+            ret += "\nTasks: \n";
             foreach(Task s in CompletedTasks)
             {
-                ret += "- " + s.Name + "\n";
+                ret += "• " + s.Name + "\n";
             }
 
             return ret;
