@@ -17,9 +17,11 @@ namespace RosaroterTigerWPF.ViewModels
     public class PomodoroViewModel : BaseViewModel
     {
         public bool CanStartTimerCommand = true;
-
+#if DEBUG
+        private static int _PomodoroTime = 20;
+#else
         private static int _PomodoroTime = 25 * 60;
-
+#endif
         private string _Title;
         private string _StartStopButtonText = "Start";
         
@@ -412,6 +414,8 @@ namespace RosaroterTigerWPF.ViewModels
         {
             this._CurrentSeconds = _PomodoroTime;
             this._Timer.Stop();
+            this.IsIdle = true;
+
         }
 
         /// <summary>
